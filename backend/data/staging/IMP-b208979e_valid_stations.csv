@@ -1,0 +1,3 @@
+station_id,name,operator,latitude,longitude,district_code,access_type,total_points
+STN-TEST-001,Test Baner Fast Charger,Tata Power EZ Charge,18.5590,73.7870,MH-PUN,PUBLIC,2
+STN-TEST-002,Test Kothrud AC Station,Statiq,18.5070,73.8070,MH-PUN,PUBLIC,2

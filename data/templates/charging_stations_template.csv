@@ -1,0 +1,5 @@
+station_id,name,operator,latitude,longitude,state_code,district_code,address,access_type,total_points,status,source,is_synthetic
+STN-MH-PUN-001,Shivajinagar EV Fast Charging Hub,Tata Power EZ Charge,18.531400,73.844600,IN-MH,MH-PUN,Near Pune Railway Station Shivajinagar,PUBLIC,4,OPERATIONAL,BEE_EV_YATRA,FALSE
+STN-MH-PUN-002,Kothrud Municipal Depot Charger,Statiq,18.507400,73.807700,IN-MH,MH-PUN,Paud Road Kothrud Pune,PUBLIC,2,OPERATIONAL,OPEN_CHARGE_MAP,FALSE
+STN-MH-MUM-001,Bandra Kurla Complex High Power Hub,Jio-bp pulse,19.065700,72.868800,IN-MH,MH-MUM,G Block BKC Bandra East,PUBLIC,6,OPERATIONAL,BEE_EV_YATRA,FALSE
+

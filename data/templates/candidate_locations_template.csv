@@ -1,0 +1,6 @@
+candidate_id,name,category,latitude,longitude,district_code,corridor_name,estimated_footfall,substation_distance_km,electrical_status
+CAND-PUN-001,Baner Indian Oil Petrol Pump,PETROL_PUMP,18.559100,73.786800,MH-PUN,Pune Urban Grid,HIGH,0.45,UNVERIFIED_PROXY
+CAND-PUN-002,Hinjawadi Phase 1 Transit Mall,MALL_COMMERCIAL,18.591200,73.738900,MH-PUN,Pune Urban Grid,VERY_HIGH,0.80,UNVERIFIED_PROXY
+CAND-SAM-001,Igatpuri Wayside Food Court,HIGHWAY_AMENITY,19.698000,73.565000,MH-NSK,Samruddhi Mahamarg,HIGH,1.20,UNVERIFIED_PROXY
+CAND-SAM-002,Karanja Lad Fuel Oasis,PETROL_PUMP,20.485000,77.492000,MH-WAS,Samruddhi Mahamarg,HIGH,2.10,UNVERIFIED_PROXY
+

@@ -288,3 +288,25 @@ class CandidateLocation(Base):
     import_id = Column(String(64), ForeignKey("dataset_imports.id"), nullable=True)
     created_at = Column(DateTime, default=utc_now)
     updated_at = Column(DateTime, default=utc_now, onupdate=utc_now)
+
+
+
+# ------------------------------------------------------------------------------
+# 6. AUTHENTICATION & ACCESS CONTROL
+# ------------------------------------------------------------------------------
+
+class User(Base):
+    """
+    User accounts for authenticated administrative and analytical access
+    """
+    __tablename__ = "users"
+
+    id = Column(String(64), primary_key=True, default=generate_uuid)
+    username = Column(String(64), unique=True, nullable=False, index=True)
+    email = Column(String(120), unique=True, nullable=False, index=True)
+    hashed_password = Column(String(255), nullable=False)
+    full_name = Column(String(120), nullable=True)
+    role = Column(String(30), default="viewer", nullable=False)  # admin, analyst, viewer
+    is_active = Column(Boolean, default=True, nullable=False)
+    created_at = Column(DateTime, default=utc_now)
+    updated_at = Column(DateTime, default=utc_now, onupdate=utc_now)

@@ -4,12 +4,20 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     APP_NAME: str = "ChargeAtlas India"
-    APP_ENV: str = "development"
+    APP_ENV: str = "development"  # 'development', 'testing', 'production'
     DEBUG: bool = True
     API_V1_STR: str = "/api/v1"
     
-    ALLOWED_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000"
+    # Security & Authentication
+    SECRET_KEY: str = "chargeatlas-production-secret-key-change-in-production-vault-8896"
+    JWT_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
+    ADMIN_API_KEY: str = "chargeatlas-admin-internal-key-2026"
+
+    # CORS Allowed Origins
+    ALLOWED_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://localhost:80"
     
+    # Database Settings
     DB_HOST: str = "localhost"
     DB_PORT: int = 5432
     DB_NAME: str = "chargeatlas_db"
@@ -17,11 +25,24 @@ class Settings(BaseSettings):
     DB_PASSWORD: str = "password"
     DB_ENGINE_MODE: str = "auto"  # 'auto', 'postgres', or 'sqlite'
     
-    SYNTHETIC_DATA_MODE: bool = True
+    # Data Mode
+    SYNTHETIC_DATA_MODE: bool = False
+
+    # Upload & File Restrictions
+    MAX_UPLOAD_SIZE_BYTES: int = 15 * 1024 * 1024  # 15 MB limit
+    ALLOWED_UPLOAD_EXTENSIONS: str = ".csv,.xlsx,.xls,.geojson,.json"
+
+    # Rate Limiting
+    RATE_LIMIT_ENABLED: bool = True
+    MAX_REQUESTS_PER_MINUTE: int = 180
 
     @property
     def cors_origins(self) -> List[str]:
         return [origin.strip() for origin in self.ALLOWED_ORIGINS.split(",") if origin.strip()]
+
+    @property
+    def allowed_extensions(self) -> List[str]:
+        return [ext.strip().lower() for ext in self.ALLOWED_UPLOAD_EXTENSIONS.split(",") if ext.strip()]
 
     @property
     def postgres_url(self) -> str:
@@ -29,11 +50,11 @@ class Settings(BaseSettings):
 
     @property
     def sqlite_url(self) -> str:
-        return "sqlite:///./chargeatlas_dev.db"
+        root_db = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "chargeatlas_dev.db"))
+        return f"sqlite:///{root_db.replace(os.sep, '/')}"
 
     class Config:
-        env_file = ".env"
+        env_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".env"))
         extra = "allow"
 
 settings = Settings()
-

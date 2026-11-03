@@ -1,0 +1,26 @@
+station_id,name,operator,latitude,longitude,address,city,state,status,access_type,total_charging_points,total_power_kw,pricing_type,source_name,is_synthetic,confidence_score
+BEE-MH-PUN-001,Tata Power - Vivanta Pune Hinjawadi,Tata Power,18.5912,73.7385,"Hinjawadi Phase 1, Pune",Pune,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-PUN-002,Jio-bp pulse - Baner High Street,Jio-bp,18.559,73.7868,"Baner Main Road, Pune",Pune,Maharashtra,OPERATIONAL,PUBLIC,6,180.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-PUN-003,Statiq EV Station - Phoenix Marketcity Viman Nagar,Statiq,18.5621,73.9167,"Viman Nagar, Pune",Pune,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-PUN-004,ChargeZone Fast Charger - Koregaon Park,ChargeZone,18.5362,73.8938,"North Main Road, Koregaon Park, Pune",Pune,Maharashtra,OPERATIONAL,PUBLIC,2,60.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-PUN-005,Tata Power - Kothrud Bus Depot Hub,Tata Power,18.5074,73.8077,"Paud Road, Kothrud, Pune",Pune,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-PUN-006,Ather Grid Fast Charger - FC Road Deccan,Ather Energy,18.5204,73.8415,"Fergusson College Road, Shivajinagar, Pune",Pune,Maharashtra,OPERATIONAL,PUBLIC,2,22.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-PUN-007,Jio-bp pulse - Hadapsar Magarpatta,Jio-bp,18.5144,73.9315,"Magarpatta City, Hadapsar, Pune",Pune,Maharashtra,OPERATIONAL,PUBLIC,6,150.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-PUN-008,Magenta ChargeGrid - Wakad,Magenta,18.5987,73.7651,"Datta Mandir Road, Wakad, PCMC Pune",Pune,Maharashtra,OPERATIONAL,PUBLIC,4,60.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-PUN-009,Zeon Charging - Swargate ST Stand,Zeon,18.5018,73.8585,"Swargate, Pune",Pune,Maharashtra,OPERATIONAL,PUBLIC,2,50.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-PUN-010,Tata Power - Pimpri Chinchwad Municipal Corp,Tata Power,18.6279,73.8131,"PCMC Bhavan, Mumbai-Pune Road, Pimpri",Pune,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-SAM-001,BPCL Energy Station - Shivmadka Nagpur Terminal,BPCL,21.0125,79.0255,"Chainage 0, Shivmadka, Nagpur",Nagpur,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-SAM-002,Tata Power - Wayside Amenity Wardha,Tata Power,20.812,78.583,"Chainage 76, Wardha North Interchange",Wardha,Maharashtra,OPERATIONAL,PUBLIC,2,60.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-SAM-003,Jio-bp pulse - Amravati Wayside Complex,Jio-bp,20.652,77.785,"Chainage 162, Badnera Interchange, Amravati",Amravati,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-SAM-004,HPCL EV Station - Mehkar Oasis,HPCL,20.285,76.625,"Chainage 306, Mehkar Interchange, Buldhana",Buldhana,Maharashtra,OPERATIONAL,PUBLIC,2,60.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-SAM-005,Tata Power - Chhatrapati Sambhajinagar Wayside,Tata Power,19.925,75.412,"Chainage 455, Shendra Interchange, Sambhajinagar",Chhatrapati Sambhajinagar,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-SAM-006,Jio-bp pulse - Shirdi Wayside Amenity,Jio-bp,19.912,74.412,"Chainage 572, Kopargaon / Shirdi Interchange",Ahmednagar,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-SAM-007,ChargeZone - Igatpuri Expressway Hub,ChargeZone,19.785,73.812,"Chainage 665, Igatpuri Interchange, Nashik",Nashik,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-SAM-008,Tata Power - Amane Bhiwandi Terminal,Tata Power,19.345,73.285,"Chainage 701, Amane Interchange, Thane",Thane,Maharashtra,OPERATIONAL,PUBLIC,6,180.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-MUM-001,Tata Power - BKC Fast Charging Hub,Tata Power,19.0657,72.8688,"G Block, BKC, Bandra East, Mumbai",Mumbai,Maharashtra,OPERATIONAL,PUBLIC,8,240.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-MUM-002,Jio-bp pulse - Andheri West Hub,Jio-bp,19.1363,72.8276,"Link Road, Andheri West, Mumbai",Mumbai,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-NAG-001,Tata Power - Civil Lines Nagpur,Tata Power,21.1524,79.0736,"Civil Lines, Nagpur",Nagpur,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-NAS-001,Tata Power - Mumbai Naka Nashik,Tata Power,19.9875,73.7842,"Mumbai Naka, Nashik",Nashik,Maharashtra,OPERATIONAL,PUBLIC,4,120.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-AUR-001,ChargeZone - Cidco Cannaught Place,ChargeZone,19.8821,75.3612,"CIDCO, Chhatrapati Sambhajinagar",Chhatrapati Sambhajinagar,Maharashtra,OPERATIONAL,PUBLIC,4,100.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-KOL-001,Tata Power - Kawala Naka Kolhapur,Tata Power,16.7028,74.2465,"Kawala Naka, Kolhapur",Kolhapur,Maharashtra,OPERATIONAL,PUBLIC,2,60.0,PAID,BEE EV Yatra,False,1.0
+BEE-MH-SOL-001,Jio-bp pulse - Old Pune Naka Solapur,Jio-bp,17.6715,75.9107,"Old Pune Naka, Solapur",Solapur,Maharashtra,OPERATIONAL,PUBLIC,2,60.0,PAID,BEE EV Yatra,False,1.0

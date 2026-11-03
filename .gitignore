@@ -1,20 +1,45 @@
-# Python
+# Python & Virtual Environments
 .venv/
+venv/
 __pycache__/
 *.py[cod]
 *$py.class
 *.sqlite3
 *.db
+*.db-shm
+*.db-wal
 .pytest_cache/
+.coverage
+htmlcov/
 
-# Node
+# Node & Frontend Build
 node_modules/
+frontend/node_modules/
 dist/
+frontend/dist/
 .vite/
+frontend/.vite/
 
-# Staging
+# Staging & Uploads (exclude user uploaded files, keep placeholder)
 data/staging/*
 !data/staging/.gitkeep
+backend/data/staging/*
+!backend/data/staging/.gitkeep
 
-# Environment
+# Environment & Credentials (NEVER commit secrets or real credentials)
 .env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Logs & Temporary files
+*.log
+logs/
+.DS_Store
+Thumbs.db
+
+# Backups
+data/backups/*
+!data/backups/.gitkeep

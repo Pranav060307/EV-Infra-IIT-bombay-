@@ -1,0 +1,138 @@
+[
+  {
+    "chainage_km": 0.0,
+    "name": "Shivmadka (Nagpur Ring Road)",
+    "district": "Nagpur",
+    "lon": 79.025,
+    "lat": 21.012,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 42.0,
+    "name": "Seloo Interchange",
+    "district": "Wardha",
+    "lon": 78.852,
+    "lat": 20.95,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 76.0,
+    "name": "Wardha North Interchange",
+    "district": "Wardha",
+    "lon": 78.583,
+    "lat": 20.812,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 118.0,
+    "name": "Dhamangaon Railway Interchange",
+    "district": "Amravati",
+    "lon": 78.215,
+    "lat": 20.735,
+    "substation_nearby": false
+  },
+  {
+    "chainage_km": 162.0,
+    "name": "Badnera / Amravati Interchange",
+    "district": "Amravati",
+    "lon": 77.785,
+    "lat": 20.652,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 210.0,
+    "name": "Karanja Lad Interchange",
+    "district": "Washim",
+    "lon": 77.412,
+    "lat": 20.535,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 258.0,
+    "name": "Malegaon Jahangir Interchange",
+    "district": "Washim",
+    "lon": 76.985,
+    "lat": 20.412,
+    "substation_nearby": false
+  },
+  {
+    "chainage_km": 306.0,
+    "name": "Mehkar Interchange",
+    "district": "Buldhana",
+    "lon": 76.625,
+    "lat": 20.285,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 354.0,
+    "name": "Sindkhed Raja Interchange",
+    "district": "Buldhana",
+    "lon": 76.242,
+    "lat": 20.155,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 402.0,
+    "name": "Jalna West Interchange",
+    "district": "Jalna",
+    "lon": 75.885,
+    "lat": 20.025,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 455.0,
+    "name": "Shendra / Aurangabad East Interchange",
+    "district": "Chhatrapati Sambhajinagar",
+    "lon": 75.412,
+    "lat": 19.925,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 490.0,
+    "name": "Gangapur / Aurangabad West Interchange",
+    "district": "Chhatrapati Sambhajinagar",
+    "lon": 75.125,
+    "lat": 19.865,
+    "substation_nearby": false
+  },
+  {
+    "chainage_km": 530.0,
+    "name": "Vaijapur Interchange",
+    "district": "Chhatrapati Sambhajinagar",
+    "lon": 74.752,
+    "lat": 19.885,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 572.0,
+    "name": "Kopargaon / Shirdi Interchange",
+    "district": "Ahmednagar",
+    "lon": 74.412,
+    "lat": 19.912,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 620.0,
+    "name": "Sinnar Interchange",
+    "district": "Nashik",
+    "lon": 74.055,
+    "lat": 19.935,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 665.0,
+    "name": "Igatpuri / Kasara Interchange",
+    "district": "Nashik",
+    "lon": 73.812,
+    "lat": 19.785,
+    "substation_nearby": true
+  },
+  {
+    "chainage_km": 701.0,
+    "name": "Amane / Bhiwandi Terminal Interchange",
+    "district": "Thane",
+    "lon": 73.285,
+    "lat": 19.345,
+    "substation_nearby": true
+  }
+]

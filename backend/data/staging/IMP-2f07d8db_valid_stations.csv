@@ -1,0 +1,3 @@
+station_id,name,operator,latitude,longitude,district_code,access_type,total_points
+STN-TEST-VAL-01,Test Chinchwad Charging Hub,Tata Power EZ Charge,18.6350,73.7920,MH-PUN,PUBLIC,2
+STN-TEST-VAL-02,Test Nigdi AC Point,Statiq,18.6520,73.7680,MH-PUN,PUBLIC,2

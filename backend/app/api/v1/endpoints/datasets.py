@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, s
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 
+from app.core.config import settings
 from app.core.database import get_db
 from app.models import (
     DatasetImport,
@@ -40,14 +41,20 @@ def get_dataset_metrics(db: Session = Depends(get_db)):
     total_rows = db.query(func.sum(DatasetImport.total_rows_read)).scalar() or 0
     total_valid = db.query(func.sum(DatasetImport.valid_rows_imported)).scalar() or 0
 
+    authentic_count = db.query(DatasetImport).filter(DatasetImport.is_synthetic == False).count()
+    synthetic_count = db.query(DatasetImport).filter(DatasetImport.is_synthetic == True).count()
+
     return {
         "total_datasets": total_datasets,
+        "authentic_count": authentic_count,
+        "synthetic_count": synthetic_count,
         "uploaded_count": uploaded_count,
         "validated_count": validated_count,
         "imported_count": imported_count,
         "rejected_count": rejected_count,
         "total_records_processed": int(total_rows),
-        "total_records_imported": int(total_valid)
+        "total_records_imported": int(total_valid),
+        "active_data_mode": "authentic" if not settings.SYNTHETIC_DATA_MODE else "demo"
     }
 
 @router.post("/upload", summary="Upload CSV, XLSX, XLS, or GeoJSON Dataset")
@@ -59,19 +66,38 @@ async def upload_dataset(
     db: Session = Depends(get_db)
 ):
     """
-    Receives user uploaded dataset, verifies file format, saves to secure staging directory,
-    generates row preview, and creates a DatasetImport record with status 'UPLOADED'.
+    Receives user uploaded dataset, verifies file format, enforces 15MB size limit,
+    sanitizes filename, saves to secure staging directory, generates row preview,
+    and creates a DatasetImport record with status 'UPLOADED'.
     """
-    filename = file.filename
+    # 1. Sanitize filename against directory traversal
+    filename = os.path.basename(file.filename or "uploaded_dataset.csv")
     ext = os.path.splitext(filename)[1].lower()
 
-    if ext not in [".csv", ".xlsx", ".xls", ".geojson", ".json"]:
+    if ext not in settings.allowed_extensions:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Unsupported file format '{ext}'. Supported formats: CSV, XLSX, XLS, GeoJSON."
+            detail=f"Unsupported file format '{ext}'. Allowed formats: {', '.join(settings.allowed_extensions)}."
         )
 
-    # Save to staging folder
+    # 2. File size and empty file validation
+    file.file.seek(0, os.SEEK_END)
+    file_size = file.file.tell()
+    file.file.seek(0)
+
+    if file_size == 0:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Uploaded file is empty (0 bytes). Please upload a valid data file."
+        )
+
+    if file_size > settings.MAX_UPLOAD_SIZE_BYTES:
+        raise HTTPException(
+            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+            detail=f"File exceeds maximum allowed size of {settings.MAX_UPLOAD_SIZE_BYTES // (1024 * 1024)} MB."
+        )
+
+    # 3. Save to staging folder with unique prefix
     import_id = f"IMP-{generate_uuid()[:8]}"
     staged_filename = f"{import_id}_{filename}"
     staged_path = os.path.join(STAGING_DIR, staged_filename)

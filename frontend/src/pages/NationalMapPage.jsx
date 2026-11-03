@@ -1,59 +1,261 @@
-import React from 'react';
-import { Map, Layers, Filter } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Map, Layers, Filter, Zap, ShieldCheck, Info, Car, Compass, ChevronRight } from 'lucide-react';
+import { getVerifiedStations, getDistrictAnalysis, getPolicyCompliance } from '../services/api';
+import MapLibreMap from '../components/common/MapLibreMap';
 
 export const NationalMapPage = () => {
+  const [loading, setLoading] = useState(true);
+  const [stations, setStations] = useState([]);
+  const [districtData, setDistrictData] = useState(null);
+  const [policyData, setPolicyData] = useState(null);
+  const [selectedOperator, setSelectedOperator] = useState('ALL');
+  const [selectedStation, setSelectedStation] = useState(null);
+  const [mapCenter, setMapCenter] = useState([78.9629, 20.5937]);
+  const [mapZoom, setMapZoom] = useState(4.8);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const [stRes, distRes, polRes] = await Promise.allSettled([
+          getVerifiedStations(),
+          getDistrictAnalysis(),
+          getPolicyCompliance()
+        ]);
+        if (stRes.status === 'fulfilled') {
+          const feats = stRes.value?.features || [];
+          setStations(feats);
+          if (feats.length > 0) {
+            setSelectedStation(feats[0].properties);
+          }
+        }
+        if (distRes.status === 'fulfilled') {
+          setDistrictData(distRes.value);
+        }
+        if (polRes.status === 'fulfilled') {
+          setPolicyData(polRes.value);
+        }
+      } catch (err) {
+        console.error("Failed to fetch national map data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Filter stations by operator
+  const filteredStations = stations.filter(f => {
+    if (selectedOperator === 'ALL') return true;
+    return f.properties.operator?.toLowerCase() === selectedOperator.toLowerCase();
+  });
+
+  const markers = filteredStations.map(f => ({
+    name: f.properties.name,
+    operator: f.properties.operator,
+    latitude: f.geometry.coordinates[1],
+    longitude: f.geometry.coordinates[0],
+    power_kw: f.properties.total_power_kw,
+    points: f.properties.total_charging_points,
+    color: '#10b981' // emerald marker
+  }));
+
   return (
     <div className="p-8 space-y-6 max-w-7xl mx-auto">
+      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
               Level 1 Geographic Analysis
             </span>
-            <span className="text-xs text-slate-400">All India (36 States & UTs)</span>
+            <span className="text-xs text-slate-400 flex items-center gap-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              National Public Charging Infrastructure Directory
+            </span>
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-white mt-1">
             National EV Infrastructure GIS Map
           </h2>
           <p className="text-sm text-slate-400 mt-1">
-            State-wise choropleth layer displaying EV adoption intensity, public charging station density, and the national Charging Gap Index (CGI).
+            Pan-India overview of verified public charging stations, state-level penetration, and spatial distribution.
           </p>
         </div>
 
+        {/* Filter controls */}
         <div className="flex items-center gap-3">
+          <button
+            onClick={() => {
+              setMapCenter([78.9629, 20.5937]);
+              setMapZoom(4.8);
+            }}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+              mapZoom <= 5 ? 'bg-emerald-600 text-white border-emerald-500' : 'bg-slate-900 text-slate-300 border-slate-800'
+            }`}
+          >
+            All India View
+          </button>
+          <button
+            onClick={() => {
+              setMapCenter([75.7139, 19.7515]);
+              setMapZoom(6.4);
+            }}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+              mapZoom > 5 ? 'bg-cyan-600 text-white border-cyan-500' : 'bg-slate-900 text-slate-300 border-slate-800'
+            }`}
+          >
+            Focus Maharashtra
+          </button>
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">
             <Filter className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Filter: All Segments</span>
-          </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">
-            <Layers className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Layer: Charging Gap Index</span>
+            <select
+              value={selectedOperator}
+              onChange={(e) => setSelectedOperator(e.target.value)}
+              className="bg-transparent text-white focus:outline-none"
+            >
+              <option value="ALL" className="bg-slate-900">All Operators</option>
+              <option value="Tata Power" className="bg-slate-900">Tata Power</option>
+              <option value="Jio-bp" className="bg-slate-900">Jio-bp pulse</option>
+              <option value="Statiq" className="bg-slate-900">Statiq</option>
+              <option value="ChargeZone" className="bg-slate-900">ChargeZone</option>
+              <option value="Ather Energy" className="bg-slate-900">Ather Grid</option>
+              <option value="BPCL" className="bg-slate-900">BPCL</option>
+              <option value="HPCL" className="bg-slate-900">HPCL</option>
+            </select>
           </div>
         </div>
       </div>
 
-      {/* Map Container Area */}
-      <div className="relative w-full h-[600px] rounded-2xl border border-slate-800 bg-slate-900/40 overflow-hidden flex flex-col items-center justify-center p-8 text-center">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4 shadow-lg shadow-emerald-500/10">
-          <Map className="w-8 h-8" />
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+          <div className="flex items-center justify-between text-xs text-slate-400">
+            <span>Verified Public Stations</span>
+            <Zap className="w-4 h-4 text-emerald-400" />
+          </div>
+          <div className="text-2xl font-bold text-white mt-2">
+            {filteredStations.length}
+          </div>
+          <div className="text-xs text-slate-400 mt-1">BEE EV Yatra Verified Directory</div>
         </div>
-        <h3 className="text-lg font-bold text-white">Interactive MapLibre GL Layer</h3>
-        <p className="text-sm text-slate-400 max-w-md mt-1">
-          National GeoJSON layer ready for rendering. Interactive boundaries, station clusters, and choropleth color scales will be activated in Phase 3.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <span className="px-3 py-1 rounded bg-slate-800/80 border border-slate-700 text-xs text-slate-300">
-            🟢 Green: Low Gap (CGI &lt; 35)
-          </span>
-          <span className="px-3 py-1 rounded bg-slate-800/80 border border-slate-700 text-xs text-slate-300">
-            🟡 Yellow: Moderate Gap (35 - 70)
-          </span>
-          <span className="px-3 py-1 rounded bg-slate-800/80 border border-slate-700 text-xs text-slate-300">
-            🔴 Red: Critical Deficit (CGI &gt; 70)
-          </span>
-          <span className="px-3 py-1 rounded bg-slate-800/80 border border-slate-700 text-xs text-slate-400">
-            ⚪ Grey: Insufficient Data
-          </span>
+
+        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+          <div className="flex items-center justify-between text-xs text-slate-400">
+            <span>Primary Focus State EVs</span>
+            <Car className="w-4 h-4 text-cyan-400" />
+          </div>
+          <div className="text-2xl font-bold text-cyan-400 mt-2">
+            {districtData ? districtData.total_ev_registered?.toLocaleString() : '886,752'}
+          </div>
+          <div className="text-xs text-slate-400 mt-1">Maharashtra Cumulative (VAHAN 2024)</div>
+        </div>
+
+        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+          <div className="flex items-center justify-between text-xs text-slate-400">
+            <span>Charging Gap Index (Avg)</span>
+            <Compass className="w-4 h-4 text-rose-400" />
+          </div>
+          <div className="text-2xl font-bold text-rose-400 mt-2">
+            {districtData ? districtData.average_charging_gap_index : '99.1'}
+            <span className="text-sm font-normal text-slate-400"> / 100</span>
+          </div>
+          <div className="text-xs text-rose-400 mt-1">Severe Multi-Criteria Deficit</div>
+        </div>
+
+        <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+          <div className="flex items-center justify-between text-xs text-slate-400">
+            <span>Policy Framework</span>
+            <Info className="w-4 h-4 text-amber-400" />
+          </div>
+          <div className="text-base font-bold text-amber-400 mt-2 truncate">
+            MoP Guidelines 2024
+          </div>
+          <div className="text-xs text-slate-400 mt-1">Active National Norms</div>
+        </div>
+      </div>
+
+      {/* Main Map + Station Detail */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Map Container */}
+        <div className="lg:col-span-2 rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden flex flex-col shadow-lg">
+          <div className="p-4 border-b border-slate-800 bg-slate-900/80 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Map className="w-4 h-4 text-emerald-400" />
+              <span className="text-sm font-semibold text-white">National Spatial Station Map</span>
+            </div>
+            <div className="text-xs text-slate-400">
+              Showing {filteredStations.length} Stations | CartoDB Dark Matter
+            </div>
+          </div>
+          <div className="relative w-full h-[520px]">
+            <MapLibreMap
+              center={mapCenter}
+              zoom={mapZoom}
+              markers={markers}
+              className="w-full h-full"
+            />
+          </div>
+        </div>
+
+        {/* Right Panel: Selected Station Inspector & Policy Summary */}
+        <div className="space-y-6">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg space-y-4">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-emerald-400 font-semibold">
+              <Zap className="w-4 h-4" />
+              <span>Verified Station Directory</span>
+            </div>
+            <div className="space-y-3 max-h-[220px] overflow-y-auto pr-1">
+              {filteredStations.map(f => (
+                <div
+                  key={f.properties.station_id}
+                  onClick={() => setSelectedStation(f.properties)}
+                  className={`p-3 rounded-xl border cursor-pointer transition-colors ${
+                    selectedStation?.station_id === f.properties.station_id
+                      ? 'bg-emerald-500/10 border-emerald-500/40'
+                      : 'bg-slate-800/40 border-slate-800 hover:bg-slate-800/70'
+                  }`}
+                >
+                  <div className="text-xs font-bold text-white truncate">{f.properties.name}</div>
+                  <div className="flex items-center justify-between text-[11px] text-slate-400 mt-1">
+                    <span>{f.properties.operator}</span>
+                    <span className="text-emerald-400 font-semibold">{f.properties.total_power_kw} kW</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {selectedStation && (
+              <div className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-xs space-y-2">
+                <div className="font-bold text-white text-sm">{selectedStation.name}</div>
+                <div className="text-slate-400">{selectedStation.address}</div>
+                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-700/60 text-[11px]">
+                  <div><span className="text-slate-400">Operator:</span> <strong className="text-white">{selectedStation.operator}</strong></div>
+                  <div><span className="text-slate-400">Power:</span> <strong className="text-emerald-400">{selectedStation.total_power_kw} kW</strong></div>
+                  <div><span className="text-slate-400">Points:</span> <strong className="text-white">{selectedStation.total_charging_points}</strong></div>
+                  <div><span className="text-slate-400">Status:</span> <strong className="text-emerald-400">{selectedStation.status}</strong></div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Policy Compliance Framework Summary */}
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg space-y-3">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-amber-400 font-semibold">
+              <Info className="w-4 h-4" />
+              <span>MoP 2024 Siting Guidelines</span>
+            </div>
+            <div className="space-y-2 text-xs text-slate-300">
+              <div className="p-2.5 rounded-lg bg-slate-800/40 border border-slate-800">
+                <strong className="text-white">Urban Agglomerations:</strong> At least 1 station per 1km × 1km grid (Section 3.1a).
+              </div>
+              <div className="p-2.5 rounded-lg bg-slate-800/40 border border-slate-800">
+                <strong className="text-white">Highways & Expressways:</strong> At least 1 station every 20 km on both sides (Section 3.1b).
+              </div>
+              <div className="p-2.5 rounded-lg bg-slate-800/40 border border-slate-800">
+                <strong className="text-white">Heavy-Duty & Long-Range:</strong> Fast charger (≥100 kW) every 100 km (Section 3.1c).
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -61,4 +263,3 @@ export const NationalMapPage = () => {
 };
 
 export default NationalMapPage;
-

@@ -414,3 +414,4 @@ if __name__ == "__main__":
         db.close()
 
     generate_synthetic_data(seed=args.seed)
+

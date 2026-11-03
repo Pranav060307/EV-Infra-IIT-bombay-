@@ -11,6 +11,7 @@ from app.models.entities import (
     EVRegistration,
     Substation,
     CandidateLocation,
+    User,
     generate_uuid,
     utc_now,
 )
@@ -28,6 +29,7 @@ __all__ = [
     "EVRegistration",
     "Substation",
     "CandidateLocation",
+    "User",
     "generate_uuid",
     "utc_now",
 ]

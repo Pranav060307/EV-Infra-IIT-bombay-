@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.8446, 18.5314]}, "properties": {"station_id": "GEO-PUN-01", "name": "Pune GeoJSON Hub", "operator": "BEE Yatra", "district_code": "MH-PUN"}}]}

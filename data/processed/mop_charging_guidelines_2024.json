@@ -1,0 +1,45 @@
+{
+  "title": "Guidelines and Standards for Installation and Operation of Electric Vehicle Charging Infrastructure - 2024",
+  "issuing_authority": "Ministry of Power, Government of India",
+  "publication_date": "2024-09-17",
+  "reference_number": "No. 12/2/2018-EV (Pt.IV)",
+  "official_document_url": "https://powermin.gov.in/sites/default/files/Guidelines_and_Standards_for_EVCI_dated_17_09_2024.pdf",
+  "status": "OFFICIAL_STATUTORY_POLICY",
+  "benchmarks": {
+    "urban_density": {
+      "standard": "In urban areas, the target shall be to provide at least one charging station within a 1 km x 1 km grid by FY 2029-30 (FY 2030)",
+      "target_grid_size_km": 1.0,
+      "min_stations_per_grid": 1,
+      "target_deadline": "FY 2029-30 (FY 2030)",
+      "applicability": "Urban Agglomerations / Municipal Areas (e.g. Pune Urban Area: PMC + PCMC)",
+      "clause_reference": "Clause 11(1)(a)"
+    },
+    "highway_spacing": {
+      "standard": "On highways and expressways, charging stations should be installed at a distance of every 20 km on both sides",
+      "max_inter_station_distance_km": 20.0,
+      "both_sides_required": true,
+      "applicability": "National Highways, Expressways, State Highways (e.g. Samruddhi Mahamarg)",
+      "clause_reference": "Clause 11(1)(b)"
+    },
+    "heavy_duty_long_range": {
+      "standard": "For long range and/or heavy duty EVs, there shall be at least one fast-charging station every 100 km on each side of highways and expressways",
+      "max_distance_km": 100.0,
+      "technical_specification": "At least two EV chargers of minimum 240 kW capacity each with CCS-2 connector gun or higher standard",
+      "min_chargers_per_station": 2,
+      "min_capacity_per_charger_kw": 240.0,
+      "applicability": "Freight & Highway Corridors (e.g. Samruddhi Mahamarg)",
+      "clause_reference": "Clause 11(1)(c) read with Clause 12(7)"
+    },
+    "open_access_power": {
+      "standard": "Connectivity and electricity connection to public charging station within 7 days in metro cities, 15 days in municipal areas, 30 days in rural areas",
+      "timeline_days_metro": 7,
+      "timeline_days_municipal": 15,
+      "timeline_days_rural": 30,
+      "clause_reference": "Clause 6(2)"
+    },
+    "tariff_structure": {
+      "standard": "Single part tariff not exceeding Average Cost of Supply (ACoS) during solar hours and up to 1.2 times ACoS during non-solar hours",
+      "clause_reference": "Clause 8(1)"
+    }
+  }
+}

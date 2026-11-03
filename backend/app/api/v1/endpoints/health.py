@@ -45,7 +45,13 @@ def health_check(db: Session = Depends(get_db)):
         },
         "data_mode": {
             "is_synthetic_demo": settings.SYNTHETIC_DATA_MODE,
-            "notice": "Demonstration datasets enabled. Real government datasets can be ingested through /datasets/upload without altering application logic."
+            "active_mode": "demo" if settings.SYNTHETIC_DATA_MODE else "authentic",
+            "data_classification": "SYNTHETIC DEMONSTRATION" if settings.SYNTHETIC_DATA_MODE else "VERIFIED AUTHENTIC & PARTIALLY VERIFIED",
+            "notice": (
+                "Demonstration datasets enabled."
+                if settings.SYNTHETIC_DATA_MODE else
+                "Authentic Production Mode active. Analytical views strictly reflect verified government records (VAHAN 4, BEE EV Yatra, Census 2011, MSRDC). Synthetic records are isolated."
+            )
         }
     }
 

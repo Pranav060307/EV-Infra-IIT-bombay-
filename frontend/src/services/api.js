@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Prioritize environment variable, fallback to direct port 8000, then Vite proxy (/api/v1)
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+// Prioritize environment variable (e.g. on Vercel), fallback to relative /api/v1 in prod, or local port 8000 in dev
+const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/api/v1' : 'http://localhost:8000/api/v1');
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,

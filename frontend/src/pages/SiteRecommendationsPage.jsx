@@ -113,42 +113,44 @@ export const SiteRecommendationsPage = () => {
   // Identify which candidates are part of optimal MCLP selection
   const optimalIds = new Set((optimizationResult?.selected_sites || []).map(s => s.id));
 
-  // Map markers: candidates + substations
-  const candidateMarkers = candidates.map(c => {
-    const isOptimal = optimalIds.has(c.id);
-    let markerColor = '#8b5cf6'; // purple default
-    if (isOptimal) markerColor = '#10b981'; // emerald for optimal
-    else if (c.priority_classification === 'HIGH_PRIORITY_CANDIDATE') markerColor = '#8b5cf6';
-    else if (c.priority_classification === 'MEDIUM_PRIORITY_CANDIDATE') markerColor = '#f59e0b';
-    else markerColor = '#64748b';
+  // Map markers: candidates + substations (Editorial GIS: Teal, Green, Amber, Muted Grey)
+  const candidateMarkers = React.useMemo(() => {
+    return candidates.map(c => {
+      const isOptimal = optimalIds.has(c.id);
+      let markerColor = '#3F7775'; // Muted Teal default
+      if (isOptimal) markerColor = '#52765B'; // Forest Green for optimal selection
+      else if (c.priority_classification === 'HIGH_PRIORITY_CANDIDATE') markerColor = '#3F7775';
+      else if (c.priority_classification === 'MEDIUM_PRIORITY_CANDIDATE') markerColor = '#C18A42';
+      else markerColor = '#7A858C';
 
-    return {
-      name: c.name,
-      operator: `${c.district} | MCDA Score: ${c.total_mcda_score} (${c.priority_classification.replace(/_/g, ' ')})`,
-      latitude: c.coordinates.latitude,
-      longitude: c.coordinates.longitude,
-      color: markerColor
-    };
-  });
+      return {
+        name: c.name,
+        operator: `${c.district} | MCDA Score: ${c.total_mcda_score} (${c.priority_classification.replace(/_/g, ' ')})`,
+        latitude: c.coordinates.latitude,
+        longitude: c.coordinates.longitude,
+        color: markerColor
+      };
+    });
+  }, [candidates, optimalIds]);
 
   return (
     <div className="p-8 space-y-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-700/60">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/30">
+            <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-accent-teal/15 text-[#5fa3a0] border border-accent-teal/30 font-mono">
               Module 7: Smart Site Recommender
             </span>
-            <span className="text-xs text-slate-400 flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="text-xs text-slate-300 flex items-center gap-1 font-mono">
+              <ShieldCheck className="w-3.5 h-3.5 text-accent-green" />
               Evidence-Backed MCDA Siting Engine (23 Authentic Candidates)
             </span>
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-white mt-1">
             Intelligent EV Charging Site Recommendation &amp; Optimization Engine
           </h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-300 mt-1">
             Multi-Criteria Decision Analysis (MCDA) and Maximum Covering Location Problem (MCLP) solver evaluating unserved Pune grid cells, Samruddhi expressway voids, and zero-charger district transit nodes.
           </p>
         </div>
@@ -159,8 +161,8 @@ export const SiteRecommendationsPage = () => {
             onClick={() => setSelectedScope('ALL')}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
               selectedScope === 'ALL'
-                ? 'bg-purple-600 border-purple-500 text-white'
-                : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                ? 'bg-accent-teal border-accent-teal text-white'
+                : 'bg-navy-900 border-slate-700/60 text-slate-300 hover:text-white'
             }`}
           >
             All Maharashtra (23)
@@ -169,8 +171,8 @@ export const SiteRecommendationsPage = () => {
             onClick={() => setSelectedScope('PUNE')}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
               selectedScope === 'PUNE'
-                ? 'bg-purple-600 border-purple-500 text-white'
-                : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                ? 'bg-accent-teal border-accent-teal text-white'
+                : 'bg-navy-900 border-slate-700/60 text-slate-300 hover:text-white'
             }`}
           >
             Pune Urban (8)
@@ -179,8 +181,8 @@ export const SiteRecommendationsPage = () => {
             onClick={() => setSelectedScope('SAMRUDDHI')}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
               selectedScope === 'SAMRUDDHI'
-                ? 'bg-amber-600 border-amber-500 text-white'
-                : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                ? 'bg-accent-amber border-accent-amber text-navy-950 font-bold'
+                : 'bg-navy-900 border-slate-700/60 text-slate-300 hover:text-white'
             }`}
           >
             Samruddhi Expressway (7)
@@ -189,8 +191,8 @@ export const SiteRecommendationsPage = () => {
             onClick={() => setSelectedScope('DISTRICTS')}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
               selectedScope === 'DISTRICTS'
-                ? 'bg-cyan-600 border-cyan-500 text-white'
-                : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                ? 'bg-slate-700 border-slate-600 text-white'
+                : 'bg-navy-900 border-slate-700/60 text-slate-300 hover:text-white'
             }`}
           >
             Zero-Charger Districts (8)
@@ -198,7 +200,7 @@ export const SiteRecommendationsPage = () => {
 
           <button
             onClick={() => setShowWeightSliders(!showWeightSliders)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900 border border-slate-700 text-purple-400 hover:text-white"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-navy-900 border border-slate-700/60 text-accent-teal hover:text-white"
           >
             <Sliders className="w-3.5 h-3.5" />
             MCDA Weights
@@ -208,15 +210,15 @@ export const SiteRecommendationsPage = () => {
 
       {/* Interactive MCDA Weight Adjustment Drawer */}
       {showWeightSliders && (
-        <div className="p-5 rounded-2xl bg-slate-900/90 border border-purple-500/40 space-y-4 shadow-xl">
+        <div className="p-5 rounded-2xl bg-navy-900/95 border border-accent-teal/40 space-y-4 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Sliders className="w-4 h-4 text-purple-400" />
+              <Sliders className="w-4 h-4 text-accent-teal" />
               <h3 className="text-sm font-bold text-white">Adjust MCDA Siting Criterion Weights</h3>
             </div>
             <button
               onClick={handleRescoreMCDA}
-              className="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs bg-purple-600 hover:bg-purple-500 text-white font-semibold transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs bg-accent-teal hover:bg-[#346563] text-white font-semibold transition-colors"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               Apply &amp; Re-Rank

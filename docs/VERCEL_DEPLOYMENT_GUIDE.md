@@ -119,3 +119,4 @@ After deployment completes:
 - [x] Dark / Light Canvas theme toggle functions smoothly.
 - [x] MapLibre GL maps render vector/raster basemaps without watermark warnings.
 - [x] Navigating directly to `/districts/Pune` or `/pune-grid` loads without 404 on page refresh (verified via `vercel.json` rewrites).
+

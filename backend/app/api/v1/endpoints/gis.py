@@ -13,7 +13,7 @@ Provides reliable REST endpoints for:
 - Spatial Operator Validation Test Suite (ST_Within, ST_Intersects, ST_DWithin, ST_Distance, ST_Transform, ST_Area, ST_Length)
 """
 
-from fastapi import APIRouter, HTTPException, Query, Path
+from fastapi import APIRouter, HTTPException, Query, Path, Response
 from typing import Optional, List, Dict, Any
 from app.services.gis import gis_service
 from app.services.gap_engine import gap_engine
@@ -184,19 +184,56 @@ def get_station_detail(station_id: str = Path(..., description="Unique Station I
 # 5. PUNE URBAN GRID & SAMRUDDHI HIGHWAY CORRIDOR
 # ------------------------------------------------------------------------------
 
+@router.get("/pune/summary", summary="Pune Urban Grid Lightweight Summary & Policy Evaluation")
+def get_pune_urban_summary(
+    response: Response = None,
+    grid_size_meters: float = Query(1000.0, description="Grid cell size in meters (default 1000m)")
+):
+    """
+    Returns lightweight summary statistics and MoP September 2024 compliance report
+    for Pune Urban Agglomeration without transmitting the full 400KB polygon GeoJSON.
+    Allows fast rendering of KPI cards and benchmark widgets.
+    """
+    grid_val = float(getattr(grid_size_meters, "default", grid_size_meters) or 1000.0)
+    raw_grid = gis_service.generate_pune_urban_grid(grid_size_meters=grid_val, force_refresh=False)
+    grid_with_cgi = gap_engine.compute_grid_cgi(raw_grid)
+    compliance_report = policy_engine.evaluate_urban_compliance(grid_with_cgi)
+
+    if response:
+        response.headers["Cache-Control"] = "public, max-age=3600, stale-while-revalidate=86400"
+        if "cache_signature" in raw_grid.get("summary", {}):
+            response.headers["ETag"] = f'"{raw_grid["summary"]["cache_signature"]}"'
+
+    return {
+        "urban_region": "Pune Urban Agglomeration (PMC + PCMC)",
+        "area_sq_km": 516.18,
+        "grid_resolution_meters": grid_val,
+        "total_grid_cells": len(grid_with_cgi.get("features", [])),
+        "mop_policy_evaluation": compliance_report,
+        "summary": raw_grid.get("summary", {})
+    }
+
 @router.get("/pune/grid", summary="Pune Urban 1km x 1km Grid Analysis")
 def get_pune_urban_grid(
-    grid_size_meters: float = Query(1000.0, description="Grid cell size in meters (default 1000m)")
+    response: Response = None,
+    grid_size_meters: float = Query(1000.0, description="Grid cell size in meters (default 1000m)"),
+    force_refresh: bool = Query(False, description="Force recalculation and bypass cache")
 ):
     """
     Generates a 1km x 1km metric grid across the Pune Municipal Corporation (PMC)
     and PCMC urban agglomeration (516.18 km²) in UTM Zone 43N (EPSG:32643).
     Evaluates MoP September 2024 urban planning benchmark (Clause 11(1)(a)).
+    Leverages persistent SHA-256 caching for sub-10ms response times.
     """
     grid_val = float(getattr(grid_size_meters, "default", grid_size_meters) or 1000.0)
-    raw_grid = gis_service.generate_pune_urban_grid(grid_size_meters=grid_val)
+    raw_grid = gis_service.generate_pune_urban_grid(grid_size_meters=grid_val, force_refresh=force_refresh)
     grid_with_cgi = gap_engine.compute_grid_cgi(raw_grid)
     compliance_report = policy_engine.evaluate_urban_compliance(grid_with_cgi)
+
+    if response:
+        response.headers["Cache-Control"] = "public, max-age=3600, stale-while-revalidate=86400"
+        if "cache_signature" in raw_grid.get("summary", {}):
+            response.headers["ETag"] = f'"{raw_grid["summary"]["cache_signature"]}"'
 
     return {
         "urban_region": "Pune Urban Agglomeration (PMC + PCMC)",
@@ -210,7 +247,9 @@ def get_pune_urban_grid(
 
 @router.get("/samruddhi/corridor", summary="Samruddhi Mahamarg 701km Corridor Analysis")
 def get_samruddhi_corridor(
-    buffer_km: float = Query(20.0, description="Corridor buffer distance in km")
+    response: Response = None,
+    buffer_km: float = Query(20.0, description="Corridor buffer distance in km"),
+    force_refresh: bool = Query(False, description="Force recalculation and bypass cache")
 ):
     """
     Analyzes the 701 km Hindu Hrudaysamrat Balasaheb Thackeray Maharashtra Samruddhi Mahamarg
@@ -219,11 +258,18 @@ def get_samruddhi_corridor(
     1. 20km highway spacing (Clause 11(1)(b))
     2. Directional carriageway compliance (labelled UNVERIFIED when access is unrecorded)
     3. Heavy-duty fast-charging every 100 km (Clause 12(7): >=2x 240 kW CCS-2)
+    Persistently cached for high throughput.
     """
     buf_val = float(getattr(buffer_km, "default", buffer_km) or 20.0)
-    analysis = gis_service.analyze_samruddhi_corridor(buffer_km=buf_val)
+    analysis = gis_service.analyze_samruddhi_corridor(buffer_km=buf_val, force_refresh=force_refresh)
     compliance = policy_engine.evaluate_corridor_compliance(analysis)
     analysis["policy_compliance_evaluation"] = compliance
+
+    if response:
+        response.headers["Cache-Control"] = "public, max-age=3600, stale-while-revalidate=86400"
+        if "cache_signature" in analysis:
+            response.headers["ETag"] = f'"{analysis["cache_signature"]}"'
+
     return analysis
 
 @router.get("/policy-compliance", summary="Consolidated MoP September 2024 Policy Evaluation")

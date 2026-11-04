@@ -77,14 +77,14 @@ export const Sidebar = ({ mobileMenuOpen = false, onCloseMobileMenu }) => {
 
       {/* Main Sidebar Container */}
       <aside className={`
-        fixed md:static top-16 bottom-0 left-0 z-40 w-64 border-r border-slate-800 bg-slate-950 flex flex-col justify-between shrink-0 transition-transform duration-200 ease-in-out
+        fixed md:static top-16 bottom-0 left-0 z-40 w-64 border-r border-navy-800 bg-navy-900 flex flex-col justify-between shrink-0 transition-transform duration-200 ease-in-out
         ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}>
         <div className="py-4 overflow-y-auto px-2 space-y-4">
           {navigationGroups.map((grp, gIdx) => (
             <div key={gIdx} className="space-y-1">
               <div className="px-3 pb-1">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 font-mono">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-muted-grey font-mono">
                   {grp.group}
                 </span>
               </div>
@@ -97,19 +97,19 @@ export const Sidebar = ({ mobileMenuOpen = false, onCloseMobileMenu }) => {
                   <button
                     key={item.path}
                     onClick={() => handleNavigate(item.path)}
-                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                    className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-colors ${
                       active
-                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shadow-sm'
-                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900 border border-transparent'
+                        ? 'bg-accent-teal/15 text-white border-l-2 border-accent-teal shadow-xs'
+                        : 'text-slate-300 hover:text-white hover:bg-navy-800 border-l-2 border-transparent'
                     }`}
                   >
                     <div className="flex items-center gap-2.5">
-                      <Icon className={`w-4 h-4 ${active ? 'text-emerald-400' : 'text-slate-400'}`} />
+                      <Icon className={`w-4 h-4 ${active ? 'text-accent-teal' : 'text-muted-grey'}`} />
                       <span>{item.label}</span>
                     </div>
                     {item.badge && (
                       <span className={`text-[9px] px-1.5 py-0.5 rounded font-mono ${
-                        active ? 'bg-emerald-500/20 text-emerald-300' : 'bg-slate-900 text-slate-400 border border-slate-800'
+                        active ? 'bg-accent-teal/20 text-white' : 'bg-navy-800 text-muted-grey border border-navy-700'
                       }`}>
                         {item.badge}
                       </span>
@@ -122,13 +122,13 @@ export const Sidebar = ({ mobileMenuOpen = false, onCloseMobileMenu }) => {
         </div>
 
         {/* MoP 2024 Siting Guidelines Reference Card */}
-        <div className="p-3 border-t border-slate-800/80 bg-slate-900/40">
-          <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs space-y-1">
-            <div className="flex items-center gap-1.5 font-bold text-emerald-400">
+        <div className="p-3 border-t border-navy-800 bg-navy-950/40">
+          <div className="p-2.5 rounded-md bg-navy-850 border border-navy-700 text-slate-300 text-xs space-y-1">
+            <div className="flex items-center gap-1.5 font-bold text-accent-teal">
               <FileText className="w-3.5 h-3.5" />
               <span>MoP 2024 Siting Norms</span>
             </div>
-            <p className="text-[10px] text-slate-400 leading-relaxed space-y-0.5">
+            <p className="text-[10px] text-muted-grey leading-relaxed space-y-0.5">
               <span className="block">&bull; 1 station / 1 km&sup2; urban grid (by 2030)</span>
               <span className="block">&bull; 1 station / 20 km expressway (both sides)</span>
               <span className="block">&bull; Fast charging / 100 km (&ge;2x 240 kW)</span>

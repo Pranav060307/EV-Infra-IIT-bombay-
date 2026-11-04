@@ -179,7 +179,7 @@ export const DistrictDetailPage = () => {
       is_synthetic: f.properties?.is_synthetic || false,
       source_name: f.properties?.source_name || 'BEE EV Yatra',
       address: f.properties?.address,
-      color: f.properties?.is_synthetic ? '#f59e0b' : '#10b981'
+      color: f.properties?.is_synthetic ? '#C18A42' : '#3F7775'
     }));
   }, [stations]);
 
@@ -322,27 +322,27 @@ export const DistrictDetailPage = () => {
   return (
     <div className="p-8 space-y-6 max-w-7xl mx-auto">
       {/* Top Navigation & Breadcrumbs */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-700/60">
         <div>
           <div className="flex items-center gap-2 text-xs text-slate-400 mb-1">
             <Link to="/" className="hover:text-slate-200">Overview</Link>
             <span>/</span>
             <Link to="/maharashtra" className="hover:text-slate-200">Maharashtra Analysis</Link>
             <span>/</span>
-            <span className="text-cyan-400 font-semibold">{d.district}</span>
+            <span className="text-[#5fa3a0] font-semibold">{d.district}</span>
           </div>
           <div className="flex items-center gap-3">
             <h2 className="text-2xl font-bold tracking-tight text-white">
               {d.district} District Profile
             </h2>
-            <span className={`px-2.5 py-0.5 rounded text-xs font-black ${
-              d.cgi_score > 80 ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30' :
-              d.cgi_score > 60 ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30' :
-              'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
+            <span className={`px-2.5 py-0.5 rounded text-xs font-black font-mono ${
+              d.cgi_score > 80 ? 'bg-accent-red/15 text-accent-red border border-accent-red/30' :
+              d.cgi_score > 60 ? 'bg-accent-amber/15 text-accent-amber border border-accent-amber/30' :
+              'bg-[#52765B]/15 text-[#86af8f] border border-[#52765B]/30'
             }`}>
               CGI Score: {d.cgi_score} / 100
             </span>
-            <span className="px-2 py-0.5 rounded text-[11px] bg-slate-800 text-slate-300 border border-slate-700">
+            <span className="px-2 py-0.5 rounded text-[11px] bg-navy-900 text-slate-300 border border-slate-700 font-mono">
               {d.cgi_category}
             </span>
           </div>
@@ -351,15 +351,15 @@ export const DistrictDetailPage = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={handleCopyLink}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-navy-900 border border-slate-700/60 text-xs text-slate-300 hover:text-white hover:bg-navy-800 transition-colors"
             title="Copy shareable link"
           >
-            <Share2 className="w-3.5 h-3.5 text-cyan-400" />
+            <Share2 className="w-3.5 h-3.5 text-accent-teal" />
             <span>{copiedLink ? 'Copied!' : 'Share'}</span>
           </button>
           <Link
             to="/maharashtra"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-xs transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-accent-teal hover:bg-[#346563] text-white font-medium text-xs transition-colors shadow-sm"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>&larr; All 36 Districts</span>
@@ -369,8 +369,8 @@ export const DistrictDetailPage = () => {
 
       {/* Special Census 2011 Thane-Palghar Bifurcation Notice */}
       {isThanePalghar && (
-        <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300 flex items-start gap-2.5">
-          <Info className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+        <div className="p-3.5 rounded-xl bg-accent-amber/10 border border-accent-amber/20 text-xs text-amber-200 flex items-start gap-2.5">
+          <Info className="w-4 h-4 text-accent-amber shrink-0 mt-0.5" />
           <div>
             <strong className="text-white">Census Bifurcation Note (Thane &amp; Palghar):</strong> Palghar district was carved out of Thane on 1 August 2014. Census 2011 administrative shapefiles define the combined boundary envelope. In our database, VAHAN registrations are individually recorded for {d.district}, and public chargers are geolocated precisely by their physical coordinates.
           </div>
@@ -379,45 +379,45 @@ export const DistrictDetailPage = () => {
 
       {/* Primary KPI Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+        <div className="p-4 rounded-xl bg-navy-900/60 border border-slate-700/60 shadow-sm">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Cumulative EVs</span>
-            <Car className="w-4 h-4 text-cyan-400" />
+            <Car className="w-4 h-4 text-[#5fa3a0]" />
           </div>
-          <div className="text-2xl font-bold text-white mt-1">
+          <div className="text-2xl font-bold text-white mt-1 font-mono">
             {d.total_ev?.toLocaleString()}
           </div>
-          <div className="text-[11px] text-slate-400 mt-0.5">VAHAN 4 (Oct 2024 Baseline)</div>
+          <div className="text-[11px] text-slate-400 mt-0.5 font-mono">VAHAN 4 (Oct 2024 Baseline)</div>
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+        <div className="p-4 rounded-xl bg-navy-900/60 border border-slate-700/60 shadow-sm">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Verified Public Stations</span>
-            <MapPin className="w-4 h-4 text-emerald-400" />
+            <MapPin className="w-4 h-4 text-accent-green" />
           </div>
-          <div className="text-2xl font-bold text-emerald-400 mt-1">
+          <div className="text-2xl font-bold text-[#86af8f] mt-1 font-mono">
             {d.verified_stations}
           </div>
           <div className="text-[11px] text-slate-400 mt-0.5">BEE EV Yatra Verified Sites</div>
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+        <div className="p-4 rounded-xl bg-navy-900/60 border border-slate-700/60 shadow-sm">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Charging Points / Guns</span>
-            <Zap className="w-4 h-4 text-amber-400" />
+            <Zap className="w-4 h-4 text-accent-amber" />
           </div>
-          <div className="text-2xl font-bold text-amber-400 mt-1">
+          <div className="text-2xl font-bold text-accent-amber mt-1 font-mono">
             {d.verified_charging_points}
           </div>
-          <div className="text-[11px] text-slate-400 mt-0.5">{d.total_power_kw || 0} kW Total Capacity</div>
+          <div className="text-[11px] text-slate-400 mt-0.5 font-mono">{d.total_power_kw || 0} kW Total Capacity</div>
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+        <div className="p-4 rounded-xl bg-navy-900/60 border border-slate-700/60 shadow-sm">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>EV-to-Charger Ratio</span>
-            <AlertTriangle className="w-4 h-4 text-rose-400" />
+            <AlertTriangle className="w-4 h-4 text-accent-red" />
           </div>
-          <div className="text-2xl font-bold text-rose-400 mt-1">
+          <div className="text-2xl font-bold text-accent-red mt-1 font-mono">
             {d.ev_to_charger_ratio ? `${d.ev_to_charger_ratio}:1` : 'No Chargers'}
           </div>
           <div className="text-[11px] text-slate-400 mt-0.5">Target Norm: 20-30:1</div>

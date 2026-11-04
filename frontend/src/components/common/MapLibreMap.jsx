@@ -510,24 +510,24 @@ export const MapLibreMap = ({
               'circle-color': [
                 'step',
                 ['get', 'point_count'],
-                '#06b6d4', // cyan (< 10)
+                '#3F7775', // Muted Teal (< 10)
                 10,
-                '#3b82f6', // blue (10 - 25)
+                '#34495E', // Slate Blue (10 - 25)
                 25,
-                '#8b5cf6'  // purple (> 25)
+                '#172B3A'  // Deep Navy (> 25)
               ],
               'circle-radius': [
                 'step',
                 ['get', 'point_count'],
-                18,
+                16,
                 10,
-                24,
+                22,
                 25,
-                30
+                28
               ],
-              'circle-stroke-width': 2.5,
+              'circle-stroke-width': 2,
               'circle-stroke-color': '#ffffff',
-              'circle-opacity': 0.9
+              'circle-opacity': 0.95
             },
             layout: {
               visibility: visibleLayers.stations ? 'visible' : 'none'
@@ -544,7 +544,8 @@ export const MapLibreMap = ({
             filter: ['has', 'point_count'],
             layout: {
               'text-field': '{point_count_abbreviated}',
-              'text-size': 12,
+              'text-size': 11,
+              'text-font': ['Open Sans Semibold'],
               visibility: visibleLayers.stations ? 'visible' : 'none'
             },
             paint: {
@@ -564,15 +565,15 @@ export const MapLibreMap = ({
               'circle-color': [
                 'case',
                 ['boolean', ['get', 'is_synthetic'], false],
-                '#f59e0b',
+                '#C18A42', // Warm Amber for synthetic
                 ['==', ['get', 'status'], 'PLANNED'],
-                '#06b6d4',
+                '#C18A42', // Warm Amber
                 ['==', ['get', 'status'], 'CANDIDATE'],
-                '#8b5cf6',
-                '#10b981'
+                '#3F7775', // Muted Teal
+                '#52765B'  // Forest Green for operational
               ],
-              'circle-radius': 7,
-              'circle-stroke-width': 2,
+              'circle-radius': 6.5,
+              'circle-stroke-width': 1.8,
               'circle-stroke-color': '#ffffff',
               'circle-opacity': 0.95
             },
@@ -603,7 +604,7 @@ export const MapLibreMap = ({
   return (
     <div 
       ref={mapWrapperRef} 
-      className={`relative overflow-hidden rounded-xl bg-slate-950 border border-slate-800 ${className}`}
+      className={`relative overflow-hidden rounded-lg bg-navy-950 border border-navy-800 ${className}`}
     >
       {/* Map Canvas */}
       <div ref={mapContainer} className="w-full h-full min-h-[350px]" />
@@ -612,25 +613,25 @@ export const MapLibreMap = ({
       {/* MAP CONTROLS OVERLAY (TOP-RIGHT) */}
       {/* --------------------------------------------------------------------- */}
       <div className="absolute top-3 right-3 z-20 flex flex-col items-end gap-2">
-        <div className="flex items-center gap-1.5 p-1 rounded-lg bg-slate-900/90 border border-slate-700/80 shadow-xl backdrop-blur-sm">
+        <div className="flex items-center gap-1.5 p-1 rounded-md bg-navy-900 border border-navy-700 shadow-md">
           {/* Basemap switcher */}
           <button
             onClick={() => setShowLayerSelector(!showLayerSelector)}
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-medium transition-colors ${
-              showLayerSelector ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+              showLayerSelector ? 'bg-accent-teal/20 text-white font-semibold' : 'text-slate-300 hover:bg-navy-800 hover:text-white'
             }`}
             title="Switch Basemap Style"
           >
-            <Layers className="w-3.5 h-3.5 text-cyan-400" />
+            <Layers className="w-3.5 h-3.5 text-accent-teal" />
             <span className="hidden sm:inline">{activeProvider.label}</span>
           </button>
 
-          <span className="h-4 w-[1px] bg-slate-700"></span>
+          <span className="h-4 w-[1px] bg-navy-700"></span>
 
           {/* Reset Extent */}
           <button
             onClick={handleResetView}
-            className="p-1.5 rounded text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded text-slate-300 hover:text-white hover:bg-navy-800 transition-colors"
             title="Reset Map Extent"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -639,25 +640,25 @@ export const MapLibreMap = ({
           {/* Fullscreen */}
           <button
             onClick={handleToggleFullscreen}
-            className="p-1.5 rounded text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded text-slate-300 hover:text-white hover:bg-navy-800 transition-colors"
             title={isFullscreen ? "Exit Fullscreen" : "Fullscreen Map"}
           >
             {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
           </button>
 
-          <span className="h-4 w-[1px] bg-slate-700"></span>
+          <span className="h-4 w-[1px] bg-navy-700"></span>
 
           {/* Zoom */}
           <button
             onClick={handleZoomIn}
-            className="p-1.5 rounded text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded text-slate-300 hover:text-white hover:bg-navy-800 transition-colors"
             title="Zoom In"
           >
             <ZoomIn className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={handleZoomOut}
-            className="p-1.5 rounded text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded text-slate-300 hover:text-white hover:bg-navy-800 transition-colors"
             title="Zoom Out"
           >
             <ZoomOut className="w-3.5 h-3.5" />
@@ -666,8 +667,8 @@ export const MapLibreMap = ({
 
         {/* Basemap Dropdown */}
         {showLayerSelector && (
-          <div className="w-64 p-2.5 bg-slate-900/95 border border-slate-700 rounded-xl shadow-2xl text-xs space-y-2 backdrop-blur-md z-30">
-            <div className="px-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+          <div className="w-64 p-2.5 bg-navy-900 border border-navy-700 rounded-lg shadow-xl text-xs space-y-2 z-30">
+            <div className="px-1 text-[10px] font-bold text-muted-grey uppercase tracking-wider">
               Basemap Cartography
             </div>
             <div className="space-y-1">
@@ -675,38 +676,38 @@ export const MapLibreMap = ({
                 <button
                   key={key}
                   onClick={() => switchProvider(key)}
-                  className={`w-full text-left px-2.5 py-1.5 rounded-lg flex items-center justify-between transition-colors ${
+                  className={`w-full text-left px-2.5 py-1.5 rounded-md flex items-center justify-between transition-colors ${
                     activeProviderKey === key 
-                      ? 'bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30' 
-                      : 'text-slate-300 hover:bg-slate-800'
+                      ? 'bg-accent-teal/20 text-white font-semibold border border-accent-teal/40' 
+                      : 'text-slate-300 hover:bg-navy-800'
                   }`}
                 >
                   <span>{provider.name}</span>
-                  {activeProviderKey === key && <span className="text-emerald-400">✓</span>}
+                  {activeProviderKey === key && <span className="text-accent-teal">✓</span>}
                 </button>
               ))}
             </div>
 
-            <div className="pt-2 border-t border-slate-800 space-y-1.5">
-              <div className="px-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+            <div className="pt-2 border-t border-navy-800 space-y-1.5">
+              <div className="px-1 text-[10px] font-bold text-muted-grey uppercase tracking-wider">
                 Layer Visibility
               </div>
               <div className="flex items-center justify-between px-1 text-slate-300">
                 <span>Charging Stations</span>
                 <button
                   onClick={() => toggleLayerVisibility('stations')}
-                  className="text-xs p-1 rounded hover:bg-slate-800"
+                  className="text-xs p-1 rounded hover:bg-navy-800"
                 >
-                  {visibleLayers.stations ? <Eye className="w-3.5 h-3.5 text-cyan-400" /> : <EyeOff className="w-3.5 h-3.5 text-slate-500" />}
+                  {visibleLayers.stations ? <Eye className="w-3.5 h-3.5 text-accent-teal" /> : <EyeOff className="w-3.5 h-3.5 text-muted-grey" />}
                 </button>
               </div>
               <div className="flex items-center justify-between px-1 text-slate-300">
                 <span>Administrative Boundaries</span>
                 <button
                   onClick={() => toggleLayerVisibility('boundaries')}
-                  className="text-xs p-1 rounded hover:bg-slate-800"
+                  className="text-xs p-1 rounded hover:bg-navy-800"
                 >
-                  {visibleLayers.boundaries ? <Eye className="w-3.5 h-3.5 text-cyan-400" /> : <EyeOff className="w-3.5 h-3.5 text-slate-500" />}
+                  {visibleLayers.boundaries ? <Eye className="w-3.5 h-3.5 text-accent-teal" /> : <EyeOff className="w-3.5 h-3.5 text-muted-grey" />}
                 </button>
               </div>
             </div>
@@ -717,8 +718,8 @@ export const MapLibreMap = ({
       {/* --------------------------------------------------------------------- */}
       {/* BOTTOM STATUS BAR: COORDINATES + SCALE + ATTRIBUTION */}
       {/* --------------------------------------------------------------------- */}
-      <div className="absolute bottom-1 left-28 right-2 z-10 flex items-center justify-between pointer-events-none text-[10px] text-slate-400">
-        <div className="px-2 py-0.5 rounded bg-slate-950/80 border border-slate-800 font-mono pointer-events-auto shadow-sm">
+      <div className="absolute bottom-1 left-28 right-2 z-10 flex items-center justify-between pointer-events-none text-[10px] text-muted-grey">
+        <div className="px-2 py-0.5 rounded bg-navy-950/90 border border-navy-800 font-mono pointer-events-auto shadow-sm">
           {cursorCoords ? (
             <span>
               Lat: {cursorCoords.lat}&deg; &bull; Lon: {cursorCoords.lng}&deg; &bull; Zoom: {cursorCoords.zoom}
@@ -728,7 +729,7 @@ export const MapLibreMap = ({
           )}
         </div>
 
-        <div className="hidden sm:block px-2 py-0.5 rounded bg-slate-950/80 border border-slate-800/80 pointer-events-auto">
+        <div className="hidden sm:block px-2 py-0.5 rounded bg-navy-950/90 border border-navy-800 pointer-events-auto">
           <span dangerouslySetInnerHTML={{ __html: activeProvider.attribution }} />
         </div>
       </div>
@@ -738,39 +739,39 @@ export const MapLibreMap = ({
       {/* --------------------------------------------------------------------- */}
       <div className="absolute bottom-8 right-3 z-20">
         {showLegend ? (
-          <div className="p-3 rounded-xl bg-slate-900/95 border border-slate-800 shadow-2xl backdrop-blur-md text-xs space-y-2 max-w-xs">
-            <div className="flex items-center justify-between pb-1.5 border-b border-slate-800">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Map Legend</span>
+          <div className="p-3 rounded-lg bg-navy-900 border border-navy-700 shadow-xl text-xs space-y-2 max-w-xs">
+            <div className="flex items-center justify-between pb-1.5 border-b border-navy-800">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-muted-grey">Map Legend</span>
               <button 
                 onClick={() => setShowLegend(false)}
-                className="text-slate-500 hover:text-slate-300 text-[10px]"
+                className="text-muted-grey hover:text-slate-300 text-[10px]"
               >
                 Hide
               </button>
             </div>
-            <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[11px] text-slate-300">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[11px] text-slate-300">
               <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 border border-white"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-accent-green border border-white"></span>
                 <span>Operational Site</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 border border-white"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-accent-amber border border-white"></span>
                 <span>Planned Site</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-purple-500 border border-white"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-accent-teal border border-white"></span>
                 <span>Candidate Site</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 border border-white"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-accent-amber border border-white"></span>
                 <span>Synthetic Demo</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-1 bg-sky-400 rounded"></span>
-                <span>District Boundary</span>
+                <span className="w-3 h-1 bg-slate-header rounded"></span>
+                <span>Boundary</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-cyan-600 text-[8px] text-white flex items-center justify-center font-bold">10</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-accent-teal text-[8px] text-white flex items-center justify-center font-bold">10</span>
                 <span>Station Cluster</span>
               </div>
             </div>
@@ -778,7 +779,7 @@ export const MapLibreMap = ({
         ) : (
           <button
             onClick={() => setShowLegend(true)}
-            className="px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-700 text-[11px] text-slate-300 hover:text-white shadow-lg"
+            className="px-2.5 py-1 rounded-md bg-navy-900 border border-navy-700 text-[11px] text-slate-300 hover:text-white shadow-md"
           >
             Show Legend
           </button>
@@ -789,18 +790,18 @@ export const MapLibreMap = ({
       {/* RICH INTERACTIVE STATION DRAWER ON MARKER CLICK */}
       {/* --------------------------------------------------------------------- */}
       {selectedStation && (
-        <div className="absolute top-3 left-3 w-80 max-h-[92%] overflow-y-auto bg-slate-900/95 border border-slate-700 rounded-2xl shadow-2xl p-4 text-xs space-y-4 z-40 backdrop-blur-md animate-in fade-in slide-in-from-left duration-200">
-          <div className="flex items-start justify-between pb-2 border-b border-slate-800">
+        <div className="absolute top-3 left-3 w-80 max-h-[92%] overflow-y-auto bg-navy-900 border border-navy-700 rounded-xl shadow-2xl p-4 text-xs space-y-4 z-40 animate-in fade-in slide-in-from-left duration-200">
+          <div className="flex items-start justify-between pb-2 border-b border-navy-800">
             <div>
               <div className="flex items-center gap-1.5">
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                   selectedStation.is_synthetic 
-                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
-                    : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
+                    ? 'bg-accent-amber/15 text-accent-amber border border-accent-amber/30'
+                    : 'bg-accent-green/15 text-accent-green border border-accent-green/30'
                 }`}>
-                  {selectedStation.is_synthetic ? 'SYNTHETIC DEMO RECORD' : selectedStation.status}
+                  {selectedStation.is_synthetic ? 'SYNTHETIC DEMO' : selectedStation.status}
                 </span>
-                <span className="text-[10px] text-slate-400 font-mono">
+                <span className="text-[10px] text-muted-grey font-mono">
                   {selectedStation.id || 'EV-STATION'}
                 </span>
               </div>
@@ -810,7 +811,7 @@ export const MapLibreMap = ({
             </div>
             <button
               onClick={() => setSelectedStation(null)}
-              className="p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
+              className="p-1 rounded-md hover:bg-navy-800 text-muted-grey hover:text-white transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -818,31 +819,31 @@ export const MapLibreMap = ({
 
           {/* Section 1: Station Info */}
           <div className="space-y-1.5">
-            <div className="text-[10px] font-bold uppercase tracking-wider text-cyan-400">
+            <div className="text-[10px] font-bold uppercase tracking-wider text-accent-teal">
               1. Station Information
             </div>
-            <div className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/60 space-y-1 text-slate-300">
+            <div className="p-2.5 rounded-lg bg-navy-850 border border-navy-700 space-y-1 text-slate-300">
               <div className="flex justify-between">
-                <span className="text-slate-400">CPO / Operator:</span>
+                <span className="text-muted-grey">Operator:</span>
                 <span className="font-semibold text-white">{selectedStation.operator || 'Not available'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Location:</span>
+                <span className="text-muted-grey">Location:</span>
                 <span className="text-right font-medium max-w-[160px] truncate">{selectedStation.address || `${selectedStation.district || 'Maharashtra'}, India`}</span>
               </div>
-              <div className="flex justify-between items-center pt-1 border-t border-slate-700/50">
-                <span className="text-slate-400">Coordinates:</span>
+              <div className="flex justify-between items-center pt-1 border-t border-navy-800">
+                <span className="text-muted-grey">Coordinates:</span>
                 {selectedStation.coordinates ? (
                   <button
                     onClick={handleCopyCoords}
-                    className="flex items-center gap-1 font-mono text-[11px] text-cyan-400 hover:text-cyan-300"
+                    className="flex items-center gap-1 font-mono text-[11px] text-accent-teal hover:underline"
                     title="Click to copy coordinates"
                   >
                     <span>{selectedStation.coordinates[0]?.toFixed(4)}, {selectedStation.coordinates[1]?.toFixed(4)}</span>
-                    {copiedCoords ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                    {copiedCoords ? <Check className="w-3 h-3 text-accent-green" /> : <Copy className="w-3 h-3" />}
                   </button>
                 ) : (
-                  <span className="text-slate-500">Not available</span>
+                  <span className="text-muted-grey">Not available</span>
                 )}
               </div>
             </div>
@@ -850,45 +851,45 @@ export const MapLibreMap = ({
 
           {/* Section 2: Charging Infrastructure */}
           <div className="space-y-1.5">
-            <div className="text-[10px] font-bold uppercase tracking-wider text-amber-400">
+            <div className="text-[10px] font-bold uppercase tracking-wider text-accent-amber font-mono">
               2. Charging Infrastructure
             </div>
-            <div className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/60 space-y-1 text-slate-300">
+            <div className="p-2.5 rounded-lg bg-navy-850 border border-navy-700 space-y-1 text-slate-300 text-xs">
               <div className="flex justify-between">
-                <span className="text-slate-400">Charging Points:</span>
-                <span className="font-bold text-emerald-400">{selectedStation.points ?? 'Not available'} guns/pedestals</span>
+                <span className="text-muted-grey">Charging Points:</span>
+                <span className="font-bold text-accent-green font-mono">{selectedStation.points ?? 'Not available'} points</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Total Power Rating:</span>
-                <span className="font-mono font-bold text-white">{selectedStation.power_kw ? `${selectedStation.power_kw} kW` : 'Not available'}</span>
+                <span className="text-muted-grey">Total Rated Power:</span>
+                <span className="font-bold text-white font-mono">{selectedStation.power_kw ? `${selectedStation.power_kw} kW` : 'Not available'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Connector Types:</span>
-                <span className="text-right text-[11px] text-slate-300">{selectedStation.connector_types || 'CCS-2 / Type-2 AC'}</span>
+                <span className="text-muted-grey">Connectors:</span>
+                <span className="font-medium text-slate-200">{selectedStation.connector_types || 'CCS-2 / Type-2'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Access &amp; Pricing:</span>
+                <span className="text-muted-grey">Access &amp; Pricing:</span>
                 <span className="capitalize">{selectedStation.access_type?.toLowerCase() || 'Public'} &bull; {selectedStation.pricing_type?.toLowerCase() || 'Paid'}</span>
               </div>
             </div>
-            <div className="text-[10px] text-slate-500 px-1">
-              * Note: Connector count reflects individual charging nozzles; station count reflects physical facilities.
+            <div className="text-[10px] text-muted-grey px-1 font-mono">
+              * Note: Connector count reflects individual nozzles; station count reflects physical facilities.
             </div>
           </div>
 
           {/* Section 3: Data Provenance */}
           <div className="space-y-1.5">
-            <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+            <div className="text-[10px] font-bold uppercase tracking-wider text-[#86af8f] font-mono">
               3. Data Provenance &amp; Audit
             </div>
-            <div className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/60 space-y-1 text-slate-300 text-[11px]">
+            <div className="p-2.5 rounded-lg bg-navy-850 border border-navy-700 space-y-1 text-slate-300 text-[11px]">
               <div className="flex justify-between">
-                <span className="text-slate-400">Source Directory:</span>
+                <span className="text-muted-grey">Source Directory:</span>
                 <span className="font-medium text-white">{selectedStation.source_name || 'BEE EV Yatra'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Audit Status:</span>
-                <span className="font-bold text-emerald-400">
+                <span className="text-muted-grey">Audit Status:</span>
+                <span className="font-bold text-[#86af8f] font-mono">
                   {selectedStation.is_synthetic ? 'DEMO DATASET' : 'VERIFIED PHYSICAL SITE'}
                 </span>
               </div>

@@ -43,3 +43,7 @@ Thumbs.db
 # Backups
 data/backups/*
 !data/backups/.gitkeep
+
+# Spatial Cache
+data/cache/*
+!data/cache/.gitkeep

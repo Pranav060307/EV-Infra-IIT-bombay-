@@ -145,42 +145,42 @@ export const DataManagementPage = () => {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'IMPORTED':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">IMPORTED</span>;
+        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#52765B]/15 text-[#86af8f] border border-[#52765B]/30 font-mono">IMPORTED</span>;
       case 'VALIDATED':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">VALIDATED</span>;
+        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-accent-teal/15 text-[#5fa3a0] border border-accent-teal/30 font-mono">VALIDATED</span>;
       case 'NEEDS_REVIEW':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">NEEDS REVIEW</span>;
+        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-accent-amber/15 text-accent-amber border border-accent-amber/30 font-mono">NEEDS REVIEW</span>;
       case 'FAILED':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/30">FAILED</span>;
+        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-accent-red/15 text-accent-red border border-accent-red/30 font-mono">FAILED</span>;
       default:
-        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-300 border border-slate-700">UPLOADED</span>;
+        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-navy-900 text-slate-300 border border-slate-700 font-mono">UPLOADED</span>;
     }
   };
 
   return (
     <div className="p-8 space-y-8 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-700/60">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+            <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-[#52765B]/15 text-[#86af8f] border border-[#52765B]/30 font-mono">
               Module 1: Data Integration
             </span>
-            <span className="text-xs text-slate-400">PostgreSQL + PostGIS Ingestion Pipeline</span>
+            <span className="text-xs text-slate-300 font-mono">PostgreSQL + PostGIS Ingestion Pipeline</span>
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-white mt-1">
-            Data Management & Import Pipeline
+            Data Management &amp; Import Pipeline
           </h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-300 mt-1">
             Upload custom datasets, inspect coordinate bounding checks, review duplicate candidates, and approve production database ingestion.
           </p>
         </div>
 
         <button 
           onClick={fetchData} 
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs transition-colors"
+          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-navy-900 hover:bg-navy-800 text-slate-200 border border-slate-700/60 text-xs transition-colors shadow-sm"
         >
-          <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+          <RefreshCw className={`w-3.5 h-3.5 text-accent-teal ${loading ? 'animate-spin' : ''}`} />
           <span>Refresh Data</span>
         </button>
       </div>

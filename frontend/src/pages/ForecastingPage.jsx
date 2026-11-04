@@ -144,31 +144,31 @@ export const ForecastingPage = () => {
   return (
     <div className="p-8 space-y-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-700/60">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+            <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-[#52765B]/15 text-[#86af8f] border border-[#52765B]/30 font-mono">
               Module 6: EV Demand Forecasting
             </span>
-            <span className="text-xs text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded bg-amber-500/10 font-medium">
+            <span className="text-xs text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded bg-accent-amber/10 font-mono">
               Simulation Only — Not Statutory Prediction
             </span>
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-white mt-1">
             EV Fleet Growth &amp; Infrastructure Capacity Scenario Modeler
           </h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-300 mt-1">
             Simulate 2027 and 2030 fleet scenarios, daily public grid energy demand (MWh), peak electrical loads (MW), and required public EVSE chargers.
           </p>
         </div>
 
         {/* Planning Controls */}
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center rounded-lg bg-slate-900 border border-slate-800 p-0.5 text-xs">
+          <div className="flex items-center rounded-lg bg-navy-900 border border-slate-700/60 p-0.5 text-xs font-mono">
             <button
               onClick={() => setHorizonYear('2027')}
               className={`px-3 py-1.5 rounded-md font-medium transition-colors ${
-                horizonYear === '2027' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-white'
+                horizonYear === '2027' ? 'bg-accent-teal text-white' : 'text-slate-400 hover:text-white'
               }`}
             >
               2027 Horizon (3 Yrs)
@@ -176,24 +176,24 @@ export const ForecastingPage = () => {
             <button
               onClick={() => setHorizonYear('2030')}
               className={`px-3 py-1.5 rounded-md font-medium transition-colors ${
-                horizonYear === '2030' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-white'
+                horizonYear === '2030' ? 'bg-accent-teal text-white' : 'text-slate-400 hover:text-white'
               }`}
             >
               2030 Horizon (6 Yrs)
             </button>
           </div>
 
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">
-            <Sliders className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-navy-900 border border-slate-700/60 text-xs text-slate-300">
+            <Sliders className="w-3.5 h-3.5 text-accent-teal" />
             <select
               value={scenario}
               onChange={(e) => setScenario(e.target.value)}
               className="bg-transparent text-white focus:outline-none"
             >
-              <option value="CONSERVATIVE" className="bg-slate-900">Conservative (+18% CAGR)</option>
-              <option value="BASE" className="bg-slate-900">Base Scenario (+28% CAGR)</option>
-              <option value="AGGRESSIVE" className="bg-slate-900">NITI Aayog EV30 (+38% CAGR)</option>
-              <option value="CUSTOM" className="bg-slate-900">Interactive Custom Slider</option>
+              <option value="CONSERVATIVE" className="bg-navy-900">Conservative (+18% CAGR)</option>
+              <option value="BASE" className="bg-navy-900">Base Scenario (+28% CAGR)</option>
+              <option value="AGGRESSIVE" className="bg-navy-900">NITI Aayog EV30 (+38% CAGR)</option>
+              <option value="CUSTOM" className="bg-navy-900">Interactive Custom Slider</option>
             </select>
           </div>
         </div>
@@ -201,13 +201,13 @@ export const ForecastingPage = () => {
 
       {/* Interactive Custom CAGR Slider */}
       {scenario === 'CUSTOM' && (
-        <div className="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/40 space-y-2">
+        <div className="p-4 rounded-xl bg-navy-900/90 border border-accent-teal/40 space-y-2">
           <div className="flex items-center justify-between text-xs">
             <span className="font-bold text-white flex items-center gap-1.5">
-              <Sliders className="w-3.5 h-3.5 text-emerald-400" />
+              <Sliders className="w-3.5 h-3.5 text-accent-teal" />
               Adjust Annual Compound Growth Rate (CAGR):
             </span>
-            <span className="text-emerald-400 font-extrabold text-sm">{customCagr}% per annum</span>
+            <span className="text-accent-teal font-extrabold text-sm font-mono">{customCagr}% per annum</span>
           </div>
           <input
             type="range"
@@ -216,9 +216,9 @@ export const ForecastingPage = () => {
             step="1"
             value={customCagr}
             onChange={(e) => setCustomCagr(Number(e.target.value))}
-            className="w-full accent-emerald-500 cursor-pointer"
+            className="w-full accent-accent-teal cursor-pointer"
           />
-          <div className="flex justify-between text-[10px] text-slate-500 font-mono">
+          <div className="flex justify-between text-[10px] text-slate-400 font-mono">
             <span>5% (Low S-curve)</span>
             <span>20% (Conservative)</span>
             <span>35% (High Adoption)</span>
@@ -228,11 +228,11 @@ export const ForecastingPage = () => {
       )}
 
       {/* Navigation Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs">
+      <div className="flex items-center gap-2 border-b border-slate-700/60 pb-2 text-xs">
         <button
           onClick={() => setActiveTab('PROJECTIONS')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${
-            activeTab === 'PROJECTIONS' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-white'
+            activeTab === 'PROJECTIONS' ? 'bg-accent-teal text-white' : 'text-slate-400 hover:text-white'
           }`}
         >
           <TrendingUp className="w-3.5 h-3.5" />
@@ -241,7 +241,7 @@ export const ForecastingPage = () => {
         <button
           onClick={() => setActiveTab('MODELS')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${
-            activeTab === 'MODELS' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-white'
+            activeTab === 'MODELS' ? 'bg-accent-teal text-white' : 'text-slate-400 hover:text-white'
           }`}
         >
           <BarChart3 className="w-3.5 h-3.5" />
@@ -250,7 +250,7 @@ export const ForecastingPage = () => {
         <button
           onClick={() => setActiveTab('DEMAND')}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${
-            activeTab === 'DEMAND' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-white'
+            activeTab === 'DEMAND' ? 'bg-accent-teal text-white' : 'text-slate-400 hover:text-white'
           }`}
         >
           <Calculator className="w-3.5 h-3.5" />
@@ -263,51 +263,51 @@ export const ForecastingPage = () => {
         <div className="space-y-6">
           {/* Summary KPI Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div className="p-5 rounded-2xl bg-navy-900/60 border border-slate-700/60 shadow-sm">
               <div className="text-xs text-slate-400">Baseline Observed Fleet (2024)</div>
-              <div className="text-2xl font-bold text-white mt-2">
+              <div className="text-2xl font-bold text-white mt-2 font-mono">
                 {baselineTotal.toLocaleString()}
               </div>
-              <div className="text-xs text-emerald-400 mt-1">Verified MoRTH VAHAN 4</div>
+              <div className="text-xs text-[#86af8f] mt-1 font-mono">Verified MoRTH VAHAN 4</div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div className="p-5 rounded-2xl bg-navy-900/60 border border-slate-700/60 shadow-sm">
               <div className="text-xs text-slate-400">Simulated {horizonYear} Fleet</div>
-              <div className="text-2xl font-bold text-emerald-400 mt-2">
+              <div className="text-2xl font-bold text-accent-teal mt-2 font-mono">
                 {projectedTotal.toLocaleString()}
               </div>
-              <div className="text-xs text-emerald-400/80 mt-1">
+              <div className="text-xs text-slate-400 mt-1 font-mono">
                 +{(projectedTotal - baselineTotal).toLocaleString()} EVs ({activeScenario.compositeCagr}% CAGR)
               </div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div className="p-5 rounded-2xl bg-navy-900/60 border border-slate-700/60 shadow-sm">
               <div className="text-xs text-slate-400">Estimated Public Energy Demand</div>
-              <div className="text-2xl font-bold text-cyan-400 mt-2">
-                {dailyMWh.toLocaleString()} <span className="text-sm font-normal text-slate-400">MWh/day</span>
+              <div className="text-2xl font-bold text-[#5fa3a0] mt-2 font-mono">
+                {dailyMWh.toLocaleString()} <span className="text-sm font-normal text-slate-400 font-mono">MWh/day</span>
               </div>
-              <div className="text-xs text-cyan-400/80 mt-1">Peak Electrical Load: {peakMW} MW</div>
+              <div className="text-xs text-slate-400 mt-1 font-mono">Peak Electrical Load: {peakMW} MW</div>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div className="p-5 rounded-2xl bg-navy-900/60 border border-slate-700/60 shadow-sm">
               <div className="text-xs text-slate-400">Public Chargers Deficit ({horizonYear})</div>
-              <div className="text-2xl font-bold text-amber-400 mt-2">
+              <div className="text-2xl font-bold text-accent-amber mt-2 font-mono">
                 {chargersDeficit.toLocaleString()}
               </div>
-              <div className="text-xs text-amber-400/80 mt-1">Existing: 96 | Needed: {chargersRecommended.toLocaleString()}</div>
+              <div className="text-xs text-slate-400 mt-1 font-mono">Existing: 96 | Needed: {chargersRecommended.toLocaleString()}</div>
             </div>
           </div>
 
           {/* Trajectory Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Growth Curve */}
-            <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/50 shadow-lg space-y-4">
+            <div className="p-6 rounded-2xl border border-slate-700/60 bg-navy-900/60 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-sm font-bold text-white">Adoption Trajectory: 2024 &rarr; {horizonYear}</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">{activeScenario.name}</p>
+                  <p className="text-xs text-slate-300 mt-0.5">{activeScenario.name}</p>
                 </div>
-                <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">
+                <span className="px-2 py-0.5 rounded text-[10px] bg-accent-teal/15 text-[#5fa3a0] border border-accent-teal/30 font-bold font-mono">
                   Compounding CAGR
                 </span>
               </div>
@@ -315,20 +315,20 @@ export const ForecastingPage = () => {
               <div className="h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={trajectoryData} margin={{ top: 10, right: 10, left: 0, bottom: 20 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                    <XAxis dataKey="year" stroke="#94a3b8" fontSize={11} />
-                    <YAxis stroke="#94a3b8" fontSize={11} tickFormatter={(val) => `${(val / 1000000).toFixed(1)}M`} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#243b4d" />
+                    <XAxis dataKey="year" stroke="#7A858C" fontSize={11} />
+                    <YAxis stroke="#7A858C" fontSize={11} tickFormatter={(val) => `${(val / 1000000).toFixed(1)}M`} />
                     <Tooltip 
                       formatter={(val) => [Number(val).toLocaleString() + ' EVs', 'Projected Fleet']}
-                      contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', fontSize: '12px' }}
+                      contentStyle={{ backgroundColor: '#172B3A', borderColor: '#34495E', borderRadius: '6px', fontSize: '12px', color: '#FFFFFF' }}
                     />
                     <Line 
                       type="monotone" 
                       dataKey="fleet" 
-                      stroke="#10b981" 
-                      strokeWidth={3} 
-                      dot={{ r: 5, fill: '#10b981' }} 
-                      activeDot={{ r: 7 }}
+                      stroke="#3F7775" 
+                      strokeWidth={2.5} 
+                      dot={{ r: 4, fill: '#3F7775' }} 
+                      activeDot={{ r: 6 }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -336,27 +336,27 @@ export const ForecastingPage = () => {
             </div>
 
             {/* Fleet Composition */}
-            <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/50 shadow-lg space-y-4">
+            <div className="p-6 rounded-2xl border border-slate-700/60 bg-navy-900/60 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-sm font-bold text-white">Segment Distribution ({horizonYear})</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">2-Wheelers remain dominant fleet driver (&gt;60%)</p>
+                  <p className="text-xs text-slate-300 mt-0.5">2-Wheelers remain dominant fleet driver (&gt;60%)</p>
                 </div>
-                <span className="px-2 py-0.5 rounded text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-bold">
+                <span className="px-2 py-0.5 rounded text-[10px] bg-accent-teal/15 text-[#5fa3a0] border border-accent-teal/30 font-bold font-mono">
                   Segmented Model
                 </span>
               </div>
 
-              <div className="space-y-3 pt-2 text-xs">
+              <div className="space-y-2.5 pt-2 text-xs">
                 {Object.entries(segments).map(([k, seg]) => (
-                  <div key={k} className="p-3 rounded-xl bg-slate-800/40 border border-slate-800 flex items-center justify-between">
+                  <div key={k} className="p-3 rounded-xl bg-navy-950/60 border border-slate-800 flex items-center justify-between">
                     <div>
                       <div className="font-semibold text-white">{seg.name}</div>
-                      <div className="text-slate-400 text-[11px]">{seg.consumption_kwh_per_km} kWh/km | {seg.public_charging_share_pct}% public share</div>
+                      <div className="text-slate-400 text-[11px] font-mono">{seg.consumption_kwh_per_km} kWh/km | {seg.public_charging_share_pct}% public share</div>
                     </div>
                     <div className="text-right">
-                      <div className="font-bold text-emerald-400 text-sm">{(seg.projected_fleet || 0).toLocaleString()}</div>
-                      <div className="text-[10px] text-slate-400">{Math.round(((seg.projected_fleet || 0) / Math.max(1, projectedTotal)) * 100)}% of fleet</div>
+                      <div className="font-bold text-[#86af8f] text-sm font-mono">{(seg.projected_fleet || 0).toLocaleString()}</div>
+                      <div className="text-[10px] text-slate-400 font-mono">{Math.round(((seg.projected_fleet || 0) / Math.max(1, projectedTotal)) * 100)}% of fleet</div>
                     </div>
                   </div>
                 ))}

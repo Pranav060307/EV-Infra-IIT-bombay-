@@ -156,16 +156,23 @@ export const getDistrictAnalysis = async () => {
   return response.data;
 };
 
-export const getPuneUrbanGrid = async (gridSizeMeters = 1000.0) => {
-  const response = await apiClient.get('/gis/pune/grid', {
+export const getPuneUrbanSummary = async (gridSizeMeters = 1000.0) => {
+  const response = await apiClient.get('/gis/pune/summary', {
     params: { grid_size_meters: gridSizeMeters }
   });
   return response.data;
 };
 
-export const getSamruddhiCorridor = async (bufferKm = 20.0) => {
+export const getPuneUrbanGrid = async (gridSizeMeters = 1000.0, forceRefresh = false) => {
+  const response = await apiClient.get('/gis/pune/grid', {
+    params: { grid_size_meters: gridSizeMeters, force_refresh: forceRefresh }
+  });
+  return response.data;
+};
+
+export const getSamruddhiCorridor = async (bufferKm = 20.0, forceRefresh = false) => {
   const response = await apiClient.get('/gis/samruddhi/corridor', {
-    params: { buffer_km: bufferKm }
+    params: { buffer_km: bufferKm, force_refresh: forceRefresh }
   });
   return response.data;
 };

@@ -38,7 +38,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex flex-col min-h-screen bg-navy-950 text-slate-100">
       {/* Top Navigation */}
       <Navbar 
         backendStatus={backendStatus} 
@@ -53,7 +53,7 @@ export function App() {
           mobileMenuOpen={mobileMenuOpen} 
           onCloseMobileMenu={() => setMobileMenuOpen(false)} 
         />
-        <main className="flex-1 overflow-y-auto bg-slate-950/50">
+        <main className="flex-1 overflow-y-auto bg-navy-950/60">
           <ErrorBoundary>
             <Routes>
               <Route path="/" element={<OverviewPage backendStatus={backendStatus} />} />

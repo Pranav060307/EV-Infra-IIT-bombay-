@@ -5,76 +5,107 @@
 
 @layer base {
   :root {
-    --bg-primary: #090d16;
-    --bg-surface: #0f172a;
-    --bg-elevated: #1e293b;
-    --border-subtle: #1e293b;
-    --border-strong: #334155;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
+    /* Dark Theme Default: Deep Navy #172B3A & Slate Blue #34495E */
+    --bg-primary: #0d1821;
+    --bg-surface: #172B3A;
+    --bg-elevated: #1c3447;
+    --border-subtle: #243b4d;
+    --border-strong: #34495E;
+    --text-primary: #F5F4F0;
+    --text-secondary: #d1d5db;
+    --text-muted: #7A858C;
+    --accent-teal: #3F7775;
+    --accent-green: #52765B;
+    --accent-amber: #C18A42;
+    --accent-red: #B65D55;
   }
 
   html.light {
-    --bg-primary: #f8fafc;
-    --bg-surface: #ffffff;
-    --bg-elevated: #f1f5f9;
-    --border-subtle: #e2e8f0;
-    --border-strong: #cbd5e1;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #64748b;
+    /* Light Theme: Warm Off-White #F5F4F0 & Soft Grey #E5E7E8 */
+    --bg-primary: #F5F4F0;
+    --bg-surface: #FFFFFF;
+    --bg-elevated: #EDECE8;
+    --border-subtle: #E5E7E8;
+    --border-strong: #d2d6dc;
+    --text-primary: #172B3A;
+    --text-secondary: #34495E;
+    --text-muted: #7A858C;
+    --accent-teal: #3F7775;
+    --accent-green: #52765B;
+    --accent-amber: #C18A42;
+    --accent-red: #B65D55;
   }
 
   body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     transition: background-color 0.2s ease, color 0.2s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Light mode overrides for existing slate-900 / slate-950 containers */
-html.light .bg-slate-950 {
-  background-color: #f8fafc !important;
-}
+/* Light Mode Overrides for clean container mapping */
+html.light .bg-slate-950,
+html.light .bg-slate-950\/50,
 html.light .bg-slate-950\/80,
 html.light .bg-slate-950\/90,
-html.light .bg-slate-950\/50,
-html.light .bg-slate-950\/95 {
-  background-color: rgba(248, 250, 252, 0.95) !important;
+html.light .bg-slate-950\/95,
+html.light .bg-navy-950 {
+  background-color: #F5F4F0 !important;
 }
+
 html.light .bg-slate-900,
+html.light .bg-slate-900\/40,
 html.light .bg-slate-900\/50,
 html.light .bg-slate-900\/60,
 html.light .bg-slate-900\/80,
-html.light .bg-slate-900\/90 {
-  background-color: #ffffff !important;
+html.light .bg-slate-900\/90,
+html.light .bg-slate-900\/95,
+html.light .bg-navy-900,
+html.light .bg-navy-850 {
+  background-color: #FFFFFF !important;
 }
+
 html.light .bg-slate-800,
 html.light .bg-slate-800\/40,
 html.light .bg-slate-800\/50,
-html.light .bg-slate-800\/80 {
-  background-color: #f1f5f9 !important;
-}
-html.light .border-slate-800,
-html.light .border-slate-700,
-html.light .border-slate-900 {
-  border-color: #e2e8f0 !important;
-}
-html.light .text-white {
-  color: #0f172a !important;
-}
-html.light .text-slate-300,
-html.light .text-slate-200 {
-  color: #334155 !important;
-}
-html.light .text-slate-400 {
-  color: #64748b !important;
+html.light .bg-slate-800\/60,
+html.light .bg-slate-800\/70,
+html.light .bg-slate-800\/80,
+html.light .bg-navy-800 {
+  background-color: #EDECE8 !important;
 }
 
-/* Custom scrollbar for tables, sidebars, and panels */
+html.light .border-slate-800,
+html.light .border-slate-800\/80,
+html.light .border-slate-800\/60,
+html.light .border-slate-700,
+html.light .border-slate-700\/80,
+html.light .border-slate-700\/60,
+html.light .border-slate-900 {
+  border-color: #E5E7E8 !important;
+}
+
+html.light .text-white {
+  color: #172B3A !important;
+}
+
+html.light .text-slate-100,
+html.light .text-slate-200,
+html.light .text-slate-300 {
+  color: #34495E !important;
+}
+
+html.light .text-slate-400,
+html.light .text-slate-500 {
+  color: #7A858C !important;
+}
+
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -83,39 +114,45 @@ html.light .text-slate-400 {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #34495E;
   border-radius: 3px;
 }
 html.light ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #CBD5E1;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #3F7775;
 }
 html.light ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #7A858C;
 }
 
-/* MapLibre controls polish */
+/* MapLibre Controls Polish */
 .maplibregl-ctrl-group {
-  border-radius: 8px !important;
+  border-radius: 6px !important;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-  border: 1px solid #334155 !important;
-  background-color: #0f172a !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid #243B4D !important;
+  background-color: #172B3A !important;
 }
 html.light .maplibregl-ctrl-group {
-  border: 1px solid #cbd5e1 !important;
-  background-color: #ffffff !important;
+  border: 1px solid #E5E7E8 !important;
+  background-color: #FFFFFF !important;
 }
 .maplibregl-ctrl-group button {
   background-color: transparent !important;
 }
 .maplibregl-ctrl-scale {
-  background-color: rgba(15, 23, 42, 0.85) !important;
-  color: #94a3b8 !important;
-  border-color: #334155 !important;
+  background-color: rgba(23, 43, 58, 0.9) !important;
+  color: #F5F4F0 !important;
+  border-color: #243B4D !important;
   font-size: 10px !important;
-  border-radius: 4px !important;
+  border-radius: 3px !important;
   padding: 1px 4px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+html.light .maplibregl-ctrl-scale {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #172B3A !important;
+  border-color: #E5E7E8 !important;
 }

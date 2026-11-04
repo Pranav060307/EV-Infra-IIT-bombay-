@@ -19,9 +19,12 @@ import numpy as np
 import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point, Polygon, LineString, box, mapping
+from shapely.prepared import prep
 from shapely.ops import transform
+from scipy.spatial import cKDTree
 import pyproj
 from typing import Dict, List, Any, Optional, Tuple
+from app.core.spatial_cache import spatial_cache
 
 # Path configuration
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
@@ -444,14 +447,28 @@ class GISService:
     # 4. PUNE URBAN 1KM X 1KM GRID ANALYSIS (METRIC UTM 43N)
     # --------------------------------------------------------------------------
 
-    def generate_pune_urban_grid(self, grid_size_meters: float = 1000.0) -> Dict[str, Any]:
+    def generate_pune_urban_grid(self, grid_size_meters: float = 1000.0, force_refresh: bool = False) -> Dict[str, Any]:
         """
         Generates a 1 km x 1 km metric grid across Pune Urban boundary (PMC + PCMC: 516.18 km²).
         Projects locally into EPSG:32643 (UTM Zone 43N metric grid in meters) where scale distortion < 0.04%.
         Evaluates MoP September 2024 urban planning benchmark (Clause 11(1)(a)).
+        Accelerated with GEOS prepared geometries, scipy cKDTree, and persistent SHA-256 caching.
         """
-        if grid_size_meters == 1000.0 and self._cached_pune_grid is not None:
-            return self._cached_pune_grid
+        source_paths = [
+            os.path.join(PROCESSED_DIR, "pune_urban_boundary.geojson"),
+            os.path.join(PROCESSED_DIR, "maharashtra_verified_charging_stations.json")
+        ]
+        cache_params = {"grid_size_meters": grid_size_meters, "crs": CRS_UTM43N}
+        cache_sig = spatial_cache.compute_source_signature(source_paths, cache_params)
+
+        if not force_refresh:
+            if grid_size_meters == 1000.0 and self._cached_pune_grid is not None:
+                return self._cached_pune_grid
+            cached = spatial_cache.get_cached_result("pune_grid", cache_sig)
+            if cached:
+                if grid_size_meters == 1000.0:
+                    self._cached_pune_grid = cached
+                return cached
 
         if self._pune_urban_gdf is None or self._pune_urban_gdf.empty:
             return {"type": "FeatureCollection", "features": [], "total_cells": 0}
@@ -459,9 +476,10 @@ class GISService:
         # Project Pune polygon to UTM 43N (meters)
         pune_utm = self._pune_urban_gdf.to_crs(CRS_UTM43N)
         poly_geom = pune_utm.geometry.iloc[0]
+        prepared_poly = prep(poly_geom)
         minx, miny, maxx, maxy = poly_geom.bounds
 
-        # Generate 1km grid cells
+        # Generate 1km grid cells with fast prepared-geometry clipping
         x_coords = np.arange(minx, maxx, grid_size_meters)
         y_coords = np.arange(miny, maxy, grid_size_meters)
 
@@ -473,7 +491,7 @@ class GISService:
         for x in x_coords:
             for y in y_coords:
                 cell_box = box(x, y, x + grid_size_meters, y + grid_size_meters)
-                if cell_box.intersects(poly_geom):
+                if prepared_poly.intersects(cell_box):
                     # Intersect cell with municipal boundary
                     clipped = cell_box.intersection(poly_geom)
                     area_sqkm = round(clipped.area / 1000000.0, 3)
@@ -511,15 +529,15 @@ class GISService:
         grid_gdf_utm["charging_point_count"] = grid_gdf_utm["charging_point_count"].fillna(0).astype(int)
         grid_gdf_utm["total_power_kw"] = grid_gdf_utm["total_power_kw"].fillna(0.0).round(1)
 
-        # Calculate exact distance from cell centroid to nearest public charging station
+        # Vectorized distance calculation from cell centroid to nearest public charging station via cKDTree
         centroids_utm = grid_gdf_utm.geometry.centroid
-        nearest_dists_m = []
 
         if stations_utm is not None and not stations_utm.empty:
-            station_pts = stations_utm.geometry.values
-            for c in centroids_utm:
-                dists = [c.distance(s) for s in station_pts]
-                nearest_dists_m.append(round(min(dists), 1))
+            station_coords = np.column_stack([stations_utm.geometry.x, stations_utm.geometry.y])
+            tree = cKDTree(station_coords)
+            centroid_coords = np.column_stack([centroids_utm.x, centroids_utm.y])
+            dists, _ = tree.query(centroid_coords)
+            nearest_dists_m = [round(float(d), 1) for d in dists]
         else:
             nearest_dists_m = [None] * len(grid_gdf_utm)
 
@@ -527,7 +545,6 @@ class GISService:
         grid_gdf_utm["nearest_station_distance_km"] = [round(d / 1000.0, 2) if d is not None else None for d in nearest_dists_m]
 
         # MoP 2024 Urban Benchmark Status
-        # Distinguishes long-term FY30 planning target from immediate legal non-compliance
         statuses = []
         for _, row in grid_gdf_utm.iterrows():
             if row["station_count"] >= 1:
@@ -566,18 +583,21 @@ class GISService:
             "effective_service_radius_percentage": effective_pct,
             "unserved_deficit_percentage": deficit_pct,
             "planning_benchmark": "Ministry of Power Guidelines dated 17 Sept 2024 (Clause 11(1)(a))",
-            "statutory_notice": "Reflects an urban infrastructure target to be achieved progressively by FY 2029-30; cells lacking a charger represent planning investment priorities rather than immediate legal violations."
+            "statutory_notice": "Reflects an urban infrastructure target to be achieved progressively by FY 2029-30; cells lacking a charger represent planning investment priorities rather than immediate legal violations.",
+            "cache_signature": cache_sig[:16]
         }
 
+        # Cache in memory and persist to disk
         if grid_size_meters == 1000.0:
             self._cached_pune_grid = res
+        spatial_cache.save_cached_result("pune_grid", cache_sig, res)
         return res
 
     # --------------------------------------------------------------------------
     # 5. SAMRUDDHI MAHAMARG CORRIDOR ANALYSIS (GEODETIC GEODESY)
     # --------------------------------------------------------------------------
 
-    def analyze_samruddhi_corridor(self, buffer_km: float = 20.0) -> Dict[str, Any]:
+    def analyze_samruddhi_corridor(self, buffer_km: float = 20.0, force_refresh: bool = False) -> Dict[str, Any]:
         """
         Analyzes the 701 km Hindu Hrudaysamrat Balasaheb Thackeray Maharashtra Samruddhi Mahamarg.
         Crosses the 78E UTM Zone boundary (originates at Nagpur in UTM 44N, terminates at Thane in UTM 43N).
@@ -586,9 +606,24 @@ class GISService:
         1. 20km spacing on both sides (Clause 11(1)(b))
         2. Carriageway access: Directional compliance labelled UNVERIFIED when physical side access data is absent.
         3. Heavy-duty fast charging every 100 km (Clause 12(7): >= 2 x 240 kW CCS-2).
+        Persistent SHA-256 caching ensures instant retrieval.
         """
-        if buffer_km == 20.0 and self._cached_samruddhi is not None:
-            return self._cached_samruddhi
+        source_paths = [
+            os.path.join(PROCESSED_DIR, "samruddhi_mahamarg_alignment.geojson"),
+            os.path.join(PROCESSED_DIR, "samruddhi_interchanges.json"),
+            os.path.join(PROCESSED_DIR, "maharashtra_verified_charging_stations.json")
+        ]
+        cache_params = {"buffer_km": buffer_km, "geodesy": "WGS-84", "crs": CRS_UTM43N}
+        cache_sig = spatial_cache.compute_source_signature(source_paths, cache_params)
+
+        if not force_refresh:
+            if buffer_km == 20.0 and self._cached_samruddhi is not None:
+                return self._cached_samruddhi
+            cached = spatial_cache.get_cached_result("samruddhi_corridor", cache_sig)
+            if cached:
+                if buffer_km == 20.0:
+                    self._cached_samruddhi = cached
+                return cached
 
         if self._samruddhi_gdf is None or self._samruddhi_gdf.empty:
             return {}
@@ -727,11 +762,13 @@ class GISService:
             "interchanges": self._interchanges_data or [],
             "segments_analysis": segments,
             "heavy_duty_100km_blocks": heavy_duty_100km_blocks,
-            "buffer_geojson": json.loads(buffer_gdf_wgs84.to_json())
+            "buffer_geojson": json.loads(buffer_gdf_wgs84.to_json()),
+            "cache_signature": cache_sig[:16]
         }
 
         if buffer_km == 20.0:
             self._cached_samruddhi = res
+        spatial_cache.save_cached_result("samruddhi_corridor", cache_sig, res)
         return res
 
     # --------------------------------------------------------------------------

@@ -1,0 +1,881 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ChargeAtlas India - Chat History (Last 12 Prompts)</title>
+<style>
+  @page { margin: 1.5cm; size: A4; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    color: #1a1a2e;
+    background: #fff;
+    line-height: 1.6;
+    font-size: 11pt;
+  }
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #0f3460;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+  }
+  .header h1 {
+    color: #0f3460;
+    font-size: 22pt;
+    margin: 0 0 5px 0;
+  }
+  .header .subtitle {
+    color: #16213e;
+    font-size: 12pt;
+    margin: 0;
+  }
+  .header .meta {
+    color: #666;
+    font-size: 9pt;
+    margin-top: 8px;
+  }
+  .exchange {
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .exchange-header {
+    background: #0f3460;
+    color: white;
+    padding: 8px 15px;
+    font-weight: 600;
+    font-size: 10pt;
+  }
+  .user-msg {
+    background: #f0f4ff;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .user-msg .label {
+    font-weight: 700;
+    color: #0f3460;
+    font-size: 10pt;
+    margin-bottom: 5px;
+  }
+  .agent-msg {
+    background: #fafafa;
+    padding: 12px 15px;
+  }
+  .agent-msg .label {
+    font-weight: 700;
+    color: #2d6a4f;
+    font-size: 10pt;
+    margin-bottom: 5px;
+  }
+  .content {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+    max-height: none;
+  }
+  .timestamp {
+    color: #888;
+    font-size: 8pt;
+    float: right;
+  }
+  pre {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 9pt;
+    white-space: pre-wrap;
+  }
+  code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 9pt;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 2px solid #0f3460;
+    color: #666;
+    font-size: 9pt;
+  }
+  h1, h2, h3, h4 { page-break-after: avoid; }
+  .truncated-note {
+    color: #e76f51;
+    font-style: italic;
+    font-size: 9pt;
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>ChargeAtlas India</h1>
+  <p class="subtitle">Chat History &mdash; Last 12 Prompts &amp; Responses</p>
+  <p class="meta">
+    Project: EV Infrastructure Map India | IIT Bombay Techfest 2026-27 | Team SuperNova<br>
+    Generated: 04 November 2026, 12:17 IST
+  </p>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 1 of 12 <span class="timestamp">2026-11-02T09:35:59Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content">complete this work  proeprly first</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 2 of 12 <span class="timestamp">2026-11-02T09:57:26Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content"># CHARGEATLAS INDIA &#226;€” AUTHENTIC DATA ACQUISITION, VALIDATION AND PRODUCTION INGESTION
+
+Project directory: D:\EV Infra
+
+The PostgreSQL and PostGIS foundation is ready.
+
+Now establish the authentic data foundation for ChargeAtlas India.
+
+## PRIMARY OBJECTIVE
+
+Replace synthetic data in production analytical views with authentic, traceable and reproducible data from official sources.
+
+The application must never present synthetic or unverified information as official statistics.
+
+## 1. DATA SOURCE DISCOVERY
+
+Investigate these sources.
+
+A. EV registration data
+
+Official source:
+https://analytics.parivahan.gov.in/analytics/publicdashboard/vahan?lang=en
+
+Required:
+- Maharashtra EV registration totals.
+- District/RTO-level records where accessible.
+- 2W registrations.
+- 3W registrations.
+- 4W registrations.
+- Electric buses.
+- Historical year-wise or month-wise data where available.
+- Registration period and extraction date.
+
+Do not assume that the dashboard exposes a downloadable API.
+
+Use official downloadable exports or permitted access methods.
+
+If an export requires manual interaction, provide exact instructions for obtaining it.
+
+B. Charging station data
+
+Official source:
+https://evyatra.beeindia.gov.in/
+
+Required:
+- Charging station name.
+- Latitude and longitude.
+- Address.
+- Operator.
+- Station status, where available.
+- Access classification.
+- Charging point information.
+- Connector information.
+- Rated power.
+- Source update date.
+
+Investigate whether official exports or documented APIs are available.
+
+C. Geographic boundaries
+
+Investigate:
+- Survey of India.
+- Official Maharashtra government GIS sources.
+- Local municipal planning sources.
+
+Required:
+- Maharashtra state boundary.
+- District boundaries.
+- Pune and PCMC urban boundaries, with clear definition.
+- Other geographic boundaries required for the study.
+
+Preserve source dates and administrative changes.
+
+Do not invent missing district geometries.
+
+D. Samruddhi Mahamarg
+
+Official source:
+https://msrdc.in/
+
+Required:
+- Route alignment.
+- Interchange coordinates.
+- Operational/planned interchange classification.
+- Wayside facilities.
+- Carriageway access information, if available.
+
+Do not infer official highway geometry from an approximate line if official alignment data is available.
+
+E. Population
+
+Official source:
+https://censusindia.gov.in/
+
+Required:
+- District population.
+- Census reference year.
+- Relevant demographic/geographic data.
+- Any projection methodology used.
+
+Do not label projections as census counts.
+
+F. Electricity infrastructure
+
+Investigate official MSEDCL and MSETCL sources.
+
+Required where accessible:
+- Substation coordinates.
+- Voltage level.
+- Feeder information.
+- Spare capacity.
+- Feeder loading.
+- Source date.
+
+Geographic proximity alone must not be described as proof of electrical feasibility.
+
+G. Charging policy
+
+Use the official Ministry 
+
+[... content truncated for brevity - full prompt was 7613 characters ...]</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 3 of 12 <span class="timestamp">2026-11-02T10:16:29Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content">continue the work properly</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 4 of 12 <span class="timestamp">2026-11-02T10:26:45Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content"># CHARGEATLAS INDIA &#226;€” COMPLETE GIS ENGINE AND EV INFRASTRUCTURE GAP ANALYSIS
+
+Project: D:\EV Infra
+
+Use the existing PostgreSQL/PostGIS database and the authentic datasets that have passed the previous data-validation stage.
+
+## OBJECTIVE
+
+Complete the geographical intelligence engine of ChargeAtlas India.
+
+The system must calculate actual infrastructure coverage, identify gaps, and provide traceable results.
+
+## 1. INDIA AND MAHARASHTRA GEOGRAPHIC ENGINE
+
+Implement:
+- State boundary analysis.
+- District boundary analysis.
+- Point-in-polygon station assignment.
+- District-level EV registrations.
+- District-level station counts.
+- Charging-point distribution.
+- Connector distribution where available.
+- EV-to-charging-point ratio.
+- EV-to-station ratio.
+- Charging infrastructure density.
+
+Clearly distinguish unavailable data from a true zero.
+
+## 2. SPATIAL VALIDATION
+
+Use PostGIS.
+
+Implement and test:
+- ST_Within.
+- ST_Intersects.
+- ST_DWithin.
+- ST_Distance.
+- ST_Transform.
+- ST_Area.
+- ST_Length.
+
+Use appropriate geography or projected CRS for distance and area calculations.
+
+Do not assume one UTM zone is suitable for all of Maharashtra or the full Samruddhi corridor.
+
+Store original geometries in EPSG:4326.
+
+Use EPSG:3857 only where appropriate for map display.
+
+## 3. DISTRICT ANALYSIS
+
+For each district, calculate where data permits:
+
+- EV registrations by vehicle category.
+- Total physical charging stations.
+- Total charging points.
+- Total connectors.
+- EV-to-charging-point ratio.
+- Population-adjusted infrastructure indicators.
+- Spatial coverage.
+- Infrastructure deficit indicators.
+
+Show:
+- District ranking.
+- District comparison.
+- Data availability.
+- Source and reporting year.
+
+Do not compare inconsistent reporting periods without disclosing the difference.
+
+## 4. PUNE URBAN GRID ANALYSIS
+
+Use the verified Pune urban boundary.
+
+Generate a 1 km &#195;— 1 km grid using an appropriate metric CRS.
+
+Clip grid cells to the study boundary.
+
+Calculate:
+- Grid-cell area.
+- Number of stations within each cell.
+- Number of cells covered.
+- Number of cells without a station.
+- Distance to nearest station.
+- Coverage percentage.
+- Deficit percentage.
+
+Use the 2024 Ministry of Power urban planning benchmark:
+
+At least one charging station within a 1 km &#195;— 1 km grid in urban areas by FY 2029&#226;€“30, subject to the applicable notified urban-area definition.
+
+Do not automatically classify every Pune grid cell as legally non-compliant unless the relevant planning geography and policy applicability are established.
+
+Distinguish a planning benchmark from actual legal compliance.
+
+## 5. SAMRUDDHI MAHAMARG ANALYSIS
+
+Use verified route alignment and interchange records.
+
+Implement:
+- Route length.
+- Interchange locations.
+- Route segmentation.
+- Distance between facilities.
+- Nearby charging stations.
+- Corridor coverage.
+- Identified gaps.
+
+Use the Ministr
+
+[... content truncated for brevity - full prompt was 5630 characters ...]</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 5 of 12 <span class="timestamp">2026-11-02T11:09:41Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content"># CHARGEATLAS INDIA &#226;€” EV DEMAND FORECASTING AND INTELLIGENT CHARGING SITE RECOMMENDATION ENGINE
+
+Project directory: D:\EV Infra
+
+Use the existing authentic PostgreSQL/PostGIS data and validated GIS analytics.
+
+Do not build a separate application.
+
+## OBJECTIVE
+
+Develop an explainable forecasting and candidate charging-site recommendation system.
+
+The output must support infrastructure planning, not pretend to provide guaranteed future outcomes or engineering approvals.
+
+# PART A &#226;€” EV DEMAND FORECASTING
+
+## 1. Historical baseline
+
+Use authentic historical VAHAN records.
+
+Separate:
+- 2W.
+- 3W.
+- 4W.
+- Buses.
+
+Record:
+- Baseline year.
+- Reporting period.
+- Registration count.
+- Source.
+- Data completeness.
+- Geographic coverage.
+
+If historical observations are insufficient, clearly identify that limitation.
+
+Do not invent historical registrations.
+
+## 2. Forecast models
+
+Implement appropriate methods depending on data availability.
+
+Consider:
+- CAGR scenario modelling.
+- Linear trend.
+- Exponential growth.
+- Time-series methods where sufficient historical observations exist.
+
+Do not claim a sophisticated machine-learning model is accurate simply because it was implemented.
+
+Compare models using suitable historical validation where possible.
+
+## 3. Forecast years
+
+Generate planning scenarios for:
+- 2027.
+- 2030.
+
+Provide:
+- Low-growth scenario.
+- Base scenario.
+- High-growth scenario.
+
+Use published, defensible assumptions where available.
+
+Where assumptions are not sourced, make them configurable and label the results hypothetical.
+
+Do not present arbitrary CAGR values as official projections.
+
+## 4. Charging demand estimation
+
+Estimate:
+- Number of EVs.
+- Daily energy requirement.
+- Peak charging demand.
+- Required charging points.
+- Charging capacity by vehicle segment.
+- Infrastructure deficit.
+
+Document all equations and input assumptions.
+
+Include:
+- Daily kilometres.
+- Energy consumption per kilometre.
+- Charging efficiency.
+- Charging behaviour.
+- Diversity and utilization assumptions.
+- Charging-point power.
+- Operating hours.
+
+Do not use one energy consumption constant for every vehicle category.
+
+Where reliable inputs are unavailable, show a scenario range.
+
+## 5. Forecast interface
+
+Provide:
+- Year selector.
+- Vehicle-category filters.
+- Growth scenario selector.
+- Custom growth assumption controls.
+- Forecast charts.
+- Historical versus projected comparison.
+- Charging demand estimates.
+- Assumption inspector.
+- Data-source references.
+
+Display uncertainty and scenario labels.
+
+# PART B &#226;€” CANDIDATE CHARGING SITE RECOMMENDER
+
+## 6. Candidate locations
+
+Use real, geospatially valid candidate locations derived from:
+- Identified infrastructure gaps.
+- Road network accessibility.
+- EV demand.
+- Existing station coverage.
+- Verified public land or candidate parcels where accessible.
+- Electricity infrastructure.
+
+Do n
+
+[... content truncated for brevity - full prompt was 6057 characters ...]</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 6 of 12 <span class="timestamp">2026-11-02T17:44:04Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content"># CHARGEATLAS INDIA &#226;€” FINAL PROFESSIONAL GIS FRONTEND AND USER EXPERIENCE IMPLEMENTATION
+
+Project: D:\EV Infra
+
+Improve the existing React application into a professional GIS-based infrastructure intelligence platform.
+
+Do not create a new frontend.
+
+Preserve the working architecture, existing business logic and API contracts.
+
+## 1. DESIGN DIRECTION
+
+Design ChargeAtlas as a serious geospatial decision-support application.
+
+Visual requirements:
+- Professional.
+- Minimal.
+- Modern.
+- Clean.
+- Information-rich.
+- High readability.
+- Consistent.
+- Responsive.
+
+Avoid:
+- Neon colours.
+- Generic AI aesthetics.
+- Excessive gradients.
+- Glassmorphism everywhere.
+- Decorative animations.
+- Oversized cards.
+- Unnecessary icons.
+- Excessive rounded corners.
+- Flashy dashboard effects.
+
+Use a restrained colour system with meaningful semantic colours.
+
+Maintain dark mode and a well-designed light mode.
+
+## 2. APPLICATION SHELL
+
+Improve:
+- Navigation sidebar.
+- Header.
+- Breadcrumbs.
+- Search.
+- Data-source status.
+- Database connection status.
+- Notifications.
+- User account area where authentication exists.
+
+Navigation must remain consistent across all modules.
+
+Provide a clean responsive sidebar on desktop and an appropriate mobile navigation layout.
+
+## 3. OVERVIEW DASHBOARD
+
+Display authentic metrics only in authentic mode.
+
+Show:
+- EV registration totals.
+- Charging stations.
+- Charging points.
+- Charging connectors.
+- EV-to-charger ratios.
+- District-level distribution.
+- Vehicle category composition.
+- Infrastructure coverage.
+- Data freshness.
+- Data-quality indicators.
+
+Every metric must disclose its:
+- Source.
+- Reporting period.
+- Verification status.
+
+Provide meaningful charts, not decorative charts.
+
+Do not hardcode old metrics.
+
+## 4. NATIONAL MAP
+
+Implement:
+- India-wide map.
+- State boundaries.
+- Station clustering.
+- State selection.
+- Filters.
+- Map legend.
+- Station details.
+- Search.
+
+Do not render millions of unfiltered records at once.
+
+Use bounding-box APIs and suitable clustering.
+
+## 5. MAHARASHTRA ANALYSIS
+
+Implement:
+- Maharashtra map.
+- District boundaries.
+- District selection.
+- District comparison table.
+- Search and filters.
+- EV category breakdown.
+- Station distribution.
+- District infrastructure indicators.
+
+District table and map selection must remain synchronized.
+
+## 6. DISTRICT DETAIL
+
+Every supported district detail page must show:
+- District geography.
+- EV registrations.
+- Vehicle category breakdown.
+- Charging stations.
+- Charging points.
+- Infrastructure ratios.
+- Spatial coverage.
+- Data sources.
+- Verification status.
+
+If data is unavailable, explain why.
+
+## 7. PUNE URBAN GRID
+
+Implement:
+- Interactive 1 km grid.
+- Coverage and deficit symbology.
+- Grid-cell inspector.
+- Station markers.
+- Grid statistics.
+- Layer controls.
+- Clear map legend.
+
+Keep grid styling readable.
+
+##
+
+[... content truncated for brevity - full prompt was 6231 characters ...]</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 7 of 12 <span class="timestamp">2026-11-02T18:07:57Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content">complete the work properly</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 8 of 12 <span class="timestamp">2026-11-03T04:43:29Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content">completethe work proeprluy</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 9 of 12 <span class="timestamp">2026-11-03T04:54:24Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content"># CHARGEATLAS INDIA &#226;€” FINAL PRODUCTION DEPLOYMENT, SECURITY AND COMPETITION ACCEPTANCE
+
+Project directory: D:\EV Infra
+
+Competition: IIT Bombay Techfest 2026&#226;€“27 &#226;€” EV Infrastructure Map India Challenge.
+
+Team: SuperNova, Sanjivani University.
+
+You are completing the final production-readiness stage of an existing application.
+
+The previous development stages have implemented:
+- React frontend.
+- FastAPI backend.
+- PostgreSQL 18.
+- PostGIS.
+- Authentic data ingestion.
+- GIS analytics.
+- EV demand forecasting.
+- MCDA site recommendations.
+- Interactive maps.
+- Data management.
+- Methodology documentation.
+
+Do not assume these are complete without inspecting the actual code and test evidence.
+
+## 1. FINAL CODEBASE AUDIT
+
+Inspect the complete repository.
+
+Identify:
+- Unused files.
+- Duplicate implementations.
+- Temporary debugging code.
+- Hardcoded development URLs.
+- Hardcoded credentials.
+- Unused dependencies.
+- Broken imports.
+- Dead routes.
+- Unhandled exceptions.
+- Incomplete functions.
+- TODO placeholders.
+- Fake API responses.
+- Synthetic production data references.
+
+Remove or fix only what is safe.
+
+Do not delete useful functionality.
+
+## 2. SECURITY
+
+Implement or verify:
+
+- Secure password handling.
+- Authentication and authorization.
+- Protected API routes.
+- Secure session or token handling.
+- Input validation.
+- File-upload validation.
+- File-size restrictions.
+- File-type restrictions.
+- SQL injection protection.
+- CORS restrictions.
+- Secure HTTP headers where applicable.
+- Rate limiting for sensitive endpoints.
+- Safe error responses.
+- Secret management.
+- Logging without passwords or tokens.
+
+Never expose:
+- Database credentials.
+- API keys.
+- Secret tokens.
+- Private configuration.
+- User passwords.
+
+Review authentication and authorization before production deployment.
+
+## 3. PRODUCTION CONFIGURATION
+
+Create separate configurations for:
+
+- Local development.
+- Testing.
+- Production.
+
+Use environment variables for:
+- Database URL.
+- Database password.
+- Secret key.
+- Allowed frontend origins.
+- External service credentials.
+- Map-provider keys, if required.
+
+Create:
+.env.example
+
+Do not commit real .env files.
+
+Production must use PostgreSQL/PostGIS.
+
+Production must fail clearly if the production database is unavailable.
+
+Never silently switch production to SQLite.
+
+## 4. DEPLOYMENT ARCHITECTURE
+
+Evaluate a practical deployment architecture for the existing stack.
+
+Frontend:
+- Build the React/Vite application for production.
+- Configure static hosting or an appropriate web server.
+- Configure client-side route fallback.
+
+Backend:
+- Deploy FastAPI using a production ASGI server configuration.
+- Configure health checks.
+- Configure environment variables.
+- Configure logging.
+- Configure process restarts.
+
+Database:
+- Use a persistent PostgreSQL database with PostGIS support.
+- Verify backups.
+- Restrict publ
+
+[... content truncated for brevity - full prompt was 9000 characters ...]</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 10 of 12 <span class="timestamp">2026-11-03T05:32:01Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content">this is the error now</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 11 of 12 <span class="timestamp">2026-11-03T05:38:12Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content">https://github.com/Pranav060307/EV-Infra-IIT-bombay-.git  PUSH ALL THE work   to this git hub repo</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="exchange">
+  <div class="exchange-header">Prompt 12 of 12 <span class="timestamp">2026-11-03T06:01:01Z</span></div>
+  <div class="user-msg">
+    <div class="label">USER</div>
+    <div class="content">deploy this on the vercel</div>
+  </div>
+  <div class="agent-msg">
+    <div class="label">ANTIGRAVITY (Agent)</div>
+    <div class="content">[No response recorded]</div>
+  </div>
+</div>
+<div class="footer">
+  <strong>ChargeAtlas India</strong> &mdash; EV Infrastructure Decision Platform<br>
+  IIT Bombay Techfest 2026-27 | Team SuperNova | Sanjivani University<br>
+  Lead Developer: Pranav Jadhav<br>
+  Total prompts in this conversation: 28 | Showing last 12
+</div>
+</body>
+</html>

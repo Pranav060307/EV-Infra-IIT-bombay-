@@ -1,4 +1,5 @@
 import os
+import sys
 from typing import List
 from pydantic_settings import BaseSettings
 
@@ -50,6 +51,9 @@ class Settings(BaseSettings):
 
     @property
     def sqlite_url(self) -> str:
+        if self.APP_ENV == "testing" or "PYTEST_CURRENT_TEST" in os.environ or "pytest" in sys.modules:
+            test_db = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "chargeatlas_test.db"))
+            return f"sqlite:///{test_db.replace(os.sep, '/')}"
         root_db = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "chargeatlas_dev.db"))
         return f"sqlite:///{root_db.replace(os.sep, '/')}"
 

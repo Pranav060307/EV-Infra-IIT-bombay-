@@ -5,6 +5,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, Response, status
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from app.core.config import settings
 from app.core.database import init_db, SessionLocal
 from app.api.v1.api_router import api_router
@@ -128,6 +129,9 @@ app.add_middleware(
     allow_headers=["*"],
     expose_headers=["X-Processed-Time-Ms"]
 )
+
+# High-Performance Compression for Large GeoJSON & Tabular Payloads (min 1000 bytes)
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 # Register API v1 routes
 app.include_router(api_router, prefix=settings.API_V1_STR)

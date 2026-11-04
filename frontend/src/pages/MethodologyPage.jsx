@@ -33,20 +33,20 @@ export const MethodologyPage = () => {
   return (
     <div className="p-8 space-y-8 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="pb-6 border-b border-slate-800">
+      <div className="pb-6 border-b border-slate-700/60">
         <div className="flex items-center gap-2">
-          <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-            Methodology & Standards
+          <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-[#52765B]/15 text-[#86af8f] border border-[#52765B]/30 font-mono">
+            Methodology &amp; Standards
           </span>
-          <span className="text-xs text-slate-400 flex items-center gap-1">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            Ministry of Power (Sept 2024) & PM E-DRIVE Aligned
+          <span className="text-xs text-slate-300 flex items-center gap-1 font-mono">
+            <ShieldCheck className="w-3.5 h-3.5 text-accent-green" />
+            Ministry of Power (Sept 2024) &amp; PM E-DRIVE Aligned
           </span>
         </div>
         <h2 className="text-2xl font-bold tracking-tight text-white mt-1">
-          ChargeAtlas India — Comprehensive Analytical Formulations & Standards
+          ChargeAtlas India — Comprehensive Analytical Formulations &amp; Standards
         </h2>
-        <p className="text-sm text-slate-400 mt-1">
+        <p className="text-sm text-slate-300 mt-1">
           Mathematically transparent, peer-reviewable methodology driving spatial gap analysis, demand forecasting, and smart siting.
         </p>
       </div>
@@ -62,8 +62,8 @@ export const MethodologyPage = () => {
               onClick={() => setActiveSection(s.id)}
               className={`w-full text-left px-3.5 py-2 rounded-xl text-xs font-medium transition-all ${
                 activeSection === s.id
-                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                  ? 'bg-accent-teal/15 text-[#5fa3a0] border border-accent-teal/30 font-semibold'
+                  : 'text-slate-400 hover:text-white hover:bg-navy-900/60'
               }`}
             >
               {s.title}

@@ -3,7 +3,20 @@
   "outputDirectory": "frontend/dist",
   "cleanUrls": true,
   "framework": "vite",
+  "headers": [
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/data/(.*)",
+      "destination": "/data/$1"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"

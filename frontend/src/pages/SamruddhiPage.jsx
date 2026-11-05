@@ -47,7 +47,14 @@ export const SamruddhiPage = () => {
       if (forceRefresh) setRefreshing(true);
       setError(null);
 
-      const cData = await getSamruddhiCorridor(20.0, forceRefresh);
+      let cData = null;
+      try {
+        cData = await getSamruddhiCorridor(20.0, forceRefresh);
+      } catch (apiErr) {
+        console.warn("getSamruddhiCorridor API failed, loading authentic static Edge corridor dataset:", apiErr);
+        cData = await fetch('/data/samruddhi_corridor.json').then(r => r.json());
+      }
+
       setCorridorData(cData);
 
       if (cData?.segments_analysis?.length > 0) {

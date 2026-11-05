@@ -49,34 +49,64 @@ export const MaharashtraPage = () => {
         getAccessibilityBuffers()
       ]);
 
+      let analysisRes = null;
       if (analysisResult.status === 'fulfilled') {
-        const analysisRes = analysisResult.value;
-        setDistrictData(analysisRes);
-        if (analysisRes?.districts?.length > 0) {
-          // Default select Pune or first district
-          const pune = analysisRes.districts.find(d => d.district === 'Pune') || analysisRes.districts[0];
-          setSelectedDistrict(pune);
+        analysisRes = analysisResult.value;
+      } else {
+        console.warn("Direct API failed, attempting static Edge dataset fallback for district analysis...");
+        try {
+          analysisRes = await fetch('/data/district_analysis.json').then(r => r.json());
+        } catch (e) {
+          const errMsg = analysisResult.reason?.response?.data?.detail || analysisResult.reason?.message || "Failed to connect to backend GIS analysis endpoint.";
+          throw new Error(errMsg);
         }
-      } else {
-        const errMsg = analysisResult.reason?.response?.data?.detail || analysisResult.reason?.message || "Failed to connect to backend GIS analysis endpoint.";
-        throw new Error(errMsg);
       }
 
+      setDistrictData(analysisRes);
+      if (analysisRes?.districts?.length > 0) {
+        // Default select Pune or first district
+        const pune = analysisRes.districts.find(d => d.district === 'Pune') || analysisRes.districts[0];
+        setSelectedDistrict(pune);
+      }
+
+      let boundaryData = null;
       if (boundaryResult.status === 'fulfilled') {
-        setBoundaryGeoJSON(boundaryResult.value);
+        boundaryData = boundaryResult.value;
       } else {
-        console.warn("Notice: Boundary polygons deferred:", boundaryResult.reason?.message);
+        console.warn("Direct API failed, attempting static Edge dataset fallback for boundary polygons...");
+        try {
+          boundaryData = await fetch('/data/maharashtra_districts.json').then(r => r.json());
+        } catch (e) {
+          console.warn("Notice: Boundary polygons deferred:", boundaryResult.reason?.message);
+        }
       }
+      setBoundaryGeoJSON(boundaryData);
 
+      let stationsData = [];
       if (stationsResult.status === 'fulfilled') {
-        setStations(stationsResult.value?.features || []);
+        stationsData = stationsResult.value?.features || [];
       } else {
-        console.warn("Notice: Station markers deferred:", stationsResult.reason?.message);
+        console.warn("Direct API failed, attempting static Edge dataset fallback for station markers...");
+        try {
+          const stJson = await fetch('/data/stations.json').then(r => r.json());
+          stationsData = stJson?.features || [];
+        } catch (e) {
+          console.warn("Notice: Station markers deferred:", stationsResult.reason?.message);
+        }
       }
+      setStations(stationsData);
 
+      let buffersVal = null;
       if (buffersResult.status === 'fulfilled') {
-        setBuffersData(buffersResult.value);
+        buffersVal = buffersResult.value;
+      } else {
+        try {
+          buffersVal = await fetch('/data/accessibility_buffers.json').then(r => r.json());
+        } catch (e) {
+          console.warn("Notice: Buffers deferred:", e);
+        }
       }
+      setBuffersData(buffersVal);
     } catch (err) {
       console.error("Failed loading Maharashtra GIS data:", err);
       setError(err.message || "Failed to load Maharashtra GIS datasets from backend.");

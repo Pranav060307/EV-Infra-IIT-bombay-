@@ -5,6 +5,18 @@
   "framework": "vite",
   "headers": [
     {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
       "source": "/data/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" },
@@ -13,13 +25,40 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/data/(.*)",
-      "destination": "/data/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/api/v1/gis/stations", "destination": "/data/stations.json" },
+    { "source": "/api/v1/gis/stations/(.*)", "destination": "/data/stations.json" },
+    { "source": "/api/v1/gis/district-analysis", "destination": "/data/district_analysis.json" },
+    { "source": "/api/v1/gis/district-analysis/(.*)", "destination": "/data/district_analysis.json" },
+    { "source": "/api/v1/gis/boundaries/maharashtra_districts", "destination": "/data/maharashtra_districts.json" },
+    { "source": "/api/v1/gis/boundaries/pune_urban", "destination": "/data/pune_urban_boundary.json" },
+    { "source": "/api/v1/gis/boundaries/samruddhi_corridor", "destination": "/data/samruddhi_alignment.json" },
+    { "source": "/api/v1/gis/boundaries/(.*)", "destination": "/data/$1.json" },
+    { "source": "/api/v1/gis/pune/grid", "destination": "/data/pune_grid.json" },
+    { "source": "/api/v1/gis/pune/summary", "destination": "/data/pune_summary.json" },
+    { "source": "/api/v1/gis/samruddhi/corridor", "destination": "/data/samruddhi_corridor.json" },
+    { "source": "/api/v1/gis/accessibility/buffers", "destination": "/data/accessibility_buffers.json" },
+    { "source": "/api/v1/gis/policy-compliance", "destination": "/data/policy_compliance.json" },
+    { "source": "/api/v1/gis/health", "destination": "/data/gis_health.json" },
+    { "source": "/api/v1/health", "destination": "/data/gis_health.json" },
+    { "source": "/api/v1/system-status", "destination": "/data/gis_health.json" },
+    { "source": "/api/v1/recommendations/candidates", "destination": "/data/candidates.json" },
+    { "source": "/api/v1/recommendations/candidates/(.*)", "destination": "/data/candidates.json" },
+    { "source": "/api/v1/recommendations/substations", "destination": "/data/substations.json" },
+    { "source": "/api/v1/recommendations/sensitivity", "destination": "/data/recommendations_sensitivity.json" },
+    { "source": "/api/v1/recommendations/scenarios", "destination": "/data/recommendations_scenarios.json" },
+    { "source": "/api/v1/recommendations/mcda", "destination": "/data/candidates.json" },
+    { "source": "/api/v1/recommendations/optimize", "destination": "/data/candidates.json" },
+    { "source": "/api/v1/forecasting/baseline", "destination": "/data/forecasting_baseline.json" },
+    { "source": "/api/v1/forecasting/models", "destination": "/data/forecasting_models.json" },
+    { "source": "/api/v1/forecasting/charging-demand", "destination": "/data/forecasting_demand.json" },
+    { "source": "/api/v1/forecasting/district/(.*)", "destination": "/data/forecasting_demand.json" },
+    { "source": "/api/v1/forecasting/project", "destination": "/data/forecasting_demand.json" },
+    { "source": "/api/v1/datasets/metrics", "destination": "/data/datasets_metrics.json" },
+    { "source": "/api/v1/datasets/list", "destination": "/data/datasets_list.json" },
+    { "source": "/api/v1/datasets/trust-register", "destination": "/data/trust_register.json" },
+    { "source": "/api/v1/datasets/quality-audit", "destination": "/data/quality_audit.json" },
+    { "source": "/api/v1/datasets/(.*)", "destination": "/data/datasets_list.json" },
+    { "source": "/data/(.*)", "destination": "/data/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

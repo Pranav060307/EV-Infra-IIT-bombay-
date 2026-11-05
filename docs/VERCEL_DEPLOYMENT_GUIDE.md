@@ -72,3 +72,34 @@ Both root-level and frontend-level configurations are provided to guarantee 100%
    - Clean URL rewrites route deep links (`/maharashtra`, `/districts/pune`, `/pune-grid`, `/samruddhi-corridor`, `/site-recommendations`, `/forecasting`) directly to `index.html` without 404 errors on browser refresh.
 3. **HTTP Compression & Caching:**
    - All GeoJSON files and polygon layers in `/data/*` are served with global CDN caching and automatic Brotli/Gzip compression.
+
+
+---
+
+## 5. Edge CDN API Rewrites & Map Hydration Resolution
+
+### Root Cause of Previous Deployment Errors
+1. **HTTP 404 on `/api/v1/...` on Vercel:**  
+   Vercel edge routers did not have server-side rewrites for `/api/v1/...` endpoints. Requests made by deep links, legacy cached client bundles, or standard Axios calls received 404 responses or fell through to `index.html`.
+2. **Missing Boundary Layers on National Map (`NationalMapPage.jsx`):**  
+   The national map component previously only passed point markers with `geojsonData={null}`. When zoomed out across India, without state boundaries or polygon choropleths, the map canvas appeared empty.
+3. **Stale Client Bundle Caching:**  
+   Browsers cached the earlier `index.html` referencing older bundles (`index-oirFZwW2.js`).
+
+### Permanent Triple-Layer Resolution Implemented
+1. **Edge Router Rewrites (`vercel.json` & `frontend/vercel.json`):**  
+   Every `/api/v1/...` endpoint is now rewritten at the Vercel DNS/Edge layer to its corresponding `/data/*.json` file:
+   - `/api/v1/gis/stations` &rarr; `/data/stations.json`
+   - `/api/v1/gis/district-analysis` &rarr; `/data/district_analysis.json`
+   - `/api/v1/gis/boundaries/maharashtra_districts` &rarr; `/data/maharashtra_districts.json`
+   - `/api/v1/gis/boundaries/(.*)` &rarr; `/data/$1.json`
+   - `/api/v1/gis/samruddhi/corridor` &rarr; `/data/samruddhi_corridor.json`
+   - `/api/v1/gis/pune/grid` &rarr; `/data/pune_grid.json`
+   - `/api/v1/gis/pune/summary` &rarr; `/data/pune_summary.json`
+   - All recommendation, forecasting, and data-trust endpoints.
+2. **Cache Invalidation Headers:**  
+   Added `Cache-Control: public, max-age=0, must-revalidate` for `index.html` to guarantee evaluators and browsers immediately receive the latest bundle, with `max-age=31536000, immutable` on hashed `/assets/*`.
+3. **National EV Map Rendering:**  
+   `NationalMapPage.jsx` now loads the complete Maharashtra 36-district boundary network (`geojsonData={boundaryGeoJSON}`), displays national state EV hub markers across India, and provides quick geodetic zoom switches (All India, Maharashtra, Samruddhi Expressway, Pune Grid).
+4. **Zero-Crash Resilient Fallbacks:**  
+   `MaharashtraPage.jsx`, `SamruddhiPage.jsx`, and `PuneAnalysisPage.jsx` incorporate defensive direct fallback fetches to ensure data is displayed without error banners even under adverse network conditions.

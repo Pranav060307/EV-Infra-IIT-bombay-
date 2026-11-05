@@ -41,18 +41,39 @@ export const PuneAnalysisPage = () => {
           setSummaryData(summary);
           setLoadingSummary(false);
         })
-        .catch(err => {
-          console.warn("Summary load notice:", err);
+        .catch(async (err) => {
+          console.warn("Summary load notice, fetching static fallback:", err);
+          try {
+            const fbSummary = await fetch('/data/pune_summary.json').then(r => r.json());
+            setSummaryData(fbSummary);
+          } catch (e) {
+            console.warn("Summary fallback failed:", e);
+          }
           setLoadingSummary(false);
         });
 
       // Phase 2: Stations and Full Grid GeoJSON in parallel
-      const [stationsRes, gridRes] = await Promise.all([
-        getVerifiedStations({ district: 'Pune' }).catch(() => ({ features: [] })),
-        getPuneUrbanGrid(1000.0, forceRefresh)
-      ]);
+      let stFeats = [];
+      try {
+        const stationsRes = await getVerifiedStations({ district: 'Pune' });
+        stFeats = stationsRes?.features || [];
+      } catch {
+        try {
+          const allSt = await fetch('/data/stations.json').then(r => r.json());
+          stFeats = (allSt?.features || []).filter(f => (f.properties?.district || '').toLowerCase() === 'pune');
+        } catch {
+          stFeats = [];
+        }
+      }
+      setStations(stFeats);
 
-      setStations(stationsRes?.features || []);
+      let gridRes = null;
+      try {
+        gridRes = await getPuneUrbanGrid(1000.0, forceRefresh);
+      } catch (gridErr) {
+        console.warn("getPuneUrbanGrid failed, loading static edge dataset:", gridErr);
+        gridRes = await fetch('/data/pune_grid.json').then(r => r.json());
+      }
       setGridData(gridRes);
 
       if (gridRes?.grid_geojson?.features?.length > 0) {

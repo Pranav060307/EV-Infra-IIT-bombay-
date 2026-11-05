@@ -97,3 +97,4 @@ The complete ChargeAtlas India test suite was executed against the upgraded prod
 - **GIS Metric Precision:** Area and distance calculations conducted strictly in projected CRS (EPSG:32643 / EPSG:32644); zero EPSG:3857 distortion.
 - **Frontend Bundle Size:** Optimized via Vite code-splitting and asset compression.
 - **Test Execution Speed:** Full 45-test suite completes in `14.44s`.
+

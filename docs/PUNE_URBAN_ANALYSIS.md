@@ -56,3 +56,4 @@ Under Clause 11(1)(a) of the **Ministry of Power Charging Infrastructure Guideli
 
 ### Legal / Planning Disclaimer:
 *Cells lacking a charger represent municipal capital investment targets for the FY2030 vision rather than immediate legal violations.*
+

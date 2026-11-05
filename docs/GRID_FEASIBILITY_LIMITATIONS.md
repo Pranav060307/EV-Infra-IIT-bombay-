@@ -84,3 +84,4 @@ Under the **Maharashtra Electricity Regulatory Commission (MERC) Grid Code and M
 | `CAND-DIS-001` | Nagpur Central Railway Station | Nagpur | MIHAN Terminal 33kV Substation | **1.20 km** | 33 kV | Preliminary Proximity Verified |
 
 *All installations require formal MSEDCL commercial load sanction.*
+

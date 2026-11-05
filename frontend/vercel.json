@@ -1,4 +1,6 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "framework": "vite",
   "headers": [
@@ -21,4 +23,3 @@
     }
   ]
 }
-

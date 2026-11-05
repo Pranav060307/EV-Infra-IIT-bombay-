@@ -163,3 +163,4 @@ $$w_{\text{comp}} = 0.30,\quad w_{\text{coord}} = 0.30,\quad w_{\text{schema}} =
 
 ---
 *ChargeAtlas India Data Trust Engine — Developed by Team SuperNova for IIT Bombay Techfest 2026–27.*
+

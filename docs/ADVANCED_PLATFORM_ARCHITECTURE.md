@@ -114,3 +114,4 @@ Urban accessibility in Pune is evaluated at a 1 km $\times$ 1 km micro-resolutio
 | **Database** | PostgreSQL 16 + PostGIS / SQLite | Relational spatial database with spatial indexing |
 | **Caching & Delivery** | Vercel Edge CDN, GZip, Cache-Control | Global static caching with sub-30ms load times |
 | **Testing** | PyTest 9.2, AnyIO, TestClient | Automated regression, API, and spatial assertion test suites (45 tests) |
+

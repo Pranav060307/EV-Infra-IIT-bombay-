@@ -77,3 +77,4 @@ Guaranteeing that the selected package captures at least $63.2\%$ of the mathema
 | **Phase 1: Rapid Impact** | **5 Stations** | **₹2.50 Cr** | **64.2%** | High-density urban bottlenecks (Hinjawadi, Swargate, Baner) |
 | **Phase 2: Balanced Network** | **10 Stations** | **₹5.20 Cr** | **83.8%** | Urban cores + critical Samruddhi Interchanges (Igatpuri, Shirdi) |
 | **Phase 3: Comprehensive Grid** | **20 Stations** | **₹10.80 Cr** | **96.5%** | Complete statewide network eliminating all regional voids |
+

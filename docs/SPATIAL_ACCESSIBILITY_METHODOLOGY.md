@@ -108,3 +108,4 @@ $$\text{CGI} = w_{\text{ev}} \cdot S_{\text{ev}} + w_{\text{spatial}} \cdot S_{\
 
 ### Dynamic Sensitivity Rescoring:
 The API allows planners to adjust $w_{\text{ev}}, w_{\text{spatial}}, w_{\text{pop}}, w_{\text{policy}}$ in real-time, automatically normalizing $\sum w_i = 1.0$ and re-ranking districts dynamically.
+

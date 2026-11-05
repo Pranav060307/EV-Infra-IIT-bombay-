@@ -66,3 +66,4 @@ To bridge the 701 km corridor gap, ChargeAtlas models the optimal deployment pla
    - Jalna Interchange (Ch. 340 km)
    - Shirdi Interchange (Ch. 500 km)
    - Sinnar / Nashik Interchange (Ch. 580 km)
+

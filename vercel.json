@@ -1,8 +1,7 @@
 {
-  "buildCommand": "cd frontend && npm install && npm run build",
+  "buildCommand": "npm run build",
   "outputDirectory": "frontend/dist",
   "cleanUrls": true,
-  "framework": "vite",
   "headers": [
     {
       "source": "/data/(.*)",
@@ -23,4 +22,3 @@
     }
   ]
 }
-

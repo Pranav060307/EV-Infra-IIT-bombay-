@@ -93,3 +93,4 @@ $$K_{\text{required}} = \sum_{v \in \mathcal{V}} \frac{E_{\text{daily}, v}}{P_v 
 - $P_v$: Standard rated dispenser power (kW).
 - $h_v$: Dwell hours per charge.
 - $U = 0.70$: Practical daily charger utilization factor.
+

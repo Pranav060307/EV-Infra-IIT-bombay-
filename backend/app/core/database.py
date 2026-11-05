@@ -1,3 +1,5 @@
+import os
+import sys
 import logging
 from sqlalchemy import create_engine, text, event
 from sqlalchemy.orm import sessionmaker, declarative_base
@@ -12,8 +14,15 @@ def get_engine():
     Initializes database engine with strict environment segregation:
     1. In production ('production'), PostgreSQL/PostGIS is MANDATORY.
        Silent fallback to SQLite is strictly prohibited to guarantee data persistence and spatial indexing.
-    2. In development or testing, auto-fallback to SQLite is permitted if PostgreSQL is unreachable.
+    2. In testing or explicit SQLite mode, SQLite is used immediately to eliminate network socket delays.
+    3. In development 'auto' mode, attempts PostgreSQL and falls back to SQLite if unreachable.
     """
+    is_testing = (
+        settings.APP_ENV == "testing"
+        or "pytest" in sys.modules
+        or "PYTEST_CURRENT_TEST" in os.environ
+    )
+
     if settings.APP_ENV == "production":
         logger.info(f"Production environment active: connecting to PostgreSQL database '{settings.DB_NAME}' at {settings.DB_HOST}:{settings.DB_PORT}...")
         try:
@@ -34,6 +43,14 @@ def get_engine():
                 f"Production database connection failed: PostgreSQL at {settings.DB_HOST}:{settings.DB_PORT} "
                 f"is unreachable. SQLite fallback is disabled in production."
             ) from e
+
+    elif settings.DB_ENGINE_MODE == "sqlite" or is_testing:
+        engine = create_engine(
+            settings.sqlite_url, 
+            connect_args={"check_same_thread": False, "timeout": 30}
+        )
+        logger.info(f"Using SQLite database engine ({'Testing' if is_testing else 'Development'}).")
+        return engine, "sqlite"
 
     elif settings.DB_ENGINE_MODE == "postgres":
         try:

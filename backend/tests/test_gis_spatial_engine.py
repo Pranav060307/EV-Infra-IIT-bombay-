@@ -26,7 +26,9 @@ from app.api.v1.endpoints.gis import (
     get_district_profile,
     get_station_detail,
     get_stations,
-    get_samruddhi_corridor
+    get_samruddhi_corridor,
+    get_accessibility_buffers,
+    get_district_analysis
 )
 
 
@@ -145,3 +147,48 @@ def test_samruddhi_mop_compliance_disclaimers():
     # Check that segments have carriageway compliance disclaimer
     for seg in data["segments_analysis"]:
         assert "UNVERIFIED" in seg.get("directional_carriageway_compliance", "")
+
+
+def test_multilevel_accessibility_buffers():
+    """Verify multi-level spatial buffer engine (1km, 3km, 5km, 10km, 20km)."""
+    # Statewide buffers
+    state_buffers = get_accessibility_buffers()
+    assert "coverage_tiers" in state_buffers
+    assert len(state_buffers["coverage_tiers"]) == 5
+    assert state_buffers["coverage_tiers"][0]["radius_km"] == 1.0
+    assert state_buffers["coverage_tiers"][4]["radius_km"] == 20.0
+    
+    # Area coverage must be monotonically increasing with buffer radius
+    prev_area = 0.0
+    for tier in state_buffers["coverage_tiers"]:
+        assert tier["covered_area_sqkm"] >= prev_area
+        prev_area = tier["covered_area_sqkm"]
+
+    # District-filtered buffers (Pune)
+    pune_buffers = get_accessibility_buffers(district="Pune")
+    assert pune_buffers["region"] == "Pune"
+    assert len(pune_buffers["coverage_tiers"]) == 5
+    assert pune_buffers["active_stations_evaluated"] > 0
+
+
+def test_dynamic_cgi_weights_recomputation():
+    """Verify dynamic CGI recomputation with custom criteria weights."""
+    # 1. Default weights (35% EV ratio, 25% spatial, 20% per-capita, 20% policy)
+    default_res = get_district_analysis()
+    assert "districts" in default_res
+    top_default = default_res["districts"][0]
+    
+    # 2. Skew weights heavily toward spatial density gap (90% spatial, 10% other)
+    spatial_skew_res = get_district_analysis(
+        w_ev_ratio=0.03,
+        w_spatial=0.90,
+        w_per_capita=0.03,
+        w_policy=0.04
+    )
+    assert spatial_skew_res["active_weights"]["spatial_coverage"] > 0.85
+    top_spatial = spatial_skew_res["districts"][0]
+    
+    # Both calculations must succeed and return all 36 districts
+    assert len(default_res["districts"]) == 36
+    assert len(spatial_skew_res["districts"]) == 36
+    assert "gap_spatial_score" in top_spatial

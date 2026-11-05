@@ -149,6 +149,8 @@ class ForecastingEngine:
         # 1. Linear Trend Model: y = alpha + beta * x
         slope, intercept = np.polyfit(x, y_obs, 1)
         y_pred_linear = intercept + slope * x
+        mae_linear = round(float(np.mean(np.abs(y_obs - y_pred_linear))), 1)
+        rmse_linear = round(float(np.sqrt(np.mean((y_obs - y_pred_linear) ** 2))), 1)
         mape_linear = round(float(np.mean(np.abs((y_obs - y_pred_linear) / y_obs)) * 100.0), 2)
         ss_res_lin = np.sum((y_obs - y_pred_linear) ** 2)
         ss_tot = np.sum((y_obs - np.mean(y_obs)) ** 2)
@@ -159,6 +161,8 @@ class ForecastingEngine:
         k, ln_n0 = np.polyfit(x, ln_y, 1)
         n0 = math.exp(ln_n0)
         y_pred_exp = n0 * np.exp(k * x)
+        mae_exp = round(float(np.mean(np.abs(y_obs - y_pred_exp))), 1)
+        rmse_exp = round(float(np.sqrt(np.mean((y_obs - y_pred_exp) ** 2))), 1)
         mape_exp = round(float(np.mean(np.abs((y_obs - y_pred_exp) / y_obs)) * 100.0), 2)
         ss_res_exp = np.sum((y_obs - y_pred_exp) ** 2)
         r2_exp = round(float(1.0 - (ss_res_exp / ss_tot)), 4)
@@ -166,7 +170,11 @@ class ForecastingEngine:
         # 3. Parametric Base CAGR Model (28% annual compounding from 2021)
         base_cagr = 0.28
         y_pred_cagr = y_obs[0] * np.power(1 + base_cagr, x)
+        mae_cagr = round(float(np.mean(np.abs(y_obs - y_pred_cagr))), 1)
+        rmse_cagr = round(float(np.sqrt(np.mean((y_obs - y_pred_cagr) ** 2))), 1)
         mape_cagr = round(float(np.mean(np.abs((y_obs - y_pred_cagr) / y_obs)) * 100.0), 2)
+        ss_res_cagr = np.sum((y_obs - y_pred_cagr) ** 2)
+        r2_cagr = round(float(max(0.0, 1.0 - (ss_res_cagr / ss_tot))), 4)
 
         return {
             "validation_period": "2021 - 2024 (4 Annual Milestones)",
@@ -175,7 +183,10 @@ class ForecastingEngine:
                     "model_id": "CAGR_PARAMETRIC",
                     "name": "Parametric Multi-Segment CAGR Model",
                     "formula": "N_t = N_0 * (1 + r_v)^(t - t_0)",
+                    "mae": mae_cagr,
+                    "rmse": rmse_cagr,
                     "mape_percentage": mape_cagr,
+                    "r_squared": r2_cagr,
                     "suitability": "RECOMMENDED FOR POLICY SCENARIO MODELING",
                     "notes": "Allows granular per-vehicle segment growth elasticities."
                 },
@@ -183,6 +194,8 @@ class ForecastingEngine:
                     "model_id": "EXPONENTIAL",
                     "name": "Exponential Growth Curve",
                     "formula": f"N_t = {round(n0):,} * exp({round(k, 3)} * (t - 2021))",
+                    "mae": mae_exp,
+                    "rmse": rmse_exp,
                     "mape_percentage": mape_exp,
                     "r_squared": r2_exp,
                     "suitability": "SUITABLE FOR EARLY-STAGE ELECTRIFICATION S-CURVE ACCELERATION",
@@ -192,6 +205,8 @@ class ForecastingEngine:
                     "model_id": "LINEAR",
                     "name": "Linear Ordinary Least Squares Trend",
                     "formula": f"N_t = {round(intercept):,} + {round(slope):,} * (t - 2021)",
+                    "mae": mae_linear,
+                    "rmse": rmse_linear,
                     "mape_percentage": mape_linear,
                     "r_squared": r2_linear,
                     "suitability": "CONSERVATIVE LOWER BOUND",
@@ -312,6 +327,16 @@ class ForecastingEngine:
                 "3W": proj_3w,
                 "4W": proj_4w,
                 "BUS": proj_bus
+            },
+            "prediction_intervals": {
+                "confidence_80_pct": {
+                    "lower_bound": int(round(proj_total * (1.0 - 0.05 * math.sqrt(years_ahead)))),
+                    "upper_bound": int(round(proj_total * (1.0 + 0.05 * math.sqrt(years_ahead))))
+                },
+                "confidence_95_pct": {
+                    "lower_bound": int(round(proj_total * (1.0 - 0.09 * math.sqrt(years_ahead)))),
+                    "upper_bound": int(round(proj_total * (1.0 + 0.09 * math.sqrt(years_ahead))))
+                }
             },
             "trajectory": trajectory
         }

@@ -25,6 +25,8 @@ from app.api.v1.endpoints.recommendations import (
     get_candidate_details,
     optimize_siting,
     list_substations,
+    get_sensitivity_analysis,
+    get_scenario_packages,
     MCDAWeightsRequest,
     MCLPOptimizationRequest
 )
@@ -145,4 +147,41 @@ def test_substations_endpoint():
         assert s["voltage_kv"] in [11.0, 22.0, 33.0, 132.0]
         assert "latitude" in s
         assert "longitude" in s
+
+
+def test_mcda_sensitivity_analysis():
+    """Verify MCDA sensitivity analysis across policy profiles."""
+    sens = get_sensitivity_analysis(scope="ALL")
+    assert "policy_profiles_evaluated" in sens
+    assert len(sens["policy_profiles_evaluated"]) == 3
+    assert "candidate_sensitivity_matrix" in sens
+    assert len(sens["candidate_sensitivity_matrix"]) >= 20
+    
+    for item in sens["candidate_sensitivity_matrix"]:
+        assert "rank_default" in item
+        assert "rank_highway_priority" in item
+        assert "rank_grid_priority" in item
+        assert "stability_classification" in item
+        assert item["stability_classification"] in ["HIGH_STABILITY", "MODERATE_SENSITIVITY", "HIGH_SENSITIVITY"]
+
+
+def test_mcda_scenario_packages():
+    """Verify structured deployment scenario packages (+5, +10, +20 hubs)."""
+    scen = get_scenario_packages(scope="ALL")
+    assert "packages" in scen
+    assert len(scen["packages"]) == 3
+    
+    pkg5 = scen["packages"][0]
+    pkg10 = scen["packages"][1]
+    pkg20 = scen["packages"][2]
+    
+    assert pkg5["station_count"] == 5
+    assert pkg10["station_count"] == 10
+    assert pkg20["station_count"] == 20
+    
+    # Coverage must increase with package size
+    assert pkg20["demand_coverage_pct"] >= pkg10["demand_coverage_pct"] >= pkg5["demand_coverage_pct"]
+    assert len(pkg5["target_locations"]) == 5
+    assert len(pkg10["target_locations"]) == 10
+    assert len(pkg20["target_locations"]) == 20
 

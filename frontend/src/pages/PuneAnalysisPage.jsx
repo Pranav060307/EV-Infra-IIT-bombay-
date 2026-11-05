@@ -1,5 +1,19 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { Crosshair, MapPin, Zap, CheckCircle2, AlertTriangle, Info, ShieldCheck, RefreshCw, Layers } from 'lucide-react';
+import { 
+  Crosshair, 
+  MapPin, 
+  Zap, 
+  CheckCircle2, 
+  AlertTriangle, 
+  Info, 
+  ShieldCheck, 
+  RefreshCw, 
+  Layers,
+  Download,
+  Navigation,
+  Clock,
+  Compass
+} from 'lucide-react';
 import { getPuneUrbanSummary, getPuneUrbanGrid, getVerifiedStations } from '../services/api';
 import MapLibreMap from '../components/common/MapLibreMap';
 
@@ -116,9 +130,60 @@ export const PuneAnalysisPage = () => {
     }));
   }, [stations]);
 
+  // CSV Export for Pune 1km² Grid
+  const handleExportGridCSV = () => {
+    if (!gridData?.grid_geojson?.features) return;
+    const headers = [
+      'Cell_ID',
+      'Area_sqkm',
+      'Station_Count',
+      'Charging_Points',
+      'Total_Power_kW',
+      'Nearest_Station_Distance_m',
+      'Road_Distance_Est_m',
+      'Peak_Travel_Time_min',
+      'Offpeak_Travel_Time_min',
+      'Accessibility_Tier',
+      'CGI_Score',
+      'MoP_Status'
+    ];
+    const rows = gridData.grid_geojson.features.map(f => {
+      const p = f.properties;
+      const roadDist = p.road_distance_est_m || Math.round((p.nearest_station_distance_m || 0) * 1.32);
+      const peakTime = p.peak_travel_time_min || (p.nearest_station_distance_m ? Math.round((roadDist / 1000 / 22 * 60) * 10) / 10 : '');
+      const offpeakTime = p.offpeak_travel_time_min || (p.nearest_station_distance_m ? Math.round((roadDist / 1000 / 35 * 60) * 10) / 10 : '');
+      const tier = p.accessibility_tier || (p.nearest_station_distance_m <= 1000 ? 'DIRECT_WALKING' : p.nearest_station_distance_m <= 3000 ? 'URBAN_NEIGHBORHOOD' : p.nearest_station_distance_m <= 5000 ? 'EXTENDED_TRANSIT' : 'CHARGING_DESERT');
+
+      return [
+        p.cell_id,
+        p.cell_area_sqkm || 1.0,
+        p.station_count || 0,
+        p.charging_point_count || 0,
+        p.total_power_kw || 0,
+        p.nearest_station_distance_m || '',
+        roadDist,
+        peakTime,
+        offpeakTime,
+        tier,
+        p.cgi_score || '',
+        `"${p.mop_policy_status || ''}"`
+      ];
+    });
+    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'pune_urban_1km_grid_cells.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const policyEval = summaryData?.mop_policy_evaluation || gridData?.mop_policy_evaluation;
   const summaryStats = summaryData?.summary || gridData?.summary;
   const totalCells = summaryData?.total_grid_cells || gridData?.total_grid_cells || 607;
+  const multiAcc = summaryStats?.multi_level_accessibility;
+  const roadModeling = summaryStats?.road_transit_modeling;
 
   return (
     <div className="p-6 md:p-8 space-y-6 max-w-7xl mx-auto">
@@ -157,6 +222,15 @@ export const PuneAnalysisPage = () => {
           >
             <RefreshCw className={`w-3.5 h-3.5 text-accent-teal ${refreshing ? 'animate-spin' : ''}`} />
             <span>{refreshing ? 'Recalculating...' : 'Recalculate Grid'}</span>
+          </button>
+
+          <button
+            onClick={handleExportGridCSV}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-navy-700 bg-navy-850 text-slate-300 hover:text-white hover:bg-navy-800 transition-colors"
+            title="Download all 607 Pune grid cells as CSV"
+          >
+            <Download className="w-3.5 h-3.5 text-accent-green" />
+            <span>Export CSV</span>
           </button>
 
           <span className="h-4 w-[1px] bg-navy-700 hidden sm:block"></span>
@@ -277,6 +351,73 @@ export const PuneAnalysisPage = () => {
         </div>
       </div>
 
+      {/* Multi-Level Accessibility Isochrone Cards */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between text-xs">
+          <span className="font-semibold text-white flex items-center gap-1.5">
+            <Compass className="w-4 h-4 text-accent-teal" />
+            Multi-Level Urban Accessibility Distribution (MoP Siting Tiers)
+          </span>
+          <span className="text-slate-400 font-mono text-[11px]">
+            Circuity Factor: 1.32x | Peak: 22 km/h | Off-Peak: 35 km/h
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="p-3.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold text-emerald-400">Direct Walking (&lt;1 km)</span>
+              <span className="text-xs font-mono font-bold text-emerald-300">
+                {multiAcc?.direct_walking_under_1km?.pct ?? 2.8}%
+              </span>
+            </div>
+            <div className="text-xl font-bold font-mono text-white mt-1">
+              {multiAcc?.direct_walking_under_1km?.cells ?? 17} <span className="text-xs font-normal text-slate-400">cells</span>
+            </div>
+            <div className="text-[10px] text-emerald-300/80 mt-1">&le;3.6 min off-peak / &le;5.7 min peak</div>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-cyan-950/20 border border-cyan-500/30">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold text-cyan-400">Neighborhood (1–3 km)</span>
+              <span className="text-xs font-mono font-bold text-cyan-300">
+                {multiAcc?.urban_neighborhood_1_to_3km?.pct ?? 22.2}%
+              </span>
+            </div>
+            <div className="text-xl font-bold font-mono text-white mt-1">
+              {multiAcc?.urban_neighborhood_1_to_3km?.cells ?? 135} <span className="text-xs font-normal text-slate-400">cells</span>
+            </div>
+            <div className="text-[10px] text-cyan-300/80 mt-1">3.6–10.8 min off-peak / 5.7–17.1 min peak</div>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-amber-950/20 border border-amber-500/30">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold text-amber-400">Extended Transit (3–5 km)</span>
+              <span className="text-xs font-mono font-bold text-amber-300">
+                {multiAcc?.extended_transit_3_to_5km?.pct ?? 26.7}%
+              </span>
+            </div>
+            <div className="text-xl font-bold font-mono text-white mt-1">
+              {multiAcc?.extended_transit_3_to_5km?.cells ?? 162} <span className="text-xs font-normal text-slate-400">cells</span>
+            </div>
+            <div className="text-[10px] text-amber-300/80 mt-1">10.8–18.0 min off-peak / 17.1–28.5 min peak</div>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-rose-950/20 border border-rose-500/30">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold text-rose-400">Charging Deserts (&gt;5 km)</span>
+              <span className="text-xs font-mono font-bold text-rose-300">
+                {multiAcc?.charging_deserts_over_5km?.pct ?? 48.3}%
+              </span>
+            </div>
+            <div className="text-xl font-bold font-mono text-white mt-1">
+              {multiAcc?.charging_deserts_over_5km?.cells ?? 293} <span className="text-xs font-normal text-slate-400">cells</span>
+            </div>
+            <div className="text-[10px] text-rose-300/80 mt-1">&gt;18.0 min off-peak / &gt;28.5 min peak (URGENT)</div>
+          </div>
+        </div>
+      </div>
+
       {/* Main Map + Cell Detail Inspector */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Map Container */}
@@ -340,7 +481,7 @@ export const PuneAnalysisPage = () => {
                 </div>
               </div>
 
-              <div className="space-y-2.5 pt-1 text-xs">
+              <div className="space-y-2 pt-1 text-xs">
                 <div className="flex justify-between py-1 border-b border-navy-700">
                   <span className="text-muted-grey">Stations in Cell:</span>
                   <span className="font-bold font-mono text-white">{selectedCell.station_count}</span>
@@ -354,9 +495,33 @@ export const PuneAnalysisPage = () => {
                   <span className="font-bold font-mono text-white">{selectedCell.total_power_kw || 0} kW</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-navy-700">
-                  <span className="text-muted-grey">Distance to Nearest Charger:</span>
+                  <span className="text-muted-grey">Euclidean Distance:</span>
                   <span className="font-bold font-mono text-accent-amber">
                     {selectedCell.nearest_station_distance_m ? `${selectedCell.nearest_station_distance_m} m` : 'N/A'}
+                  </span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-navy-700">
+                  <span className="text-muted-grey">Road Distance (1.32x):</span>
+                  <span className="font-bold font-mono text-cyan-300">
+                    {selectedCell.road_distance_est_m ? `${selectedCell.road_distance_est_m} m (${(selectedCell.road_distance_est_m / 1000).toFixed(2)} km)` : selectedCell.nearest_station_distance_m ? `${Math.round(selectedCell.nearest_station_distance_m * 1.32)} m (${(selectedCell.nearest_station_distance_m * 1.32 / 1000).toFixed(2)} km)` : 'N/A'}
+                  </span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-navy-700">
+                  <span className="text-muted-grey">Peak Travel Time (22 km/h):</span>
+                  <span className="font-bold font-mono text-amber-300">
+                    {selectedCell.peak_travel_time_min ? `${selectedCell.peak_travel_time_min} min` : selectedCell.nearest_station_distance_m ? `${Math.round((selectedCell.nearest_station_distance_m * 1.32 / 1000 / 22 * 60) * 10) / 10} min` : 'N/A'}
+                  </span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-navy-700">
+                  <span className="text-muted-grey">Off-Peak Travel (35 km/h):</span>
+                  <span className="font-bold font-mono text-emerald-300">
+                    {selectedCell.offpeak_travel_time_min ? `${selectedCell.offpeak_travel_time_min} min` : selectedCell.nearest_station_distance_m ? `${Math.round((selectedCell.nearest_station_distance_m * 1.32 / 1000 / 35 * 60) * 10) / 10} min` : 'N/A'}
+                  </span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-navy-700">
+                  <span className="text-muted-grey">Accessibility Tier:</span>
+                  <span className="font-bold font-mono text-purple-300">
+                    {selectedCell.accessibility_tier || (selectedCell.nearest_station_distance_m <= 1000 ? 'DIRECT_WALKING' : selectedCell.nearest_station_distance_m <= 3000 ? 'URBAN_NEIGHBORHOOD' : selectedCell.nearest_station_distance_m <= 5000 ? 'EXTENDED_TRANSIT' : 'CHARGING_DESERT')}
                   </span>
                 </div>
                 <div className="flex justify-between py-1">
@@ -379,7 +544,7 @@ export const PuneAnalysisPage = () => {
           )}
 
           <div className="pt-4 border-t border-navy-700 text-[11px] text-muted-grey flex items-center justify-between">
-            <span>PMC & PCMC Town Planning Master Plan</span>
+            <span>PMC &amp; PCMC Town Planning Master Plan</span>
             <span className="text-accent-green font-semibold">VERIFIED GIS</span>
           </div>
         </div>

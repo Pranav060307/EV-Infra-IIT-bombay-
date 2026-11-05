@@ -88,6 +88,32 @@ def optimize_siting(req: MCLPOptimizationRequest = Body(...)):
     )
 
 
+@router.get("/sensitivity", summary="MCDA Siting Sensitivity & Rank Stability Analysis")
+def get_sensitivity_analysis(
+    scope: Optional[str] = Query("ALL", description="Filter scope: ALL, PUNE, SAMRUDDHI, or DISTRICTS")
+):
+    """
+    Evaluates rank shifts across 3 policy weighting profiles:
+    Balanced Baseline, Highway Priority (40% road), and Grid Feasibility Priority (40% electrical).
+    """
+    sc = getattr(scope, "default", scope) or "ALL"
+    return recommender_engine.run_sensitivity_analysis(scope=sc)
+
+
+@router.get("/scenarios", summary="Packaged Rollout Scenarios (+5, +10, +20 Stations)")
+def get_scenario_packages(
+    scope: Optional[str] = Query("ALL", description="Filter scope: ALL, PUNE, SAMRUDDHI, or DISTRICTS")
+):
+    """
+    Returns pre-packaged rollout scenarios with CAPEX, demand saturation, and target site lists:
+    - Phase 1: Rapid Impact (+5 Hubs, ~₹2.5 Cr)
+    - Phase 2: Balanced Network (+10 Hubs, ~₹5.2 Cr)
+    - Phase 3: Comprehensive Siting (+20 Hubs, ~₹10.8 Cr)
+    """
+    sc = getattr(scope, "default", scope) or "ALL"
+    return recommender_engine.get_scenario_packages(scope=sc)
+
+
 @router.get("/substations", summary="List Distribution Substations for Infrastructure Mapping")
 def list_substations():
     """Returns 13 mapped 33kV/22kV/11kV substations across Pune and Samruddhi corridor."""

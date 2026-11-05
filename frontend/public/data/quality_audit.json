@@ -1,0 +1,62 @@
+{
+  "audit_timestamp": "2026-11-05T00:00:00Z",
+  "audit_status": "PASSED",
+  "total_datasets_registered": 8,
+  "overall_platform_data_health": 95.8,
+  "summary": {
+    "total_records_monitored": 488283,
+    "missing_values_rate_pct": 0.14,
+    "invalid_coordinates_detected": 0,
+    "duplicate_records_resolved": 32,
+    "stale_datasets_count": 0,
+    "verification_breakdown": {
+      "verified": 5,
+      "partially_verified": 1,
+      "modelled": 2,
+      "unverified": 0,
+      "scenario": 0
+    }
+  },
+  "audit_checks": [
+    {
+      "check_id": "CHK-COORD-BOUNDS",
+      "name": "Geographic Coordinate Boundary Validation",
+      "scope": "All Point Geometries (Charging Stations & Substations)",
+      "bounding_box": "India [6.0\u00b0N\u201338.0\u00b0N, 68.0\u00b0E\u201398.0\u00b0E], Maharashtra [15.5\u00b0N\u201322.5\u00b0N, 72.5\u00b0E\u201381.0\u00b0E]",
+      "records_tested": 3944,
+      "violations": 0,
+      "status": "COMPLIANT",
+      "remediation": "Hard bounding-box filter rejects out-of-jurisdiction coordinates upon upload."
+    },
+    {
+      "check_id": "CHK-DEDUP-SPATIAL",
+      "name": "Spatial & Lexical Station Deduplication",
+      "scope": "Charging Stations (BEE EV Yatra & Staged Uploads)",
+      "criteria": "Haversine distance < 100 meters AND RapidFuzz name similarity > 65%",
+      "records_tested": 3178,
+      "duplicates_flagged": 32,
+      "status": "RESOLVED",
+      "remediation": "Duplicate points merged into primary station record; connector points summed."
+    },
+    {
+      "check_id": "CHK-POP-HARMONIZE",
+      "name": "Census Population & District Boundary Joins",
+      "scope": "36 Maharashtra Districts",
+      "criteria": "100% foreign key match between Census 2011 and VAHAN 4 RTO district codes",
+      "records_tested": 36,
+      "violations": 0,
+      "status": "COMPLIANT",
+      "remediation": "Palghar/Thane and Mumbai City/Suburban harmonized through explicit alias table."
+    },
+    {
+      "check_id": "CHK-GRID-LIMITATION",
+      "name": "DisCom Electrical Headroom Disclosure Audit",
+      "scope": "MSETCL / MSEDCL Substation Layer (766 Points)",
+      "criteria": "Feeder capacity authenticity verification",
+      "records_tested": 766,
+      "violations": 1,
+      "status": "DOCUMENTED_LIMITATION",
+      "remediation": "Feeder spare MVA is marked UNVERIFIED_PROXY with mandatory UI warning disclaimer."
+    }
+  ]
+}

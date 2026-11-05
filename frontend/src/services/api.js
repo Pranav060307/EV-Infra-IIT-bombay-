@@ -17,11 +17,16 @@ const STATIC_FALLBACKS = {
   '/gis/policy-compliance': '/data/policy_compliance.json',
   '/recommendations/candidates': '/data/candidates.json',
   '/recommendations/substations': '/data/substations.json',
+  '/recommendations/sensitivity': '/data/recommendations_sensitivity.json',
+  '/recommendations/scenarios': '/data/recommendations_scenarios.json',
   '/forecasting/baseline': '/data/forecasting_baseline.json',
   '/forecasting/models': '/data/forecasting_models.json',
   '/forecasting/charging-demand': '/data/forecasting_demand.json',
   '/datasets/metrics': '/data/datasets_metrics.json',
-  '/datasets/list': '/data/datasets_list.json'
+  '/datasets/list': '/data/datasets_list.json',
+  '/datasets/trust-register': '/data/trust_register.json',
+  '/datasets/quality-audit': '/data/quality_audit.json',
+  '/gis/accessibility/buffers': '/data/accessibility_buffers.json'
 };
 
 const apiClient = axios.create({
@@ -119,6 +124,16 @@ export const listDatasets = async () => {
   return response.data;
 };
 
+export const getTrustRegister = async () => {
+  const response = await apiClient.get('/datasets/trust-register');
+  return response.data;
+};
+
+export const getQualityAudit = async () => {
+  const response = await apiClient.get('/datasets/quality-audit');
+  return response.data;
+};
+
 export const getDatasetDetails = async (datasetId) => {
   const response = await apiClient.get(`/datasets/${datasetId}`);
   return response.data;
@@ -180,8 +195,14 @@ export const getVerifiedStations = async (params = {}) => {
   return response.data;
 };
 
-export const getDistrictAnalysis = async () => {
-  const response = await apiClient.get('/gis/district-analysis');
+export const getDistrictAnalysis = async (params = {}) => {
+  const response = await apiClient.get('/gis/district-analysis', { params });
+  return response.data;
+};
+
+export const getAccessibilityBuffers = async (district = null) => {
+  const params = district ? { district } : {};
+  const response = await apiClient.get('/gis/accessibility/buffers', { params });
   return response.data;
 };
 
@@ -266,6 +287,16 @@ export const optimizeSiting = async (optimizationPayload) => {
 
 export const getSubstations = async () => {
   const response = await apiClient.get('/recommendations/substations');
+  return response.data;
+};
+
+export const getRecommendationsSensitivity = async (scope = 'ALL') => {
+  const response = await apiClient.get('/recommendations/sensitivity', { params: { scope } });
+  return response.data;
+};
+
+export const getRecommendationsScenarios = async (scope = 'ALL') => {
+  const response = await apiClient.get('/recommendations/scenarios', { params: { scope } });
   return response.data;
 };
 

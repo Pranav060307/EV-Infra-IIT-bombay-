@@ -1,0 +1,297 @@
+{
+  "policy_profiles_evaluated": [
+    {
+      "profile": "BALANCED_BASELINE",
+      "weights": {
+        "ev_demand_potential": 0.25,
+        "distance_from_chargers": 0.2,
+        "infrastructure_gap_severity": 0.15,
+        "road_accessibility": 0.15,
+        "electrical_proximity": 0.15,
+        "land_suitability": 0.1
+      },
+      "description": "Standard AHP Multi-Criteria Weights"
+    },
+    {
+      "profile": "HIGHWAY_PRIORITY",
+      "weights": {
+        "ev_demand_potential": 0.25,
+        "distance_from_chargers": 0.1,
+        "infrastructure_gap_severity": 0.1,
+        "road_accessibility": 0.4,
+        "electrical_proximity": 0.1,
+        "land_suitability": 0.05
+      },
+      "description": "Prioritizes arterial transit corridors and intermodal hubs"
+    },
+    {
+      "profile": "GRID_PRIORITY",
+      "weights": {
+        "ev_demand_potential": 0.25,
+        "distance_from_chargers": 0.1,
+        "infrastructure_gap_severity": 0.1,
+        "road_accessibility": 0.1,
+        "electrical_proximity": 0.4,
+        "land_suitability": 0.05
+      },
+      "description": "Prioritizes minimum distance to 11kV/33kV substations to reduce CAPEX"
+    }
+  ],
+  "total_candidates_analyzed": 23,
+  "robust_candidates_count": 13,
+  "candidate_sensitivity_matrix": [
+    {
+      "candidate_id": "CAND-SAM-006",
+      "name": "Igatpuri Hillways Wayside Amenity (Chainage 670 km)",
+      "scope": "SAMRUDDHI",
+      "rank_default": 1,
+      "rank_highway_priority": 1,
+      "rank_grid_priority": 1,
+      "max_rank_delta": 0,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Robust candidate maintaining top tier across all criteria weightings."
+    },
+    {
+      "candidate_id": "CAND-SAM-001",
+      "name": "Karanja Lad Wayside Complex (Chainage 210 km)",
+      "scope": "SAMRUDDHI",
+      "rank_default": 2,
+      "rank_highway_priority": 2,
+      "rank_grid_priority": 2,
+      "max_rank_delta": 0,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Robust candidate maintaining top tier across all criteria weightings."
+    },
+    {
+      "candidate_id": "CAND-SAM-005",
+      "name": "Sinnar Bypass Freight Terminal (Chainage 615 km)",
+      "scope": "SAMRUDDHI",
+      "rank_default": 3,
+      "rank_highway_priority": 3,
+      "rank_grid_priority": 3,
+      "max_rank_delta": 0,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Robust candidate maintaining top tier across all criteria weightings."
+    },
+    {
+      "candidate_id": "CAND-DST-002",
+      "name": "Chhatrapati Sambhajinagar Railway Station Public Parking",
+      "scope": "DISTRICTS",
+      "rank_default": 4,
+      "rank_highway_priority": 9,
+      "rank_grid_priority": 4,
+      "max_rank_delta": 5,
+      "stability_classification": "MODERATE_SENSITIVITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-DST-005",
+      "name": "Ahmednagar Market Yard Commercial Node",
+      "scope": "DISTRICTS",
+      "rank_default": 5,
+      "rank_highway_priority": 7,
+      "rank_grid_priority": 5,
+      "max_rank_delta": 2,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Robust candidate maintaining top tier across all criteria weightings."
+    },
+    {
+      "candidate_id": "CAND-DST-001",
+      "name": "Nashik Central CBS Bus Terminal (MSRTC)",
+      "scope": "DISTRICTS",
+      "rank_default": 6,
+      "rank_highway_priority": 4,
+      "rank_grid_priority": 7,
+      "max_rank_delta": 2,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-DST-003",
+      "name": "Kolhapur Central Bus Stand (CBS) Kawala Naka",
+      "scope": "DISTRICTS",
+      "rank_default": 7,
+      "rank_highway_priority": 5,
+      "rank_grid_priority": 11,
+      "max_rank_delta": 4,
+      "stability_classification": "MODERATE_SENSITIVITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-DST-004",
+      "name": "Solapur Old Pune Naka Commercial Hub (NH-65)",
+      "scope": "DISTRICTS",
+      "rank_default": 8,
+      "rank_highway_priority": 6,
+      "rank_grid_priority": 8,
+      "max_rank_delta": 2,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-SAM-003",
+      "name": "Jalna East Logistics Hub & Dry Port Spur (Chainage 415 km)",
+      "scope": "SAMRUDDHI",
+      "rank_default": 9,
+      "rank_highway_priority": 8,
+      "rank_grid_priority": 6,
+      "max_rank_delta": 3,
+      "stability_classification": "MODERATE_SENSITIVITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-SAM-002",
+      "name": "Mehkar Intermodal Rest Oasis (Chainage 325 km)",
+      "scope": "SAMRUDDHI",
+      "rank_default": 10,
+      "rank_highway_priority": 10,
+      "rank_grid_priority": 18,
+      "max_rank_delta": 8,
+      "stability_classification": "HIGH_SENSITIVITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-DST-007",
+      "name": "Amravati Rajkamal Square Public Transit Node",
+      "scope": "DISTRICTS",
+      "rank_default": 11,
+      "rank_highway_priority": 11,
+      "rank_grid_priority": 22,
+      "max_rank_delta": 11,
+      "stability_classification": "HIGH_SENSITIVITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-SAM-007",
+      "name": "Pulgaon Wardha Toll Plaza Rest Hub (Chainage 95 km)",
+      "scope": "SAMRUDDHI",
+      "rank_default": 12,
+      "rank_highway_priority": 12,
+      "rank_grid_priority": 10,
+      "max_rank_delta": 2,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-DST-006",
+      "name": "Satara Powai Naka Municipal Multi-Purpose Lot",
+      "scope": "DISTRICTS",
+      "rank_default": 13,
+      "rank_highway_priority": 14,
+      "rank_grid_priority": 13,
+      "max_rank_delta": 1,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-DST-008",
+      "name": "Jalgaon Station Road Municipal Parking Lot",
+      "scope": "DISTRICTS",
+      "rank_default": 14,
+      "rank_highway_priority": 16,
+      "rank_grid_priority": 19,
+      "max_rank_delta": 5,
+      "stability_classification": "MODERATE_SENSITIVITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-SAM-004",
+      "name": "Vaijapur Expressway Fuel Oasis (Chainage 510 km)",
+      "scope": "SAMRUDDHI",
+      "rank_default": 15,
+      "rank_highway_priority": 13,
+      "rank_grid_priority": 14,
+      "max_rank_delta": 2,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-PUN-007",
+      "name": "Hadapsar Gadital PMPML Intercity Depot",
+      "scope": "PUNE",
+      "rank_default": 16,
+      "rank_highway_priority": 15,
+      "rank_grid_priority": 9,
+      "max_rank_delta": 7,
+      "stability_classification": "HIGH_SENSITIVITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-PUN-004",
+      "name": "Chakan MIDC Phase 2 Freight & Industrial Terminal",
+      "scope": "PUNE",
+      "rank_default": 17,
+      "rank_highway_priority": 17,
+      "rank_grid_priority": 15,
+      "max_rank_delta": 2,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-PUN-001",
+      "name": "Hinjawadi Phase 3 Transit Hub & PMPML Bus Bay",
+      "scope": "PUNE",
+      "rank_default": 18,
+      "rank_highway_priority": 21,
+      "rank_grid_priority": 12,
+      "max_rank_delta": 6,
+      "stability_classification": "HIGH_SENSITIVITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-PUN-002",
+      "name": "Wagholi Pune-Ahmednagar Highway Junction (NH-753F)",
+      "scope": "PUNE",
+      "rank_default": 19,
+      "rank_highway_priority": 18,
+      "rank_grid_priority": 16,
+      "max_rank_delta": 3,
+      "stability_classification": "MODERATE_SENSITIVITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-PUN-003",
+      "name": "Bavdhan - Paud Road Interchange (NH-48 Bypass)",
+      "scope": "PUNE",
+      "rank_default": 20,
+      "rank_highway_priority": 20,
+      "rank_grid_priority": 17,
+      "max_rank_delta": 3,
+      "stability_classification": "MODERATE_SENSITIVITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-PUN-005",
+      "name": "Katraj Wonder City Bus Terminus (Satara Road)",
+      "scope": "PUNE",
+      "rank_default": 21,
+      "rank_highway_priority": 19,
+      "rank_grid_priority": 21,
+      "max_rank_delta": 2,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-PUN-006",
+      "name": "Bhosari MIDC Telco Road Public Parking Hub",
+      "scope": "PUNE",
+      "rank_default": 22,
+      "rank_highway_priority": 22,
+      "rank_grid_priority": 20,
+      "max_rank_delta": 2,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    },
+    {
+      "candidate_id": "CAND-PUN-008",
+      "name": "Pimpri Railway Station Public Multi-Level Parking",
+      "scope": "PUNE",
+      "rank_default": 23,
+      "rank_highway_priority": 23,
+      "rank_grid_priority": 23,
+      "max_rank_delta": 0,
+      "stability_classification": "HIGH_STABILITY",
+      "sensitivity_verdict": "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+    }
+  ]
+}

@@ -12,7 +12,12 @@ import {
   Layers, 
   Maximize2, 
   Search,
-  RefreshCw
+  RefreshCw,
+  Download,
+  Timer,
+  Gauge,
+  Compass,
+  AlertCircle
 } from 'lucide-react';
 import { getSamruddhiCorridor } from '../services/api';
 import MapLibreMap from '../components/common/MapLibreMap';
@@ -127,6 +132,41 @@ export const SamruddhiPage = () => {
     return m;
   }, [corridorData, layerVisibility]);
 
+  // CSV Export for Samruddhi Corridor Segments
+  const handleExportCorridorCSV = () => {
+    if (!corridorData?.segments_analysis) return;
+    const headers = [
+      'Segment_Index',
+      'Chainage_Range',
+      'Start_km',
+      'End_km',
+      'Stations_Count',
+      'Nearest_Station_km',
+      'Heavy_Duty_240kW',
+      'MoP_Compliance',
+      'Directional_Carriageway_Access'
+    ];
+    const rows = corridorData.segments_analysis.map(s => [
+      s.segment_index,
+      `"${s.chainage_range}"`,
+      s.start_km,
+      s.end_km,
+      s.stations_count,
+      s.nearest_station_km !== null ? s.nearest_station_km : '',
+      `"${s.heavy_duty_fast_charging_compliance || ''}"`,
+      `"${s.mop_compliance || ''}"`,
+      `"${s.directional_carriageway_compliance || ''}"`
+    ]);
+    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'samruddhi_20km_segments.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const handleResetCorridorView = () => {
     setMapCenter([76.242, 20.155]);
     setMapZoom(7.2);
@@ -135,6 +175,8 @@ export const SamruddhiPage = () => {
   const policyEval = corridorData?.policy_provisions_evaluation;
   const compliance20km = policyEval?.provision_1_spacing_20km?.compliance_percentage ?? 27.3;
   const deficitSegmentsCount = policyEval?.provision_1_spacing_20km?.deficit_segments ?? 24;
+  const transitMetrics = corridorData?.expressway_travel_metrics;
+  const bufferSens = corridorData?.lateral_buffer_sensitivity;
 
   return (
     <div className="p-6 md:p-8 space-y-6 max-w-7xl mx-auto">
@@ -171,6 +213,14 @@ export const SamruddhiPage = () => {
           >
             <RefreshCw className={`w-3.5 h-3.5 text-accent-teal ${refreshing ? 'animate-spin' : ''}`} />
             <span>{refreshing ? 'Recalculating...' : 'Recalculate'}</span>
+          </button>
+          <button
+            onClick={handleExportCorridorCSV}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-navy-700 bg-navy-850 text-slate-300 hover:text-white hover:bg-navy-800 transition-colors"
+            title="Download Samruddhi 20km segments audit as CSV"
+          >
+            <Download className="w-3.5 h-3.5 text-accent-green" />
+            <span>Export CSV</span>
           </button>
           <button
             onClick={handleResetCorridorView}
@@ -255,6 +305,71 @@ export const SamruddhiPage = () => {
             {deficitSegmentsCount}
           </div>
           <div className="text-xs text-accent-red mt-1">Washim &amp; Buldhana Sectors</div>
+        </div>
+      </div>
+
+      {/* Expressway Transit Modeling & Buffer Sensitivity Highlights */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="p-4 rounded-xl bg-navy-850 border border-navy-700 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-accent-amber flex items-center gap-1.5">
+              <Gauge className="w-3.5 h-3.5" />
+              Expressway Transit Duration
+            </span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-accent-amber/15 text-accent-amber">
+              120 km/h DESIGN
+            </span>
+          </div>
+          <div className="text-2xl font-bold font-mono text-white">
+            {transitMetrics?.total_transit_time_hours ?? 5.37} <span className="text-xs font-normal text-slate-400">hours</span>
+          </div>
+          <p className="text-[11px] text-slate-400 leading-snug">
+            Calculated transit time from Shivmadka (Nagpur) to Amane (Thane) at statutory expressway cruising speed.
+          </p>
+        </div>
+
+        <div className="p-4 rounded-xl bg-rose-950/20 border border-rose-500/30 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-rose-400 flex items-center gap-1.5">
+              <AlertCircle className="w-3.5 h-3.5" />
+              Longest Unserved Mainline Void
+            </span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold">
+              0 MAINLINE CHARGERS
+            </span>
+          </div>
+          <div className="text-2xl font-bold font-mono text-rose-300">
+            {transitMetrics?.longest_unserved_stretch_km ?? 701.0} <span className="text-xs font-normal text-slate-400">km</span>
+          </div>
+          <p className="text-[11px] text-rose-200/80 leading-snug">
+            <strong>Critical Finding:</strong> 0 chargers directly on mainline carriageway. EV drivers must exit at interchanges to access municipal chargers.
+          </p>
+        </div>
+
+        <div className="p-4 rounded-xl bg-navy-850 border border-navy-700 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-accent-teal flex items-center gap-1.5">
+              <Layers className="w-3.5 h-3.5" />
+              Lateral Buffer Sensitivity
+            </span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-accent-teal/15 text-accent-teal">
+              CATCHMENT RADIUS
+            </span>
+          </div>
+          <div className="grid grid-cols-3 gap-2 text-center pt-1">
+            <div className="p-2 rounded bg-navy-900 border border-navy-700">
+              <div className="text-[10px] text-slate-400">5 km Buffer</div>
+              <div className="text-lg font-bold font-mono text-accent-green">{bufferSens?.stations_within_5km ?? 9}</div>
+            </div>
+            <div className="p-2 rounded bg-navy-900 border border-navy-700">
+              <div className="text-[10px] text-slate-400">10 km Buffer</div>
+              <div className="text-lg font-bold font-mono text-accent-green">{bufferSens?.stations_within_10km ?? 9}</div>
+            </div>
+            <div className="p-2 rounded bg-navy-900 border border-navy-700">
+              <div className="text-[10px] text-slate-400">20 km Buffer</div>
+              <div className="text-lg font-bold font-mono text-accent-amber">{bufferSens?.stations_within_20km ?? 10}</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -417,15 +532,25 @@ export const SamruddhiPage = () => {
             <p className="text-xs text-muted-grey mt-0.5">Consecutive 20km intervals from Nagpur (0 km) to Thane (701 km)</p>
           </div>
 
-          <div className="relative">
-            <Search className="w-3.5 h-3.5 absolute left-3 top-2.5 text-muted-grey" />
-            <input
-              type="text"
-              placeholder="Search chainage..."
-              value={searchChainage}
-              onChange={(e) => setSearchChainage(e.target.value)}
-              className="pl-8 pr-3 py-1.5 rounded-md bg-navy-950 border border-navy-700 text-xs text-white placeholder-muted-grey focus:outline-none focus:border-accent-amber"
-            />
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <Search className="w-3.5 h-3.5 absolute left-3 top-2.5 text-muted-grey" />
+              <input
+                type="text"
+                placeholder="Search chainage..."
+                value={searchChainage}
+                onChange={(e) => setSearchChainage(e.target.value)}
+                className="pl-8 pr-3 py-1.5 rounded-md bg-navy-950 border border-navy-700 text-xs text-white placeholder-muted-grey focus:outline-none focus:border-accent-amber"
+              />
+            </div>
+            <button
+              onClick={handleExportCorridorCSV}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-navy-700 bg-navy-900 text-slate-300 hover:text-white transition-colors"
+              title="Export 20km corridor segments table as CSV"
+            >
+              <Download className="w-3.5 h-3.5 text-accent-teal" />
+              <span>Export CSV</span>
+            </button>
           </div>
         </div>
 

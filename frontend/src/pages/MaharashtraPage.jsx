@@ -14,9 +14,11 @@ import {
   ExternalLink,
   ArrowRight,
   RefreshCw,
-  AlertCircle
+  AlertCircle,
+  Sliders,
+  Layers
 } from 'lucide-react';
-import { getDistrictAnalysis, getBoundaryGeoJSON, getVerifiedStations } from '../services/api';
+import { getDistrictAnalysis, getBoundaryGeoJSON, getVerifiedStations, getAccessibilityBuffers } from '../services/api';
 import MapLibreMap from '../components/common/MapLibreMap';
 
 export const MaharashtraPage = () => {
@@ -29,17 +31,22 @@ export const MaharashtraPage = () => {
   const [selectedDistrict, setSelectedDistrict] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterCategory, setFilterCategory] = useState('ALL');
+  const [buffersData, setBuffersData] = useState(null);
+  const [showWeightTuner, setShowWeightTuner] = useState(false);
+  const [cgiWeights, setCgiWeights] = useState({ evRatio: 35, spatial: 25, perCapita: 20, policy: 20 });
+  const [rescoring, setRescoring] = useState(false);
 
   const fetchData = async () => {
     try {
       setLoading(true);
       setError(null);
 
-      // Load primary analysis and secondary spatial layers with Promise.allSettled
-      const [analysisResult, boundaryResult, stationsResult] = await Promise.allSettled([
+      // Load primary analysis, secondary spatial layers, and accessibility buffers
+      const [analysisResult, boundaryResult, stationsResult, buffersResult] = await Promise.allSettled([
         getDistrictAnalysis(),
         getBoundaryGeoJSON('maharashtra_districts'),
-        getVerifiedStations()
+        getVerifiedStations(),
+        getAccessibilityBuffers()
       ]);
 
       if (analysisResult.status === 'fulfilled') {
@@ -67,11 +74,37 @@ export const MaharashtraPage = () => {
         console.warn("Notice: Station markers deferred:", stationsResult.reason?.message);
       }
 
+      if (buffersResult.status === 'fulfilled') {
+        setBuffersData(buffersResult.value);
+      }
     } catch (err) {
       console.error("Failed loading Maharashtra GIS data:", err);
       setError(err.message || "Failed to load Maharashtra GIS datasets from backend.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleRecomputeWeights = async (newWeights) => {
+    try {
+      setRescoring(true);
+      const total = (newWeights.evRatio + newWeights.spatial + newWeights.perCapita + newWeights.policy) || 100;
+      const params = {
+        w_ev_ratio: newWeights.evRatio / total,
+        w_spatial: newWeights.spatial / total,
+        w_per_capita: newWeights.perCapita / total,
+        w_policy: newWeights.policy / total
+      };
+      const res = await getDistrictAnalysis(params);
+      setDistrictData(res);
+      if (selectedDistrict) {
+        const updatedSel = res.districts.find(d => d.district === selectedDistrict.district);
+        if (updatedSel) setSelectedDistrict(updatedSel);
+      }
+    } catch (err) {
+      console.error("Failed recomputing district CGI weights:", err);
+    } finally {
+      setRescoring(false);
     }
   };
 
@@ -212,6 +245,17 @@ export const MaharashtraPage = () => {
 
         <div className="flex items-center gap-3">
           <button
+            onClick={() => setShowWeightTuner(!showWeightTuner)}
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-lg border text-xs font-medium transition-colors shadow-sm ${
+              showWeightTuner 
+                ? 'bg-cyan-600 text-white border-cyan-500' 
+                : 'bg-navy-900 border-slate-700/60 text-slate-200 hover:text-white hover:bg-navy-800'
+            }`}
+          >
+            <Sliders className="w-3.5 h-3.5 text-accent-teal" />
+            <span>{showWeightTuner ? 'Close Weight Tuner' : 'Tune CGI Weights'}</span>
+          </button>
+          <button
             onClick={handleExportCSV}
             className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-navy-900 border border-slate-700/60 text-xs font-medium text-slate-200 hover:text-white hover:bg-navy-800 transition-colors shadow-sm"
           >
@@ -220,6 +264,157 @@ export const MaharashtraPage = () => {
           </button>
         </div>
       </div>
+
+      {/* Interactive CGI Weight Tuning Panel */}
+      {showWeightTuner && (
+        <div className="p-5 rounded-2xl bg-navy-900/90 border border-cyan-500/40 space-y-4 animate-in fade-in duration-200 shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+            <div>
+              <div className="flex items-center gap-2">
+                <Sliders className="w-4 h-4 text-cyan-400" />
+                <h3 className="text-sm font-bold text-white">Dynamic Multi-Criteria CGI Weight Sensitivity Tuner</h3>
+              </div>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Adjust criteria weights to perform sensitivity analysis on district priority rankings. Normalized automatically.
+              </p>
+            </div>
+            <button
+              onClick={() => {
+                const def = { evRatio: 35, spatial: 25, perCapita: 20, policy: 20 };
+                setCgiWeights(def);
+                handleRecomputeWeights(def);
+              }}
+              className="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono border border-slate-700 self-start sm:self-auto"
+            >
+              Reset to Statutory Baseline (35/25/20/20)
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="font-semibold text-slate-200">EV/Charger Ratio</span>
+                <span className="font-mono font-bold text-cyan-400">{cgiWeights.evRatio}%</span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={cgiWeights.evRatio}
+                onChange={(e) => {
+                  const nw = { ...cgiWeights, evRatio: parseInt(e.target.value) || 0 };
+                  setCgiWeights(nw);
+                  handleRecomputeWeights(nw);
+                }}
+                className="w-full accent-cyan-500 cursor-pointer"
+              />
+              <p className="text-[10px] text-slate-500">Penalizes localized fleet congestion</p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="font-semibold text-slate-200">Spatial Density Gap</span>
+                <span className="font-mono font-bold text-emerald-400">{cgiWeights.spatial}%</span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={cgiWeights.spatial}
+                onChange={(e) => {
+                  const nw = { ...cgiWeights, spatial: parseInt(e.target.value) || 0 };
+                  setCgiWeights(nw);
+                  handleRecomputeWeights(nw);
+                }}
+                className="w-full accent-emerald-500 cursor-pointer"
+              />
+              <p className="text-[10px] text-slate-500">Benchmark: 10 chargers / 1000 km²</p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="font-semibold text-slate-200">Per-Capita Deficit</span>
+                <span className="font-mono font-bold text-amber-400">{cgiWeights.perCapita}%</span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={cgiWeights.perCapita}
+                onChange={(e) => {
+                  const nw = { ...cgiWeights, perCapita: parseInt(e.target.value) || 0 };
+                  setCgiWeights(nw);
+                  handleRecomputeWeights(nw);
+                }}
+                className="w-full accent-amber-500 cursor-pointer"
+              />
+              <p className="text-[10px] text-slate-500">Benchmark: 5 chargers / 100k residents</p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="font-semibold text-slate-200">MoP Policy Gap</span>
+                <span className="font-mono font-bold text-rose-400">{cgiWeights.policy}%</span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={cgiWeights.policy}
+                onChange={(e) => {
+                  const nw = { ...cgiWeights, policy: parseInt(e.target.value) || 0 };
+                  setCgiWeights(nw);
+                  handleRecomputeWeights(nw);
+                }}
+                className="w-full accent-rose-500 cursor-pointer"
+              />
+              <p className="text-[10px] text-slate-500">Statutory 3km x 3km urban grid baseline</p>
+            </div>
+          </div>
+          {rescoring && (
+            <div className="text-[11px] font-mono text-cyan-400 flex items-center gap-1.5">
+              <RefreshCw className="w-3 h-3 animate-spin" />
+              <span>Dynamically re-scoring all 36 districts...</span>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Multi-Level Spatial Accessibility Isochrones */}
+      {buffersData?.coverage_tiers?.length > 0 && (
+        <div className="p-4 rounded-2xl bg-navy-900/60 border border-slate-700/60 space-y-3 shadow-sm">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Layers className="w-4 h-4 text-accent-teal" />
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
+                Multi-Level Metric Accessibility Buffers (Statewide Isochrones)
+              </h4>
+            </div>
+            <span className="text-[11px] font-mono text-slate-400">
+              Evaluated across {buffersData.active_stations_evaluated || 25} active public stations
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-xs">
+            {buffersData.coverage_tiers.map((t) => (
+              <div key={t.radius_km} className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-slate-200">{t.radius_label}</span>
+                  <span className="font-mono font-bold text-cyan-400">{t.coverage_pct}%</span>
+                </div>
+                <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                  <div 
+                    className="bg-accent-teal h-full rounded-full transition-all duration-300"
+                    style={{ width: `${Math.min(100, Math.max(2, t.coverage_pct * 15))}%` }}
+                  />
+                </div>
+                <p className="text-[10px] text-slate-400 font-mono mt-1">{t.covered_area_sqkm} km² served</p>
+                <p className="text-[10px] text-slate-500 leading-tight">{t.planning_classification}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Boundary Reconciliation Notice */}
       <div className="p-3.5 rounded-xl bg-navy-900/80 border border-slate-700/60 text-xs text-slate-300 flex items-start gap-2.5">
@@ -453,6 +648,14 @@ export const MaharashtraPage = () => {
               <option value="MODERATE">Moderate Gap (31-60)</option>
               <option value="LOW">Low Gap (&le;30)</option>
             </select>
+            <button
+              onClick={handleExportCSV}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-navy-950/80 border border-slate-700 text-xs text-slate-200 hover:text-white transition-colors"
+              title="Export district data as CSV"
+            >
+              <Download className="w-3.5 h-3.5 text-accent-green" />
+              <span>Export CSV</span>
+            </button>
           </div>
         </div>
 

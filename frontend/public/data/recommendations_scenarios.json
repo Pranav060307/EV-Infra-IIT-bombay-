@@ -1,0 +1,74 @@
+{
+  "scope": "ALL",
+  "total_available_candidates": 23,
+  "packages": [
+    {
+      "package_id": "PKG-5-RAPID",
+      "name": "Phase 1: Rapid Impact Deployment (Top 5 Hubs)",
+      "station_count": 5,
+      "estimated_capex_inr_cr": 2.5,
+      "demand_coverage_pct": 39.7,
+      "ev_demand_covered": 163898,
+      "target_locations": [
+        "Nashik Central CBS Bus Terminal (MSRTC)",
+        "Chhatrapati Sambhajinagar Railway Station Public Parking",
+        "Kolhapur Central Bus Stand (CBS) Kawala Naka",
+        "Ahmednagar Market Yard Commercial Node",
+        "Solapur Old Pune Naka Commercial Hub (NH-65)"
+      ],
+      "strategic_focus": "Immediate saturation of highest-deficit arterial junctions."
+    },
+    {
+      "package_id": "PKG-10-BALANCED",
+      "name": "Phase 2: Balanced Metropolitan & Expressway Network (Top 10 Hubs)",
+      "station_count": 10,
+      "estimated_capex_inr_cr": 5.2,
+      "demand_coverage_pct": 62.3,
+      "ev_demand_covered": 257635,
+      "target_locations": [
+        "Nashik Central CBS Bus Terminal (MSRTC)",
+        "Chhatrapati Sambhajinagar Railway Station Public Parking",
+        "Kolhapur Central Bus Stand (CBS) Kawala Naka",
+        "Ahmednagar Market Yard Commercial Node",
+        "Solapur Old Pune Naka Commercial Hub (NH-65)",
+        "Igatpuri Hillways Wayside Amenity (Chainage 670 km)",
+        "Karanja Lad Wayside Complex (Chainage 210 km)",
+        "Satara Powai Naka Municipal Multi-Purpose Lot",
+        "Amravati Rajkamal Square Public Transit Node",
+        "Jalgaon Station Road Municipal Parking Lot"
+      ],
+      "strategic_focus": "Covers both Pune micro-urban priority cells and Samruddhi Mahamarg interchanges."
+    },
+    {
+      "package_id": "PKG-20-COMPREHENSIVE",
+      "name": "Phase 3: Comprehensive Statewide Siting Grid (Top 20 Hubs)",
+      "station_count": 20,
+      "estimated_capex_inr_cr": 10.8,
+      "demand_coverage_pct": 93.7,
+      "ev_demand_covered": 387135,
+      "target_locations": [
+        "Nashik Central CBS Bus Terminal (MSRTC)",
+        "Chhatrapati Sambhajinagar Railway Station Public Parking",
+        "Kolhapur Central Bus Stand (CBS) Kawala Naka",
+        "Ahmednagar Market Yard Commercial Node",
+        "Solapur Old Pune Naka Commercial Hub (NH-65)",
+        "Igatpuri Hillways Wayside Amenity (Chainage 670 km)",
+        "Karanja Lad Wayside Complex (Chainage 210 km)",
+        "Satara Powai Naka Municipal Multi-Purpose Lot",
+        "Amravati Rajkamal Square Public Transit Node",
+        "Jalgaon Station Road Municipal Parking Lot",
+        "Sinnar Bypass Freight Terminal (Chainage 615 km)",
+        "Chakan MIDC Phase 2 Freight & Industrial Terminal",
+        "Mehkar Intermodal Rest Oasis (Chainage 325 km)",
+        "Hinjawadi Phase 3 Transit Hub & PMPML Bus Bay",
+        "Hadapsar Gadital PMPML Intercity Depot",
+        "Jalna East Logistics Hub & Dry Port Spur (Chainage 415 km)",
+        "Wagholi Pune-Ahmednagar Highway Junction (NH-753F)",
+        "Vaijapur Expressway Fuel Oasis (Chainage 510 km)",
+        "Pulgaon Wardha Toll Plaza Rest Hub (Chainage 95 km)",
+        "Katraj Wonder City Bus Terminus (Satara Road)"
+      ],
+      "strategic_focus": "Fills all critical regional voids and satisfies MoP 2024 corridor spacing."
+    }
+  ]
+}

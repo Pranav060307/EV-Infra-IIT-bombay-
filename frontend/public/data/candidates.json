@@ -1,1 +1,1704 @@
-[{"id":"CAND-SAM-006","name":"Igatpuri Hillways Wayside Amenity (Chainage 670 km)","category":"HIGHWAY_AMENITY","district":"Nashik","district_code":"MH-NSK","corridor_name":"Samruddhi Mahamarg","scope":"SAMRUDDHI","coordinates":{"latitude":19.702,"longitude":73.57},"total_mcda_score":91.3,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":1,"nearby_infrastructure":{"nearest_charger_distance_km":22.0,"nearest_substation_name":"Igatpuri Interchange 33kV Substation","nearest_substation_distance_km":0.6,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_33KV_DEDICATED"},"demand_indicators":{"unserved_ev_catchment":21000.0,"estimated_footfall":"VERY_HIGH","road_classification":"EXPRESSWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":21000.0,"normalized_score":84.0,"weight":0.25,"weighted_score":21.0,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":22.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":92.0,"normalized_score":92.0,"weight":0.15,"weighted_score":13.8,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"EXPRESSWAY","normalized_score":100.0,"weight":0.15,"weighted_score":15.0,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":0.6,"normalized_score":80.0,"weight":0.15,"weighted_score":12.0,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"HIGHWAY_AMENITY","normalized_score":95.0,"weight":0.1,"weighted_score":9.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Pre-ghat battery top-up zone before descent into Thane and Mumbai MMR.","engineering_limitations":"High weekend peak demand requiring dynamic load management.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-SAM-001","name":"Karanja Lad Wayside Complex (Chainage 210 km)","category":"HIGHWAY_AMENITY","district":"Washim","district_code":"MH-WAS","corridor_name":"Samruddhi Mahamarg","scope":"SAMRUDDHI","coordinates":{"latitude":20.485,"longitude":77.492},"total_mcda_score":89.5,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":2,"nearby_infrastructure":{"nearest_charger_distance_km":42.0,"nearest_substation_name":"Karanja Lad Toll 22kV Substation","nearest_substation_distance_km":0.45,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_22KV_DEDICATED"},"demand_indicators":{"unserved_ev_catchment":18500.0,"estimated_footfall":"VERY_HIGH","road_classification":"EXPRESSWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":18500.0,"normalized_score":74.0,"weight":0.25,"weighted_score":18.5,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":42.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":92.0,"normalized_score":92.0,"weight":0.15,"weighted_score":13.8,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"EXPRESSWAY","normalized_score":100.0,"weight":0.15,"weighted_score":15.0,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":0.45,"normalized_score":85.0,"weight":0.15,"weighted_score":12.75,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"HIGHWAY_AMENITY","normalized_score":95.0,"weight":0.1,"weighted_score":9.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Bridges massive 160km unserved highway void; meets MoP Clause 11(1)(b) 20km spacing.","engineering_limitations":"MSRDC concessionaire tender status pending; carriageway overpass verification required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-SAM-005","name":"Sinnar Bypass Freight Terminal (Chainage 615 km)","category":"HIGHWAY_AMENITY","district":"Nashik","district_code":"MH-NSK","corridor_name":"Samruddhi Mahamarg","scope":"SAMRUDDHI","coordinates":{"latitude":19.845,"longitude":73.998},"total_mcda_score":86.6,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":3,"nearby_infrastructure":{"nearest_charger_distance_km":28.0,"nearest_substation_name":"Sinnar Industrial 33kV Substation","nearest_substation_distance_km":0.5,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_33KV_ADJACENT"},"demand_indicators":{"unserved_ev_catchment":15800.0,"estimated_footfall":"VERY_HIGH","road_classification":"EXPRESSWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":15800.0,"normalized_score":63.2,"weight":0.25,"weighted_score":15.8,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":28.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":92.0,"normalized_score":92.0,"weight":0.15,"weighted_score":13.8,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"EXPRESSWAY","normalized_score":100.0,"weight":0.15,"weighted_score":15.0,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":0.5,"normalized_score":83.3,"weight":0.15,"weighted_score":12.49,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"HIGHWAY_AMENITY","normalized_score":95.0,"weight":0.1,"weighted_score":9.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Captures Pune-Nashik industrial traffic entering Samruddhi Mahamarg.","engineering_limitations":"Interchange connector road capacity study required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-DST-002","name":"Chhatrapati Sambhajinagar Railway Station Public Parking","category":"RAILWAY_STATION","district":"Chhatrapati Sambhajinagar","district_code":"MH-CSN","corridor_name":"District Headquarters","scope":"DISTRICTS","coordinates":{"latitude":19.8652,"longitude":75.321},"total_mcda_score":85.8,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":4,"nearby_infrastructure":{"nearest_charger_distance_km":21.0,"nearest_substation_name":"Aurangabad West Expressway 33kV","nearest_substation_distance_km":1.3,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_RAILWAY"},"demand_indicators":{"unserved_ev_catchment":35645.0,"estimated_footfall":"VERY_HIGH","road_classification":"MAJOR_ARTERIAL"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":35645.0,"normalized_score":100.0,"weight":0.25,"weighted_score":25.0,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":21.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":88.5,"normalized_score":88.5,"weight":0.15,"weighted_score":13.28,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"MAJOR_ARTERIAL","normalized_score":70.0,"weight":0.15,"weighted_score":10.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":1.3,"normalized_score":56.7,"weight":0.15,"weighted_score":8.51,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"RAILWAY_STATION","normalized_score":85.0,"weight":0.1,"weighted_score":8.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"District has 35,645 EVs with ZERO verified public chargers in BEE directory.","engineering_limitations":"Railway board parking lease approval required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-DST-005","name":"Ahmednagar Market Yard Commercial Node","category":"MUNICIPAL_PARKING","district":"Ahmednagar","district_code":"MH-AHM","corridor_name":"District Headquarters","scope":"DISTRICTS","coordinates":{"latitude":19.0952,"longitude":74.7496},"total_mcda_score":85.3,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":5,"nearby_infrastructure":{"nearest_charger_distance_km":29.0,"nearest_substation_name":"Kopargaon Bypass 33kV Substation","nearest_substation_distance_km":1.4,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_FEEDER"},"demand_indicators":{"unserved_ev_catchment":25920.0,"estimated_footfall":"HIGH","road_classification":"STATE_HIGHWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":25920.0,"normalized_score":100.0,"weight":0.25,"weighted_score":25.0,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":29.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":88.5,"normalized_score":88.5,"weight":0.15,"weighted_score":13.28,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"STATE_HIGHWAY","normalized_score":80.0,"weight":0.15,"weighted_score":12.0,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":1.4,"normalized_score":53.3,"weight":0.15,"weighted_score":7.99,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"MUNICIPAL_PARKING","normalized_score":70.0,"weight":0.1,"weighted_score":7.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"District has 25,920 EVs with ZERO verified public chargers in BEE directory.","engineering_limitations":"APMC market board permission required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-DST-001","name":"Nashik Central CBS Bus Terminal (MSRTC)","category":"BUS_DEPOT","district":"Nashik","district_code":"MH-NSK","corridor_name":"District Headquarters","scope":"DISTRICTS","coordinates":{"latitude":19.9975,"longitude":73.7898},"total_mcda_score":84.8,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":6,"nearby_infrastructure":{"nearest_charger_distance_km":16.5,"nearest_substation_name":"Sinnar Industrial 33kV Substation","nearest_substation_distance_km":1.5,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_MUNICIPAL"},"demand_indicators":{"unserved_ev_catchment":48385.0,"estimated_footfall":"VERY_HIGH","road_classification":"NATIONAL_HIGHWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":48385.0,"normalized_score":100.0,"weight":0.25,"weighted_score":25.0,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":16.5,"normalized_score":82.5,"weight":0.2,"weighted_score":16.5,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":88.5,"normalized_score":88.5,"weight":0.15,"weighted_score":13.28,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"NATIONAL_HIGHWAY","normalized_score":90.0,"weight":0.15,"weighted_score":13.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":1.5,"normalized_score":50.0,"weight":0.15,"weighted_score":7.5,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"BUS_DEPOT","normalized_score":90.0,"weight":0.1,"weighted_score":9.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"District has 48,385 EVs with ZERO verified public chargers in BEE directory.","engineering_limitations":"MSRTC operational clearance required; city feeder congestion.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-DST-003","name":"Kolhapur Central Bus Stand (CBS) Kawala Naka","category":"BUS_DEPOT","district":"Kolhapur","district_code":"MH-KOP","corridor_name":"District Headquarters","scope":"DISTRICTS","coordinates":{"latitude":16.705,"longitude":74.2433},"total_mcda_score":84.8,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":7,"nearby_infrastructure":{"nearest_charger_distance_km":26.0,"nearest_substation_name":"Kothrud 11kV Distribution Substation","nearest_substation_distance_km":2.2,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_MUNICIPAL"},"demand_indicators":{"unserved_ev_catchment":29730.0,"estimated_footfall":"VERY_HIGH","road_classification":"NATIONAL_HIGHWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":29730.0,"normalized_score":100.0,"weight":0.25,"weighted_score":25.0,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":26.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":88.5,"normalized_score":88.5,"weight":0.15,"weighted_score":13.28,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"NATIONAL_HIGHWAY","normalized_score":90.0,"weight":0.15,"weighted_score":13.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":2.2,"normalized_score":26.7,"weight":0.15,"weighted_score":4.0,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"BUS_DEPOT","normalized_score":90.0,"weight":0.1,"weighted_score":9.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"District has 29,730 EVs with ZERO verified public chargers in BEE directory.","engineering_limitations":"MSEDCL Kolhapur urban circle sanction required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-DST-004","name":"Solapur Old Pune Naka Commercial Hub (NH-65)","category":"MUNICIPAL_PARKING","district":"Solapur","district_code":"MH-SOL","corridor_name":"District Headquarters","scope":"DISTRICTS","coordinates":{"latitude":17.6599,"longitude":75.9064},"total_mcda_score":84.0,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":8,"nearby_infrastructure":{"nearest_charger_distance_km":34.0,"nearest_substation_name":"Hadapsar Magarpatta 33kV Substation","nearest_substation_distance_km":1.8,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_FEEDER"},"demand_indicators":{"unserved_ev_catchment":24218.0,"estimated_footfall":"HIGH","road_classification":"NATIONAL_HIGHWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":24218.0,"normalized_score":96.9,"weight":0.25,"weighted_score":24.23,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":34.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":88.5,"normalized_score":88.5,"weight":0.15,"weighted_score":13.28,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"NATIONAL_HIGHWAY","normalized_score":90.0,"weight":0.15,"weighted_score":13.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":1.8,"normalized_score":40.0,"weight":0.15,"weighted_score":6.0,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"MUNICIPAL_PARKING","normalized_score":70.0,"weight":0.1,"weighted_score":7.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"District has 24,218 EVs with ZERO verified public chargers in BEE directory.","engineering_limitations":"Municipal NOC and commercial retail tenant approval required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-SAM-003","name":"Jalna East Logistics Hub & Dry Port Spur (Chainage 415 km)","category":"HIGHWAY_AMENITY","district":"Jalna","district_code":"MH-JAL","corridor_name":"Samruddhi Mahamarg","scope":"SAMRUDDHI","coordinates":{"latitude":19.841,"longitude":75.882},"total_mcda_score":81.9,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":9,"nearby_infrastructure":{"nearest_charger_distance_km":35.0,"nearest_substation_name":"Jalna MIDC 33kV Substation","nearest_substation_distance_km":0.8,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_33KV_ADJACENT"},"demand_indicators":{"unserved_ev_catchment":12600.0,"estimated_footfall":"HIGH","road_classification":"EXPRESSWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":12600.0,"normalized_score":50.4,"weight":0.25,"weighted_score":12.6,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":35.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":92.0,"normalized_score":92.0,"weight":0.15,"weighted_score":13.8,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"EXPRESSWAY","normalized_score":100.0,"weight":0.15,"weighted_score":15.0,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":0.8,"normalized_score":73.3,"weight":0.15,"weighted_score":10.99,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"HIGHWAY_AMENITY","normalized_score":95.0,"weight":0.1,"weighted_score":9.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Connects Marathwada dry port with expressway; ideal for commercial electric truck charging.","engineering_limitations":"Requires heavy-duty 240kW CCS-2 chargers under Clause 12(7).","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-SAM-002","name":"Mehkar Intermodal Rest Oasis (Chainage 325 km)","category":"HIGHWAY_AMENITY","district":"Buldhana","district_code":"MH-BLD","corridor_name":"Samruddhi Mahamarg","scope":"SAMRUDDHI","coordinates":{"latitude":20.155,"longitude":76.575},"total_mcda_score":77.0,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":10,"nearby_infrastructure":{"nearest_charger_distance_km":68.0,"nearest_substation_name":"Jalna MIDC 33kV Substation","nearest_substation_distance_km":2.1,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_33KV_SPUR_REQUIRED"},"demand_indicators":{"unserved_ev_catchment":14200.0,"estimated_footfall":"HIGH","road_classification":"EXPRESSWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":14200.0,"normalized_score":56.8,"weight":0.25,"weighted_score":14.2,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":68.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":92.0,"normalized_score":92.0,"weight":0.15,"weighted_score":13.8,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"EXPRESSWAY","normalized_score":100.0,"weight":0.15,"weighted_score":15.0,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":2.1,"normalized_score":30.0,"weight":0.15,"weighted_score":4.5,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"HIGHWAY_AMENITY","normalized_score":95.0,"weight":0.1,"weighted_score":9.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Critical midpoint of Samruddhi Mahamarg; eliminates severe range anxiety for long-haul EVs.","engineering_limitations":"Dedicated 33kV line extension needed from MSEDCL Mehkar feeder.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-DST-007","name":"Amravati Rajkamal Square Public Transit Node","category":"BUS_DEPOT","district":"Amravati","district_code":"MH-AMR","corridor_name":"District Headquarters","scope":"DISTRICTS","coordinates":{"latitude":20.932,"longitude":77.7523},"total_mcda_score":76.6,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":11,"nearby_infrastructure":{"nearest_charger_distance_km":45.0,"nearest_substation_name":"Wardha Outer 33kV Substation","nearest_substation_distance_km":2.4,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_FEEDER"},"demand_indicators":{"unserved_ev_catchment":17812.0,"estimated_footfall":"HIGH","road_classification":"NATIONAL_HIGHWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":17812.0,"normalized_score":71.2,"weight":0.25,"weighted_score":17.8,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":45.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":88.5,"normalized_score":88.5,"weight":0.15,"weighted_score":13.28,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"NATIONAL_HIGHWAY","normalized_score":90.0,"weight":0.15,"weighted_score":13.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":2.4,"normalized_score":20.0,"weight":0.15,"weighted_score":3.0,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"BUS_DEPOT","normalized_score":90.0,"weight":0.1,"weighted_score":9.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"District has 17,812 EVs with ZERO verified public chargers in BEE directory.","engineering_limitations":"Traffic police NOC required for charger ingress/egress.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-SAM-007","name":"Pulgaon Wardha Toll Plaza Rest Hub (Chainage 95 km)","category":"PETROL_PUMP","district":"Wardha","district_code":"MH-WRD","corridor_name":"Samruddhi Mahamarg","scope":"SAMRUDDHI","coordinates":{"latitude":20.725,"longitude":78.318},"total_mcda_score":75.6,"priority_classification":"HIGH_PRIORITY_CANDIDATE","rank":12,"nearby_infrastructure":{"nearest_charger_distance_km":38.0,"nearest_substation_name":"Wardha Outer 33kV Substation","nearest_substation_distance_km":1.1,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_33KV_PROXIMITY"},"demand_indicators":{"unserved_ev_catchment":9800.0,"estimated_footfall":"MEDIUM","road_classification":"EXPRESSWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":9800.0,"normalized_score":39.2,"weight":0.25,"weighted_score":9.8,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":38.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":92.0,"normalized_score":92.0,"weight":0.15,"weighted_score":13.8,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"EXPRESSWAY","normalized_score":100.0,"weight":0.15,"weighted_score":15.0,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":1.1,"normalized_score":63.3,"weight":0.15,"weighted_score":9.49,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"PETROL_PUMP","normalized_score":75.0,"weight":0.1,"weighted_score":7.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Serves eastern alignment between Nagpur and Amravati; MoP Clause 11(1)(b) spacing compliance.","engineering_limitations":"Toll plaza queue separation required for EV bays.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-DST-006","name":"Satara Powai Naka Municipal Multi-Purpose Lot","category":"MUNICIPAL_PARKING","district":"Satara","district_code":"MH-SAT","corridor_name":"District Headquarters","scope":"DISTRICTS","coordinates":{"latitude":17.6805,"longitude":73.9922},"total_mcda_score":74.9,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":13,"nearby_infrastructure":{"nearest_charger_distance_km":24.0,"nearest_substation_name":"Kothrud 11kV Distribution Substation","nearest_substation_distance_km":1.9,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_MUNICIPAL"},"demand_indicators":{"unserved_ev_catchment":18615.0,"estimated_footfall":"MEDIUM","road_classification":"MAJOR_ARTERIAL"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":18615.0,"normalized_score":74.5,"weight":0.25,"weighted_score":18.62,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":24.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":88.5,"normalized_score":88.5,"weight":0.15,"weighted_score":13.28,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"MAJOR_ARTERIAL","normalized_score":70.0,"weight":0.15,"weighted_score":10.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":1.9,"normalized_score":36.7,"weight":0.15,"weighted_score":5.5,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"MUNICIPAL_PARKING","normalized_score":70.0,"weight":0.1,"weighted_score":7.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"District has 18,615 EVs with ZERO verified public chargers in BEE directory.","engineering_limitations":"Satara municipal council clearance required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-DST-008","name":"Jalgaon Station Road Municipal Parking Lot","category":"RAILWAY_STATION","district":"Jalgaon","district_code":"MH-JLG","corridor_name":"District Headquarters","scope":"DISTRICTS","coordinates":{"latitude":21.0077,"longitude":75.5626},"total_mcda_score":74.6,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":14,"nearby_infrastructure":{"nearest_charger_distance_km":38.0,"nearest_substation_name":"Jalna MIDC 33kV Substation","nearest_substation_distance_km":2.1,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_MUNICIPAL"},"demand_indicators":{"unserved_ev_catchment":17810.0,"estimated_footfall":"HIGH","road_classification":"MAJOR_ARTERIAL"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":17810.0,"normalized_score":71.2,"weight":0.25,"weighted_score":17.8,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":38.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":88.5,"normalized_score":88.5,"weight":0.15,"weighted_score":13.28,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"MAJOR_ARTERIAL","normalized_score":70.0,"weight":0.15,"weighted_score":10.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":2.1,"normalized_score":30.0,"weight":0.15,"weighted_score":4.5,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"RAILWAY_STATION","normalized_score":85.0,"weight":0.1,"weighted_score":8.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"District has 17,810 EVs with ZERO verified public chargers in BEE directory.","engineering_limitations":"Municipal commercial parking concession required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-SAM-004","name":"Vaijapur Expressway Fuel Oasis (Chainage 510 km)","category":"PETROL_PUMP","district":"Chhatrapati Sambhajinagar","district_code":"MH-CSN","corridor_name":"Samruddhi Mahamarg","scope":"SAMRUDDHI","coordinates":{"latitude":19.921,"longitude":74.723},"total_mcda_score":74.3,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":15,"nearby_infrastructure":{"nearest_charger_distance_km":48.0,"nearest_substation_name":"Kopargaon Bypass 33kV Substation","nearest_substation_distance_km":1.6,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_FEEDER"},"demand_indicators":{"unserved_ev_catchment":11000.0,"estimated_footfall":"HIGH","road_classification":"EXPRESSWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":11000.0,"normalized_score":44.0,"weight":0.25,"weighted_score":11.0,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":48.0,"normalized_score":100.0,"weight":0.2,"weighted_score":20.0,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":92.0,"normalized_score":92.0,"weight":0.15,"weighted_score":13.8,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"EXPRESSWAY","normalized_score":100.0,"weight":0.15,"weighted_score":15.0,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":1.6,"normalized_score":46.7,"weight":0.15,"weighted_score":7.0,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"PETROL_PUMP","normalized_score":75.0,"weight":0.1,"weighted_score":7.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Bridges gap between Sambhajinagar and Shirdi/Nashik agricultural belts.","engineering_limitations":"Land allotment verification with MSRDC pending.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-PUN-007","name":"Hadapsar Gadital PMPML Intercity Depot","category":"BUS_DEPOT","district":"Pune","district_code":"MH-PUN","corridor_name":"Pune Urban Grid","scope":"PUNE","coordinates":{"latitude":18.502,"longitude":73.9312},"total_mcda_score":64.4,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":16,"nearby_infrastructure":{"nearest_charger_distance_km":4.5,"nearest_substation_name":"Hadapsar Magarpatta 33kV Substation","nearest_substation_distance_km":0.65,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_33KV_PROXIMITY"},"demand_indicators":{"unserved_ev_catchment":13400.0,"estimated_footfall":"VERY_HIGH","road_classification":"NATIONAL_HIGHWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":13400.0,"normalized_score":53.6,"weight":0.25,"weighted_score":13.4,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":4.5,"normalized_score":22.5,"weight":0.2,"weighted_score":4.5,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":81.4,"normalized_score":81.4,"weight":0.15,"weighted_score":12.21,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"NATIONAL_HIGHWAY","normalized_score":90.0,"weight":0.15,"weighted_score":13.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":0.65,"normalized_score":78.3,"weight":0.15,"weighted_score":11.74,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"BUS_DEPOT","normalized_score":90.0,"weight":0.1,"weighted_score":9.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Connects Pune-Solapur highway corridor; serves high-density transit node.","engineering_limitations":"Depot operational layout reorganization required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-PUN-004","name":"Chakan MIDC Phase 2 Freight & Industrial Terminal","category":"MUNICIPAL_PARKING","district":"Pune","district_code":"MH-PUN","corridor_name":"Pune Urban Grid","scope":"PUNE","coordinates":{"latitude":18.7521,"longitude":73.8415},"total_mcda_score":63.9,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":17,"nearby_infrastructure":{"nearest_charger_distance_km":8.2,"nearest_substation_name":"Shivajinagar 33kV GIS Substation","nearest_substation_distance_km":1.4,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_33KV_INDUSTRIAL"},"demand_indicators":{"unserved_ev_catchment":16500.0,"estimated_footfall":"VERY_HIGH","road_classification":"STATE_HIGHWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":16500.0,"normalized_score":66.0,"weight":0.25,"weighted_score":16.5,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":8.2,"normalized_score":41.0,"weight":0.2,"weighted_score":8.2,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":81.4,"normalized_score":81.4,"weight":0.15,"weighted_score":12.21,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"STATE_HIGHWAY","normalized_score":80.0,"weight":0.15,"weighted_score":12.0,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":1.4,"normalized_score":53.3,"weight":0.15,"weighted_score":7.99,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"MUNICIPAL_PARKING","normalized_score":70.0,"weight":0.1,"weighted_score":7.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Severe industrial freight deficit; high concentration of commercial EV delivery vehicles.","engineering_limitations":"Heavy-duty 150kW+ transformer sanction required from MSEDCL.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-PUN-001","name":"Hinjawadi Phase 3 Transit Hub & PMPML Bus Bay","category":"BUS_DEPOT","district":"Pune","district_code":"MH-PUN","corridor_name":"Pune Urban Grid","scope":"PUNE","coordinates":{"latitude":18.5742,"longitude":73.6985},"total_mcda_score":61.5,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":18,"nearby_infrastructure":{"nearest_charger_distance_km":4.8,"nearest_substation_name":"Hinjawadi Phase 1 22kV Feeder","nearest_substation_distance_km":0.85,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_ADJACENT"},"demand_indicators":{"unserved_ev_catchment":14200.0,"estimated_footfall":"VERY_HIGH","road_classification":"MAJOR_ARTERIAL"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":14200.0,"normalized_score":56.8,"weight":0.25,"weighted_score":14.2,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":4.8,"normalized_score":24.0,"weight":0.2,"weighted_score":4.8,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":81.4,"normalized_score":81.4,"weight":0.15,"weighted_score":12.21,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"MAJOR_ARTERIAL","normalized_score":70.0,"weight":0.15,"weighted_score":10.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":0.85,"normalized_score":71.7,"weight":0.15,"weighted_score":10.76,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"BUS_DEPOT","normalized_score":90.0,"weight":0.1,"weighted_score":9.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Violates MoP 1km² urban rule; cell centroid is 4.8 km from nearest public EVSE.","engineering_limitations":"PMPML municipal parking allocation required; peak feeder load unverified from MSEDCL.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-PUN-002","name":"Wagholi Pune-Ahmednagar Highway Junction (NH-753F)","category":"HIGHWAY_AMENITY","district":"Pune","district_code":"MH-PUN","corridor_name":"Pune Urban Grid","scope":"PUNE","coordinates":{"latitude":18.5815,"longitude":73.9852},"total_mcda_score":61.4,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":19,"nearby_infrastructure":{"nearest_charger_distance_km":5.4,"nearest_substation_name":"Viman Nagar 33kV Substation","nearest_substation_distance_km":1.2,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_22KV_PROXIMITY"},"demand_indicators":{"unserved_ev_catchment":11800.0,"estimated_footfall":"HIGH","road_classification":"NATIONAL_HIGHWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":11800.0,"normalized_score":47.2,"weight":0.25,"weighted_score":11.8,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":5.4,"normalized_score":27.0,"weight":0.2,"weighted_score":5.4,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":81.4,"normalized_score":81.4,"weight":0.15,"weighted_score":12.21,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"NATIONAL_HIGHWAY","normalized_score":90.0,"weight":0.15,"weighted_score":13.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":1.2,"normalized_score":60.0,"weight":0.15,"weighted_score":9.0,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"HIGHWAY_AMENITY","normalized_score":95.0,"weight":0.1,"weighted_score":9.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Critical eastern urban corridor void; no public charger between Viman Nagar and Shikrapur.","engineering_limitations":"Highway ROW permission from NHAI required; transformer bay expansion pending.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-PUN-003","name":"Bavdhan - Paud Road Interchange (NH-48 Bypass)","category":"HIGHWAY_AMENITY","district":"Pune","district_code":"MH-PUN","corridor_name":"Pune Urban Grid","scope":"PUNE","coordinates":{"latitude":18.5142,"longitude":73.7712},"total_mcda_score":58.5,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":20,"nearby_infrastructure":{"nearest_charger_distance_km":3.6,"nearest_substation_name":"Kothrud 11kV Distribution Substation","nearest_substation_distance_km":0.95,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_ADJACENT"},"demand_indicators":{"unserved_ev_catchment":9400.0,"estimated_footfall":"HIGH","road_classification":"NATIONAL_HIGHWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":9400.0,"normalized_score":37.6,"weight":0.25,"weighted_score":9.4,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":3.6,"normalized_score":18.0,"weight":0.2,"weighted_score":3.6,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":81.4,"normalized_score":81.4,"weight":0.15,"weighted_score":12.21,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"NATIONAL_HIGHWAY","normalized_score":90.0,"weight":0.15,"weighted_score":13.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":0.95,"normalized_score":68.3,"weight":0.15,"weighted_score":10.24,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"HIGHWAY_AMENITY","normalized_score":95.0,"weight":0.1,"weighted_score":9.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Captures heavy Mumbai-Bangalore highway transit; bridges western void.","engineering_limitations":"Commercial lease negotiation required; bay allocation pending.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-PUN-005","name":"Katraj Wonder City Bus Terminus (Satara Road)","category":"BUS_DEPOT","district":"Pune","district_code":"MH-PUN","corridor_name":"Pune Urban Grid","scope":"PUNE","coordinates":{"latitude":18.4485,"longitude":73.8588},"total_mcda_score":58.5,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":21,"nearby_infrastructure":{"nearest_charger_distance_km":4.1,"nearest_substation_name":"Kothrud 11kV Distribution Substation","nearest_substation_distance_km":1.1,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_ADJACENT"},"demand_indicators":{"unserved_ev_catchment":10200.0,"estimated_footfall":"HIGH","road_classification":"NATIONAL_HIGHWAY"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":10200.0,"normalized_score":40.8,"weight":0.25,"weighted_score":10.2,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":4.1,"normalized_score":20.5,"weight":0.2,"weighted_score":4.1,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":81.4,"normalized_score":81.4,"weight":0.15,"weighted_score":12.21,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"NATIONAL_HIGHWAY","normalized_score":90.0,"weight":0.15,"weighted_score":13.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":1.1,"normalized_score":63.3,"weight":0.15,"weighted_score":9.49,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"BUS_DEPOT","normalized_score":90.0,"weight":0.1,"weighted_score":9.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Southern arterial gateway to NH-48; serves heavy commuter 2W and intercity buses.","engineering_limitations":"PMPML bus bay coordination required; MSEDCL sanction pending.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-PUN-006","name":"Bhosari MIDC Telco Road Public Parking Hub","category":"MUNICIPAL_PARKING","district":"Pune","district_code":"MH-PUN","corridor_name":"Pune Urban Grid","scope":"PUNE","coordinates":{"latitude":18.6385,"longitude":73.8492},"total_mcda_score":53.3,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":22,"nearby_infrastructure":{"nearest_charger_distance_km":3.2,"nearest_substation_name":"Shivajinagar 33kV GIS Substation","nearest_substation_distance_km":0.7,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_33KV_ADJACENT"},"demand_indicators":{"unserved_ev_catchment":8900.0,"estimated_footfall":"HIGH","road_classification":"MAJOR_ARTERIAL"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":8900.0,"normalized_score":35.6,"weight":0.25,"weighted_score":8.9,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":3.2,"normalized_score":16.0,"weight":0.2,"weighted_score":3.2,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":81.4,"normalized_score":81.4,"weight":0.15,"weighted_score":12.21,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"MAJOR_ARTERIAL","normalized_score":70.0,"weight":0.15,"weighted_score":10.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":0.7,"normalized_score":76.7,"weight":0.15,"weighted_score":11.51,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"MUNICIPAL_PARKING","normalized_score":70.0,"weight":0.1,"weighted_score":7.0,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"Bridges gap between Pimpri cluster and northern Pune industrial zone.","engineering_limitations":"MIDC land lease agreement required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."},{"id":"CAND-PUN-008","name":"Pimpri Railway Station Public Multi-Level Parking","category":"RAILWAY_STATION","district":"Pune","district_code":"MH-PUN","corridor_name":"Pune Urban Grid","scope":"PUNE","coordinates":{"latitude":18.6272,"longitude":73.8015},"total_mcda_score":52.3,"priority_classification":"MEDIUM_PRIORITY_CANDIDATE","rank":23,"nearby_infrastructure":{"nearest_charger_distance_km":2.8,"nearest_substation_name":"Hinjawadi Phase 1 22kV Feeder","nearest_substation_distance_km":0.9,"electrical_feasibility_status":"PRELIMINARY_FEASIBLE_11KV_ADJACENT"},"demand_indicators":{"unserved_ev_catchment":7800.0,"estimated_footfall":"HIGH","road_classification":"MAJOR_ARTERIAL"},"mcda_criteria_breakdown":{"ev_demand_potential":{"raw_value":7800.0,"normalized_score":31.2,"weight":0.25,"weighted_score":7.8,"rationale":"Measures unserved localized EV fleet in surrounding catchment."},"distance_from_chargers":{"raw_value":2.8,"normalized_score":14.0,"weight":0.2,"weighted_score":2.8,"rationale":"Rewards spacing from existing stations to avoid clustering and eliminate voids."},"infrastructure_gap_severity":{"raw_value":81.4,"normalized_score":81.4,"weight":0.15,"weighted_score":12.21,"rationale":"Reflects regional Charging Gap Index (CGI) deficit severity."},"road_accessibility":{"raw_value":"MAJOR_ARTERIAL","normalized_score":70.0,"weight":0.15,"weighted_score":10.5,"rationale":"Evaluates arterial road hierarchy and through-traffic volume."},"electrical_proximity":{"raw_value":0.9,"normalized_score":70.0,"weight":0.15,"weighted_score":10.5,"rationale":"Proximity to 11kV/33kV substation minimizes grid extension capital cost."},"land_suitability":{"raw_value":"RAILWAY_STATION","normalized_score":85.0,"weight":0.1,"weighted_score":8.5,"rationale":"Public transit hubs, rest areas, and depots offer higher parking and dwell time."}},"justification_for_recommendation":"High daytime park-and-charge demand for suburban railway commuters.","engineering_limitations":"Railway land licensing and PCMC parking concession required.","disclaimer":"Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."}]
+[
+  {
+    "id": "CAND-SAM-006",
+    "name": "Igatpuri Hillways Wayside Amenity (Chainage 670 km)",
+    "category": "HIGHWAY_AMENITY",
+    "district": "Nashik",
+    "district_code": "MH-NSK",
+    "corridor_name": "Samruddhi Mahamarg",
+    "scope": "SAMRUDDHI",
+    "coordinates": {
+      "latitude": 19.702,
+      "longitude": 73.57
+    },
+    "total_mcda_score": 91.3,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 1,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 22.0,
+      "nearest_substation_name": "Igatpuri Interchange 33kV Substation",
+      "nearest_substation_distance_km": 0.6,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_33KV_DEDICATED"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 21000.0,
+      "estimated_footfall": "VERY_HIGH",
+      "road_classification": "EXPRESSWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 21000.0,
+        "normalized_score": 84.0,
+        "weight": 0.25,
+        "weighted_score": 21.0,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 22.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 92.0,
+        "normalized_score": 92.0,
+        "weight": 0.15,
+        "weighted_score": 13.8,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "EXPRESSWAY",
+        "normalized_score": 100.0,
+        "weight": 0.15,
+        "weighted_score": 15.0,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 0.6,
+        "normalized_score": 80.0,
+        "weight": 0.15,
+        "weighted_score": 12.0,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "HIGHWAY_AMENITY",
+        "normalized_score": 95.0,
+        "weight": 0.1,
+        "weighted_score": 9.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Pre-ghat battery top-up zone before descent into Thane and Mumbai MMR.",
+    "engineering_limitations": "High weekend peak demand requiring dynamic load management.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-SAM-001",
+    "name": "Karanja Lad Wayside Complex (Chainage 210 km)",
+    "category": "HIGHWAY_AMENITY",
+    "district": "Washim",
+    "district_code": "MH-WAS",
+    "corridor_name": "Samruddhi Mahamarg",
+    "scope": "SAMRUDDHI",
+    "coordinates": {
+      "latitude": 20.485,
+      "longitude": 77.492
+    },
+    "total_mcda_score": 89.5,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 2,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 42.0,
+      "nearest_substation_name": "Karanja Lad Toll 22kV Substation",
+      "nearest_substation_distance_km": 0.45,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_22KV_DEDICATED"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 18500.0,
+      "estimated_footfall": "VERY_HIGH",
+      "road_classification": "EXPRESSWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 18500.0,
+        "normalized_score": 74.0,
+        "weight": 0.25,
+        "weighted_score": 18.5,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 42.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 92.0,
+        "normalized_score": 92.0,
+        "weight": 0.15,
+        "weighted_score": 13.8,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "EXPRESSWAY",
+        "normalized_score": 100.0,
+        "weight": 0.15,
+        "weighted_score": 15.0,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 0.45,
+        "normalized_score": 85.0,
+        "weight": 0.15,
+        "weighted_score": 12.75,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "HIGHWAY_AMENITY",
+        "normalized_score": 95.0,
+        "weight": 0.1,
+        "weighted_score": 9.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Bridges massive 160km unserved highway void; meets MoP Clause 11(1)(b) 20km spacing.",
+    "engineering_limitations": "MSRDC concessionaire tender status pending; carriageway overpass verification required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-SAM-005",
+    "name": "Sinnar Bypass Freight Terminal (Chainage 615 km)",
+    "category": "HIGHWAY_AMENITY",
+    "district": "Nashik",
+    "district_code": "MH-NSK",
+    "corridor_name": "Samruddhi Mahamarg",
+    "scope": "SAMRUDDHI",
+    "coordinates": {
+      "latitude": 19.845,
+      "longitude": 73.998
+    },
+    "total_mcda_score": 86.6,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 3,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 28.0,
+      "nearest_substation_name": "Sinnar Industrial 33kV Substation",
+      "nearest_substation_distance_km": 0.5,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_33KV_ADJACENT"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 15800.0,
+      "estimated_footfall": "VERY_HIGH",
+      "road_classification": "EXPRESSWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 15800.0,
+        "normalized_score": 63.2,
+        "weight": 0.25,
+        "weighted_score": 15.8,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 28.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 92.0,
+        "normalized_score": 92.0,
+        "weight": 0.15,
+        "weighted_score": 13.8,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "EXPRESSWAY",
+        "normalized_score": 100.0,
+        "weight": 0.15,
+        "weighted_score": 15.0,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 0.5,
+        "normalized_score": 83.3,
+        "weight": 0.15,
+        "weighted_score": 12.49,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "HIGHWAY_AMENITY",
+        "normalized_score": 95.0,
+        "weight": 0.1,
+        "weighted_score": 9.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Captures Pune-Nashik industrial traffic entering Samruddhi Mahamarg.",
+    "engineering_limitations": "Interchange connector road capacity study required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-DST-002",
+    "name": "Chhatrapati Sambhajinagar Railway Station Public Parking",
+    "category": "RAILWAY_STATION",
+    "district": "Chhatrapati Sambhajinagar",
+    "district_code": "MH-CSN",
+    "corridor_name": "District Headquarters",
+    "scope": "DISTRICTS",
+    "coordinates": {
+      "latitude": 19.8652,
+      "longitude": 75.321
+    },
+    "total_mcda_score": 85.8,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 4,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 21.0,
+      "nearest_substation_name": "Aurangabad West Expressway 33kV",
+      "nearest_substation_distance_km": 1.3,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_RAILWAY"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 35645.0,
+      "estimated_footfall": "VERY_HIGH",
+      "road_classification": "MAJOR_ARTERIAL"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 35645.0,
+        "normalized_score": 100.0,
+        "weight": 0.25,
+        "weighted_score": 25.0,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 21.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 88.5,
+        "normalized_score": 88.5,
+        "weight": 0.15,
+        "weighted_score": 13.28,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "MAJOR_ARTERIAL",
+        "normalized_score": 70.0,
+        "weight": 0.15,
+        "weighted_score": 10.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 1.3,
+        "normalized_score": 56.7,
+        "weight": 0.15,
+        "weighted_score": 8.51,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "RAILWAY_STATION",
+        "normalized_score": 85.0,
+        "weight": 0.1,
+        "weighted_score": 8.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "District has 35,645 EVs with ZERO verified public chargers in BEE directory.",
+    "engineering_limitations": "Railway board parking lease approval required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-DST-005",
+    "name": "Ahmednagar Market Yard Commercial Node",
+    "category": "MUNICIPAL_PARKING",
+    "district": "Ahmednagar",
+    "district_code": "MH-AHM",
+    "corridor_name": "District Headquarters",
+    "scope": "DISTRICTS",
+    "coordinates": {
+      "latitude": 19.0952,
+      "longitude": 74.7496
+    },
+    "total_mcda_score": 85.3,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 5,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 29.0,
+      "nearest_substation_name": "Kopargaon Bypass 33kV Substation",
+      "nearest_substation_distance_km": 1.4,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_FEEDER"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 25920.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "STATE_HIGHWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 25920.0,
+        "normalized_score": 100.0,
+        "weight": 0.25,
+        "weighted_score": 25.0,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 29.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 88.5,
+        "normalized_score": 88.5,
+        "weight": 0.15,
+        "weighted_score": 13.28,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "STATE_HIGHWAY",
+        "normalized_score": 80.0,
+        "weight": 0.15,
+        "weighted_score": 12.0,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 1.4,
+        "normalized_score": 53.3,
+        "weight": 0.15,
+        "weighted_score": 7.99,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "MUNICIPAL_PARKING",
+        "normalized_score": 70.0,
+        "weight": 0.1,
+        "weighted_score": 7.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "District has 25,920 EVs with ZERO verified public chargers in BEE directory.",
+    "engineering_limitations": "APMC market board permission required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-DST-001",
+    "name": "Nashik Central CBS Bus Terminal (MSRTC)",
+    "category": "BUS_DEPOT",
+    "district": "Nashik",
+    "district_code": "MH-NSK",
+    "corridor_name": "District Headquarters",
+    "scope": "DISTRICTS",
+    "coordinates": {
+      "latitude": 19.9975,
+      "longitude": 73.7898
+    },
+    "total_mcda_score": 84.8,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 6,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 16.5,
+      "nearest_substation_name": "Sinnar Industrial 33kV Substation",
+      "nearest_substation_distance_km": 1.5,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_MUNICIPAL"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 48385.0,
+      "estimated_footfall": "VERY_HIGH",
+      "road_classification": "NATIONAL_HIGHWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 48385.0,
+        "normalized_score": 100.0,
+        "weight": 0.25,
+        "weighted_score": 25.0,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 16.5,
+        "normalized_score": 82.5,
+        "weight": 0.2,
+        "weighted_score": 16.5,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 88.5,
+        "normalized_score": 88.5,
+        "weight": 0.15,
+        "weighted_score": 13.28,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "NATIONAL_HIGHWAY",
+        "normalized_score": 90.0,
+        "weight": 0.15,
+        "weighted_score": 13.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 1.5,
+        "normalized_score": 50.0,
+        "weight": 0.15,
+        "weighted_score": 7.5,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "BUS_DEPOT",
+        "normalized_score": 90.0,
+        "weight": 0.1,
+        "weighted_score": 9.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "District has 48,385 EVs with ZERO verified public chargers in BEE directory.",
+    "engineering_limitations": "MSRTC operational clearance required; city feeder congestion.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-DST-003",
+    "name": "Kolhapur Central Bus Stand (CBS) Kawala Naka",
+    "category": "BUS_DEPOT",
+    "district": "Kolhapur",
+    "district_code": "MH-KOP",
+    "corridor_name": "District Headquarters",
+    "scope": "DISTRICTS",
+    "coordinates": {
+      "latitude": 16.705,
+      "longitude": 74.2433
+    },
+    "total_mcda_score": 84.8,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 7,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 26.0,
+      "nearest_substation_name": "Kothrud 11kV Distribution Substation",
+      "nearest_substation_distance_km": 2.2,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_MUNICIPAL"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 29730.0,
+      "estimated_footfall": "VERY_HIGH",
+      "road_classification": "NATIONAL_HIGHWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 29730.0,
+        "normalized_score": 100.0,
+        "weight": 0.25,
+        "weighted_score": 25.0,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 26.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 88.5,
+        "normalized_score": 88.5,
+        "weight": 0.15,
+        "weighted_score": 13.28,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "NATIONAL_HIGHWAY",
+        "normalized_score": 90.0,
+        "weight": 0.15,
+        "weighted_score": 13.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 2.2,
+        "normalized_score": 26.7,
+        "weight": 0.15,
+        "weighted_score": 4.0,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "BUS_DEPOT",
+        "normalized_score": 90.0,
+        "weight": 0.1,
+        "weighted_score": 9.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "District has 29,730 EVs with ZERO verified public chargers in BEE directory.",
+    "engineering_limitations": "MSEDCL Kolhapur urban circle sanction required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-DST-004",
+    "name": "Solapur Old Pune Naka Commercial Hub (NH-65)",
+    "category": "MUNICIPAL_PARKING",
+    "district": "Solapur",
+    "district_code": "MH-SOL",
+    "corridor_name": "District Headquarters",
+    "scope": "DISTRICTS",
+    "coordinates": {
+      "latitude": 17.6599,
+      "longitude": 75.9064
+    },
+    "total_mcda_score": 84.0,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 8,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 34.0,
+      "nearest_substation_name": "Hadapsar Magarpatta 33kV Substation",
+      "nearest_substation_distance_km": 1.8,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_FEEDER"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 24218.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "NATIONAL_HIGHWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 24218.0,
+        "normalized_score": 96.9,
+        "weight": 0.25,
+        "weighted_score": 24.23,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 34.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 88.5,
+        "normalized_score": 88.5,
+        "weight": 0.15,
+        "weighted_score": 13.28,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "NATIONAL_HIGHWAY",
+        "normalized_score": 90.0,
+        "weight": 0.15,
+        "weighted_score": 13.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 1.8,
+        "normalized_score": 40.0,
+        "weight": 0.15,
+        "weighted_score": 6.0,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "MUNICIPAL_PARKING",
+        "normalized_score": 70.0,
+        "weight": 0.1,
+        "weighted_score": 7.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "District has 24,218 EVs with ZERO verified public chargers in BEE directory.",
+    "engineering_limitations": "Municipal NOC and commercial retail tenant approval required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-SAM-003",
+    "name": "Jalna East Logistics Hub & Dry Port Spur (Chainage 415 km)",
+    "category": "HIGHWAY_AMENITY",
+    "district": "Jalna",
+    "district_code": "MH-JAL",
+    "corridor_name": "Samruddhi Mahamarg",
+    "scope": "SAMRUDDHI",
+    "coordinates": {
+      "latitude": 19.841,
+      "longitude": 75.882
+    },
+    "total_mcda_score": 81.9,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 9,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 35.0,
+      "nearest_substation_name": "Jalna MIDC 33kV Substation",
+      "nearest_substation_distance_km": 0.8,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_33KV_ADJACENT"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 12600.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "EXPRESSWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 12600.0,
+        "normalized_score": 50.4,
+        "weight": 0.25,
+        "weighted_score": 12.6,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 35.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 92.0,
+        "normalized_score": 92.0,
+        "weight": 0.15,
+        "weighted_score": 13.8,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "EXPRESSWAY",
+        "normalized_score": 100.0,
+        "weight": 0.15,
+        "weighted_score": 15.0,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 0.8,
+        "normalized_score": 73.3,
+        "weight": 0.15,
+        "weighted_score": 10.99,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "HIGHWAY_AMENITY",
+        "normalized_score": 95.0,
+        "weight": 0.1,
+        "weighted_score": 9.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Connects Marathwada dry port with expressway; ideal for commercial electric truck charging.",
+    "engineering_limitations": "Requires heavy-duty 240kW CCS-2 chargers under Clause 12(7).",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-SAM-002",
+    "name": "Mehkar Intermodal Rest Oasis (Chainage 325 km)",
+    "category": "HIGHWAY_AMENITY",
+    "district": "Buldhana",
+    "district_code": "MH-BLD",
+    "corridor_name": "Samruddhi Mahamarg",
+    "scope": "SAMRUDDHI",
+    "coordinates": {
+      "latitude": 20.155,
+      "longitude": 76.575
+    },
+    "total_mcda_score": 77.0,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 10,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 68.0,
+      "nearest_substation_name": "Jalna MIDC 33kV Substation",
+      "nearest_substation_distance_km": 2.1,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_33KV_SPUR_REQUIRED"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 14200.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "EXPRESSWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 14200.0,
+        "normalized_score": 56.8,
+        "weight": 0.25,
+        "weighted_score": 14.2,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 68.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 92.0,
+        "normalized_score": 92.0,
+        "weight": 0.15,
+        "weighted_score": 13.8,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "EXPRESSWAY",
+        "normalized_score": 100.0,
+        "weight": 0.15,
+        "weighted_score": 15.0,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 2.1,
+        "normalized_score": 30.0,
+        "weight": 0.15,
+        "weighted_score": 4.5,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "HIGHWAY_AMENITY",
+        "normalized_score": 95.0,
+        "weight": 0.1,
+        "weighted_score": 9.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Critical midpoint of Samruddhi Mahamarg; eliminates severe range anxiety for long-haul EVs.",
+    "engineering_limitations": "Dedicated 33kV line extension needed from MSEDCL Mehkar feeder.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-DST-007",
+    "name": "Amravati Rajkamal Square Public Transit Node",
+    "category": "BUS_DEPOT",
+    "district": "Amravati",
+    "district_code": "MH-AMR",
+    "corridor_name": "District Headquarters",
+    "scope": "DISTRICTS",
+    "coordinates": {
+      "latitude": 20.932,
+      "longitude": 77.7523
+    },
+    "total_mcda_score": 76.6,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 11,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 45.0,
+      "nearest_substation_name": "Wardha Outer 33kV Substation",
+      "nearest_substation_distance_km": 2.4,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_FEEDER"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 17812.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "NATIONAL_HIGHWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 17812.0,
+        "normalized_score": 71.2,
+        "weight": 0.25,
+        "weighted_score": 17.8,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 45.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 88.5,
+        "normalized_score": 88.5,
+        "weight": 0.15,
+        "weighted_score": 13.28,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "NATIONAL_HIGHWAY",
+        "normalized_score": 90.0,
+        "weight": 0.15,
+        "weighted_score": 13.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 2.4,
+        "normalized_score": 20.0,
+        "weight": 0.15,
+        "weighted_score": 3.0,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "BUS_DEPOT",
+        "normalized_score": 90.0,
+        "weight": 0.1,
+        "weighted_score": 9.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "District has 17,812 EVs with ZERO verified public chargers in BEE directory.",
+    "engineering_limitations": "Traffic police NOC required for charger ingress/egress.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-SAM-007",
+    "name": "Pulgaon Wardha Toll Plaza Rest Hub (Chainage 95 km)",
+    "category": "PETROL_PUMP",
+    "district": "Wardha",
+    "district_code": "MH-WRD",
+    "corridor_name": "Samruddhi Mahamarg",
+    "scope": "SAMRUDDHI",
+    "coordinates": {
+      "latitude": 20.725,
+      "longitude": 78.318
+    },
+    "total_mcda_score": 75.6,
+    "priority_classification": "HIGH_PRIORITY_CANDIDATE",
+    "rank": 12,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 38.0,
+      "nearest_substation_name": "Wardha Outer 33kV Substation",
+      "nearest_substation_distance_km": 1.1,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_33KV_PROXIMITY"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 9800.0,
+      "estimated_footfall": "MEDIUM",
+      "road_classification": "EXPRESSWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 9800.0,
+        "normalized_score": 39.2,
+        "weight": 0.25,
+        "weighted_score": 9.8,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 38.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 92.0,
+        "normalized_score": 92.0,
+        "weight": 0.15,
+        "weighted_score": 13.8,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "EXPRESSWAY",
+        "normalized_score": 100.0,
+        "weight": 0.15,
+        "weighted_score": 15.0,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 1.1,
+        "normalized_score": 63.3,
+        "weight": 0.15,
+        "weighted_score": 9.49,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "PETROL_PUMP",
+        "normalized_score": 75.0,
+        "weight": 0.1,
+        "weighted_score": 7.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Serves eastern alignment between Nagpur and Amravati; MoP Clause 11(1)(b) spacing compliance.",
+    "engineering_limitations": "Toll plaza queue separation required for EV bays.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-DST-006",
+    "name": "Satara Powai Naka Municipal Multi-Purpose Lot",
+    "category": "MUNICIPAL_PARKING",
+    "district": "Satara",
+    "district_code": "MH-SAT",
+    "corridor_name": "District Headquarters",
+    "scope": "DISTRICTS",
+    "coordinates": {
+      "latitude": 17.6805,
+      "longitude": 73.9922
+    },
+    "total_mcda_score": 74.9,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 13,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 24.0,
+      "nearest_substation_name": "Kothrud 11kV Distribution Substation",
+      "nearest_substation_distance_km": 1.9,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_MUNICIPAL"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 18615.0,
+      "estimated_footfall": "MEDIUM",
+      "road_classification": "MAJOR_ARTERIAL"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 18615.0,
+        "normalized_score": 74.5,
+        "weight": 0.25,
+        "weighted_score": 18.62,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 24.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 88.5,
+        "normalized_score": 88.5,
+        "weight": 0.15,
+        "weighted_score": 13.28,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "MAJOR_ARTERIAL",
+        "normalized_score": 70.0,
+        "weight": 0.15,
+        "weighted_score": 10.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 1.9,
+        "normalized_score": 36.7,
+        "weight": 0.15,
+        "weighted_score": 5.5,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "MUNICIPAL_PARKING",
+        "normalized_score": 70.0,
+        "weight": 0.1,
+        "weighted_score": 7.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "District has 18,615 EVs with ZERO verified public chargers in BEE directory.",
+    "engineering_limitations": "Satara municipal council clearance required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-DST-008",
+    "name": "Jalgaon Station Road Municipal Parking Lot",
+    "category": "RAILWAY_STATION",
+    "district": "Jalgaon",
+    "district_code": "MH-JLG",
+    "corridor_name": "District Headquarters",
+    "scope": "DISTRICTS",
+    "coordinates": {
+      "latitude": 21.0077,
+      "longitude": 75.5626
+    },
+    "total_mcda_score": 74.6,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 14,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 38.0,
+      "nearest_substation_name": "Jalna MIDC 33kV Substation",
+      "nearest_substation_distance_km": 2.1,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_MUNICIPAL"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 17810.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "MAJOR_ARTERIAL"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 17810.0,
+        "normalized_score": 71.2,
+        "weight": 0.25,
+        "weighted_score": 17.8,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 38.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 88.5,
+        "normalized_score": 88.5,
+        "weight": 0.15,
+        "weighted_score": 13.28,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "MAJOR_ARTERIAL",
+        "normalized_score": 70.0,
+        "weight": 0.15,
+        "weighted_score": 10.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 2.1,
+        "normalized_score": 30.0,
+        "weight": 0.15,
+        "weighted_score": 4.5,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "RAILWAY_STATION",
+        "normalized_score": 85.0,
+        "weight": 0.1,
+        "weighted_score": 8.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "District has 17,810 EVs with ZERO verified public chargers in BEE directory.",
+    "engineering_limitations": "Municipal commercial parking concession required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-SAM-004",
+    "name": "Vaijapur Expressway Fuel Oasis (Chainage 510 km)",
+    "category": "PETROL_PUMP",
+    "district": "Chhatrapati Sambhajinagar",
+    "district_code": "MH-CSN",
+    "corridor_name": "Samruddhi Mahamarg",
+    "scope": "SAMRUDDHI",
+    "coordinates": {
+      "latitude": 19.921,
+      "longitude": 74.723
+    },
+    "total_mcda_score": 74.3,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 15,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 48.0,
+      "nearest_substation_name": "Kopargaon Bypass 33kV Substation",
+      "nearest_substation_distance_km": 1.6,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_FEEDER"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 11000.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "EXPRESSWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 11000.0,
+        "normalized_score": 44.0,
+        "weight": 0.25,
+        "weighted_score": 11.0,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 48.0,
+        "normalized_score": 100.0,
+        "weight": 0.2,
+        "weighted_score": 20.0,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 92.0,
+        "normalized_score": 92.0,
+        "weight": 0.15,
+        "weighted_score": 13.8,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "EXPRESSWAY",
+        "normalized_score": 100.0,
+        "weight": 0.15,
+        "weighted_score": 15.0,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 1.6,
+        "normalized_score": 46.7,
+        "weight": 0.15,
+        "weighted_score": 7.0,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "PETROL_PUMP",
+        "normalized_score": 75.0,
+        "weight": 0.1,
+        "weighted_score": 7.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Bridges gap between Sambhajinagar and Shirdi/Nashik agricultural belts.",
+    "engineering_limitations": "Land allotment verification with MSRDC pending.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-PUN-007",
+    "name": "Hadapsar Gadital PMPML Intercity Depot",
+    "category": "BUS_DEPOT",
+    "district": "Pune",
+    "district_code": "MH-PUN",
+    "corridor_name": "Pune Urban Grid",
+    "scope": "PUNE",
+    "coordinates": {
+      "latitude": 18.502,
+      "longitude": 73.9312
+    },
+    "total_mcda_score": 64.4,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 16,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 4.5,
+      "nearest_substation_name": "Hadapsar Magarpatta 33kV Substation",
+      "nearest_substation_distance_km": 0.65,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_33KV_PROXIMITY"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 13400.0,
+      "estimated_footfall": "VERY_HIGH",
+      "road_classification": "NATIONAL_HIGHWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 13400.0,
+        "normalized_score": 53.6,
+        "weight": 0.25,
+        "weighted_score": 13.4,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 4.5,
+        "normalized_score": 22.5,
+        "weight": 0.2,
+        "weighted_score": 4.5,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 81.4,
+        "normalized_score": 81.4,
+        "weight": 0.15,
+        "weighted_score": 12.21,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "NATIONAL_HIGHWAY",
+        "normalized_score": 90.0,
+        "weight": 0.15,
+        "weighted_score": 13.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 0.65,
+        "normalized_score": 78.3,
+        "weight": 0.15,
+        "weighted_score": 11.74,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "BUS_DEPOT",
+        "normalized_score": 90.0,
+        "weight": 0.1,
+        "weighted_score": 9.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Connects Pune-Solapur highway corridor; serves high-density transit node.",
+    "engineering_limitations": "Depot operational layout reorganization required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-PUN-004",
+    "name": "Chakan MIDC Phase 2 Freight & Industrial Terminal",
+    "category": "MUNICIPAL_PARKING",
+    "district": "Pune",
+    "district_code": "MH-PUN",
+    "corridor_name": "Pune Urban Grid",
+    "scope": "PUNE",
+    "coordinates": {
+      "latitude": 18.7521,
+      "longitude": 73.8415
+    },
+    "total_mcda_score": 63.9,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 17,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 8.2,
+      "nearest_substation_name": "Shivajinagar 33kV GIS Substation",
+      "nearest_substation_distance_km": 1.4,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_33KV_INDUSTRIAL"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 16500.0,
+      "estimated_footfall": "VERY_HIGH",
+      "road_classification": "STATE_HIGHWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 16500.0,
+        "normalized_score": 66.0,
+        "weight": 0.25,
+        "weighted_score": 16.5,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 8.2,
+        "normalized_score": 41.0,
+        "weight": 0.2,
+        "weighted_score": 8.2,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 81.4,
+        "normalized_score": 81.4,
+        "weight": 0.15,
+        "weighted_score": 12.21,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "STATE_HIGHWAY",
+        "normalized_score": 80.0,
+        "weight": 0.15,
+        "weighted_score": 12.0,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 1.4,
+        "normalized_score": 53.3,
+        "weight": 0.15,
+        "weighted_score": 7.99,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "MUNICIPAL_PARKING",
+        "normalized_score": 70.0,
+        "weight": 0.1,
+        "weighted_score": 7.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Severe industrial freight deficit; high concentration of commercial EV delivery vehicles.",
+    "engineering_limitations": "Heavy-duty 150kW+ transformer sanction required from MSEDCL.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-PUN-001",
+    "name": "Hinjawadi Phase 3 Transit Hub & PMPML Bus Bay",
+    "category": "BUS_DEPOT",
+    "district": "Pune",
+    "district_code": "MH-PUN",
+    "corridor_name": "Pune Urban Grid",
+    "scope": "PUNE",
+    "coordinates": {
+      "latitude": 18.5742,
+      "longitude": 73.6985
+    },
+    "total_mcda_score": 61.5,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 18,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 4.8,
+      "nearest_substation_name": "Hinjawadi Phase 1 22kV Feeder",
+      "nearest_substation_distance_km": 0.85,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_ADJACENT"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 14200.0,
+      "estimated_footfall": "VERY_HIGH",
+      "road_classification": "MAJOR_ARTERIAL"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 14200.0,
+        "normalized_score": 56.8,
+        "weight": 0.25,
+        "weighted_score": 14.2,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 4.8,
+        "normalized_score": 24.0,
+        "weight": 0.2,
+        "weighted_score": 4.8,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 81.4,
+        "normalized_score": 81.4,
+        "weight": 0.15,
+        "weighted_score": 12.21,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "MAJOR_ARTERIAL",
+        "normalized_score": 70.0,
+        "weight": 0.15,
+        "weighted_score": 10.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 0.85,
+        "normalized_score": 71.7,
+        "weight": 0.15,
+        "weighted_score": 10.76,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "BUS_DEPOT",
+        "normalized_score": 90.0,
+        "weight": 0.1,
+        "weighted_score": 9.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Violates MoP 1km\u00b2 urban rule; cell centroid is 4.8 km from nearest public EVSE.",
+    "engineering_limitations": "PMPML municipal parking allocation required; peak feeder load unverified from MSEDCL.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-PUN-002",
+    "name": "Wagholi Pune-Ahmednagar Highway Junction (NH-753F)",
+    "category": "HIGHWAY_AMENITY",
+    "district": "Pune",
+    "district_code": "MH-PUN",
+    "corridor_name": "Pune Urban Grid",
+    "scope": "PUNE",
+    "coordinates": {
+      "latitude": 18.5815,
+      "longitude": 73.9852
+    },
+    "total_mcda_score": 61.4,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 19,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 5.4,
+      "nearest_substation_name": "Viman Nagar 33kV Substation",
+      "nearest_substation_distance_km": 1.2,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_22KV_PROXIMITY"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 11800.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "NATIONAL_HIGHWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 11800.0,
+        "normalized_score": 47.2,
+        "weight": 0.25,
+        "weighted_score": 11.8,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 5.4,
+        "normalized_score": 27.0,
+        "weight": 0.2,
+        "weighted_score": 5.4,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 81.4,
+        "normalized_score": 81.4,
+        "weight": 0.15,
+        "weighted_score": 12.21,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "NATIONAL_HIGHWAY",
+        "normalized_score": 90.0,
+        "weight": 0.15,
+        "weighted_score": 13.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 1.2,
+        "normalized_score": 60.0,
+        "weight": 0.15,
+        "weighted_score": 9.0,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "HIGHWAY_AMENITY",
+        "normalized_score": 95.0,
+        "weight": 0.1,
+        "weighted_score": 9.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Critical eastern urban corridor void; no public charger between Viman Nagar and Shikrapur.",
+    "engineering_limitations": "Highway ROW permission from NHAI required; transformer bay expansion pending.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-PUN-003",
+    "name": "Bavdhan - Paud Road Interchange (NH-48 Bypass)",
+    "category": "HIGHWAY_AMENITY",
+    "district": "Pune",
+    "district_code": "MH-PUN",
+    "corridor_name": "Pune Urban Grid",
+    "scope": "PUNE",
+    "coordinates": {
+      "latitude": 18.5142,
+      "longitude": 73.7712
+    },
+    "total_mcda_score": 58.5,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 20,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 3.6,
+      "nearest_substation_name": "Kothrud 11kV Distribution Substation",
+      "nearest_substation_distance_km": 0.95,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_ADJACENT"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 9400.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "NATIONAL_HIGHWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 9400.0,
+        "normalized_score": 37.6,
+        "weight": 0.25,
+        "weighted_score": 9.4,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 3.6,
+        "normalized_score": 18.0,
+        "weight": 0.2,
+        "weighted_score": 3.6,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 81.4,
+        "normalized_score": 81.4,
+        "weight": 0.15,
+        "weighted_score": 12.21,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "NATIONAL_HIGHWAY",
+        "normalized_score": 90.0,
+        "weight": 0.15,
+        "weighted_score": 13.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 0.95,
+        "normalized_score": 68.3,
+        "weight": 0.15,
+        "weighted_score": 10.24,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "HIGHWAY_AMENITY",
+        "normalized_score": 95.0,
+        "weight": 0.1,
+        "weighted_score": 9.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Captures heavy Mumbai-Bangalore highway transit; bridges western void.",
+    "engineering_limitations": "Commercial lease negotiation required; bay allocation pending.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-PUN-005",
+    "name": "Katraj Wonder City Bus Terminus (Satara Road)",
+    "category": "BUS_DEPOT",
+    "district": "Pune",
+    "district_code": "MH-PUN",
+    "corridor_name": "Pune Urban Grid",
+    "scope": "PUNE",
+    "coordinates": {
+      "latitude": 18.4485,
+      "longitude": 73.8588
+    },
+    "total_mcda_score": 58.5,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 21,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 4.1,
+      "nearest_substation_name": "Kothrud 11kV Distribution Substation",
+      "nearest_substation_distance_km": 1.1,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_ADJACENT"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 10200.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "NATIONAL_HIGHWAY"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 10200.0,
+        "normalized_score": 40.8,
+        "weight": 0.25,
+        "weighted_score": 10.2,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 4.1,
+        "normalized_score": 20.5,
+        "weight": 0.2,
+        "weighted_score": 4.1,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 81.4,
+        "normalized_score": 81.4,
+        "weight": 0.15,
+        "weighted_score": 12.21,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "NATIONAL_HIGHWAY",
+        "normalized_score": 90.0,
+        "weight": 0.15,
+        "weighted_score": 13.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 1.1,
+        "normalized_score": 63.3,
+        "weight": 0.15,
+        "weighted_score": 9.49,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "BUS_DEPOT",
+        "normalized_score": 90.0,
+        "weight": 0.1,
+        "weighted_score": 9.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Southern arterial gateway to NH-48; serves heavy commuter 2W and intercity buses.",
+    "engineering_limitations": "PMPML bus bay coordination required; MSEDCL sanction pending.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-PUN-006",
+    "name": "Bhosari MIDC Telco Road Public Parking Hub",
+    "category": "MUNICIPAL_PARKING",
+    "district": "Pune",
+    "district_code": "MH-PUN",
+    "corridor_name": "Pune Urban Grid",
+    "scope": "PUNE",
+    "coordinates": {
+      "latitude": 18.6385,
+      "longitude": 73.8492
+    },
+    "total_mcda_score": 53.3,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 22,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 3.2,
+      "nearest_substation_name": "Shivajinagar 33kV GIS Substation",
+      "nearest_substation_distance_km": 0.7,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_33KV_ADJACENT"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 8900.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "MAJOR_ARTERIAL"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 8900.0,
+        "normalized_score": 35.6,
+        "weight": 0.25,
+        "weighted_score": 8.9,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 3.2,
+        "normalized_score": 16.0,
+        "weight": 0.2,
+        "weighted_score": 3.2,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 81.4,
+        "normalized_score": 81.4,
+        "weight": 0.15,
+        "weighted_score": 12.21,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "MAJOR_ARTERIAL",
+        "normalized_score": 70.0,
+        "weight": 0.15,
+        "weighted_score": 10.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 0.7,
+        "normalized_score": 76.7,
+        "weight": 0.15,
+        "weighted_score": 11.51,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "MUNICIPAL_PARKING",
+        "normalized_score": 70.0,
+        "weight": 0.1,
+        "weighted_score": 7.0,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "Bridges gap between Pimpri cluster and northern Pune industrial zone.",
+    "engineering_limitations": "MIDC land lease agreement required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  },
+  {
+    "id": "CAND-PUN-008",
+    "name": "Pimpri Railway Station Public Multi-Level Parking",
+    "category": "RAILWAY_STATION",
+    "district": "Pune",
+    "district_code": "MH-PUN",
+    "corridor_name": "Pune Urban Grid",
+    "scope": "PUNE",
+    "coordinates": {
+      "latitude": 18.6272,
+      "longitude": 73.8015
+    },
+    "total_mcda_score": 52.3,
+    "priority_classification": "MEDIUM_PRIORITY_CANDIDATE",
+    "rank": 23,
+    "nearby_infrastructure": {
+      "nearest_charger_distance_km": 2.8,
+      "nearest_substation_name": "Hinjawadi Phase 1 22kV Feeder",
+      "nearest_substation_distance_km": 0.9,
+      "electrical_feasibility_status": "PRELIMINARY_FEASIBLE_11KV_ADJACENT"
+    },
+    "demand_indicators": {
+      "unserved_ev_catchment": 7800.0,
+      "estimated_footfall": "HIGH",
+      "road_classification": "MAJOR_ARTERIAL"
+    },
+    "mcda_criteria_breakdown": {
+      "ev_demand_potential": {
+        "raw_value": 7800.0,
+        "normalized_score": 31.2,
+        "weight": 0.25,
+        "weighted_score": 7.8,
+        "rationale": "Measures unserved localized EV fleet in surrounding catchment."
+      },
+      "distance_from_chargers": {
+        "raw_value": 2.8,
+        "normalized_score": 14.0,
+        "weight": 0.2,
+        "weighted_score": 2.8,
+        "rationale": "Rewards spacing from existing stations to avoid clustering and eliminate voids."
+      },
+      "infrastructure_gap_severity": {
+        "raw_value": 81.4,
+        "normalized_score": 81.4,
+        "weight": 0.15,
+        "weighted_score": 12.21,
+        "rationale": "Reflects regional Charging Gap Index (CGI) deficit severity."
+      },
+      "road_accessibility": {
+        "raw_value": "MAJOR_ARTERIAL",
+        "normalized_score": 70.0,
+        "weight": 0.15,
+        "weighted_score": 10.5,
+        "rationale": "Evaluates arterial road hierarchy and through-traffic volume."
+      },
+      "electrical_proximity": {
+        "raw_value": 0.9,
+        "normalized_score": 70.0,
+        "weight": 0.15,
+        "weighted_score": 10.5,
+        "rationale": "Proximity to 11kV/33kV substation minimizes grid extension capital cost."
+      },
+      "land_suitability": {
+        "raw_value": "RAILWAY_STATION",
+        "normalized_score": 85.0,
+        "weight": 0.1,
+        "weighted_score": 8.5,
+        "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
+      }
+    },
+    "justification_for_recommendation": "High daytime park-and-charge demand for suburban railway commuters.",
+    "engineering_limitations": "Railway land licensing and PCMC parking concession required.",
+    "disclaimer": "Planning recommendation only. Does NOT constitute statutory site sanction, structural approval, or DISCOM electricity connection guarantee."
+  }
+]

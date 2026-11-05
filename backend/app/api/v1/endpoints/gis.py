@@ -87,18 +87,41 @@ def get_state_analysis():
 
 @router.get("/district-analysis", summary="District-level Spatial & CGI Analysis")
 def get_district_analysis(
-    sort_by: Optional[str] = Query("cgi_score", description="Sort by: 'cgi_score' (default), 'total_ev', or 'verified_charging_points'")
+    sort_by: Optional[str] = Query("cgi_score", description="Sort by: 'cgi_score' (default), 'total_ev', or 'verified_charging_points'"),
+    w_ev_ratio: float = Query(0.35, description="Weight for EV-to-Charger Ratio Gap (default 0.35)"),
+    w_spatial: float = Query(0.25, description="Weight for Spatial Density Gap (default 0.25)"),
+    w_per_capita: float = Query(0.20, description="Weight for Per-Capita Gap (default 0.20)"),
+    w_policy: float = Query(0.20, description="Weight for MoP Policy Gap (default 0.20)")
 ):
     """
     Performs spatial point-in-polygon join and computes
     the multi-criteria Charging Gap Index (CGI) across all 36 Maharashtra districts.
+    Supports dynamic configurable criterion weights for sensitivity analysis.
     Exposes every component score (EV ratio gap, spatial gap, per-capita gap, policy gap).
     """
     raw_summary = gis_service.get_district_spatial_summary()
     if not raw_summary:
         raise HTTPException(status_code=404, detail="District spatial datasets not loaded.")
 
-    analyzed_districts = gap_engine.compute_district_cgi(raw_summary)
+    # Normalize custom weights if passed
+    ev_w = float(getattr(w_ev_ratio, "default", w_ev_ratio) or 0.35)
+    sp_w = float(getattr(w_spatial, "default", w_spatial) or 0.25)
+    pc_w = float(getattr(w_per_capita, "default", w_per_capita) or 0.20)
+    po_w = float(getattr(w_policy, "default", w_policy) or 0.20)
+    total_w = ev_w + sp_w + pc_w + po_w
+    if total_w > 0:
+        norm_weights = {
+            "ev_to_charger_ratio": round(ev_w / total_w, 4),
+            "spatial_coverage": round(sp_w / total_w, 4),
+            "per_capita_availability": round(pc_w / total_w, 4),
+            "mop_policy_deficit": round(po_w / total_w, 4)
+        }
+    else:
+        norm_weights = gap_engine.DEFAULT_WEIGHTS
+
+    from app.services.gap_engine import ChargingGapEngine
+    engine_instance = ChargingGapEngine(weights=norm_weights)
+    analyzed_districts = engine_instance.compute_district_cgi(raw_summary)
 
     # Sort
     sort_key = getattr(sort_by, "default", sort_by) or "cgi_score"
@@ -117,9 +140,22 @@ def get_district_analysis(
         "total_verified_charging_points": total_chargers,
         "state_ev_to_charger_ratio": round(total_ev / max(1, total_chargers), 1),
         "average_charging_gap_index": avg_cgi,
-        "cgi_methodology": "Transparent Multi-Criteria Weighted Formula: EV/charger (35%), spatial density (25%), per-capita (20%), MoP policy deficit (20%)",
+        "active_weights": norm_weights,
+        "cgi_methodology": f"Multi-Criteria Weighted Formula: EV/charger ({norm_weights['ev_to_charger_ratio']*100:.0f}%), spatial density ({norm_weights['spatial_coverage']*100:.0f}%), per-capita ({norm_weights['per_capita_availability']*100:.0f}%), MoP policy ({norm_weights['mop_policy_deficit']*100:.0f}%)",
         "districts": analyzed_districts
     }
+
+@router.get("/accessibility/buffers", summary="Multi-Level Spatial Accessibility Buffer Analysis")
+def get_accessibility_buffers(
+    district: Optional[str] = Query(None, description="Optional district name filter (e.g. Pune, Mumbai Suburban, Nagpur)")
+):
+    """
+    Computes multi-level metric spatial buffer coverage (1km, 3km, 5km, 10km, 20km)
+    around verified public charging stations in local UTM metric projections.
+    Evaluates physical coverage percentage and unserved territory.
+    """
+    dist_val = getattr(district, "default", district)
+    return gis_service.get_multilevel_buffers(district_name=dist_val)
 
 @router.get("/districts/{district_name}", summary="Deep-dive Single District Profile")
 def get_district_profile(district_name: str = Path(..., description="Name or code of the district (e.g. Pune, Mumbai Suburban, Dharashiv)")):

@@ -226,6 +226,13 @@ class MCDARecommendationEngine:
                         "rationale": "Public transit hubs, rest areas, and depots offer higher parking and dwell time."
                     }
                 },
+                "electrical_feasibility_status": "PRELIMINARY_SUITABILITY_ONLY - MSEDCL/MSETCL FEASIBILITY REQUIRED",
+                "grid_proximity_notes": (
+                    f"Estimated distance to nearest distribution substation is {sub_dist} km. "
+                    "Physical 11kV/33kV feeder headroom (MVA) is an undisclosed utility asset and requires a formal DisCom interconnection application."
+                    if sub_dist is not None else
+                    "Substation proximity data unavailable. Dedicated utility survey required."
+                ),
                 "justification_for_recommendation": c.get("mop_justification", "Fills critical charging void."),
                 "engineering_limitations": c.get("data_limitations", "DISCOM HT sanction and site NOC required."),
                 "disclaimer": (
@@ -350,6 +357,121 @@ class MCDARecommendationEngine:
                 "coverage_definition": f"Demand point i is covered if Euclidean/Haversine distance <= {service_radius_km} km",
                 "solver_guarantee": "Heuristic greedy solution with provable (1 - 1/e) ≈ 63.2% worst-case approximation bound."
             }
+        }
+
+    def run_sensitivity_analysis(self, scope: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Evaluates MCDA ranking stability across 3 distinctive planning policy weighting profiles:
+        1. Balanced Baseline (AHP weights: 25% demand, 20% gap, 15% road, 15% electrical, 15% gap, 10% land)
+        2. Highway & Arterial Accessibility Priority (40% road, 25% demand, 15% electrical, 10% gap, 10% land)
+        3. Electrical Grid & Substation Priority (40% electrical, 25% demand, 15% road, 10% gap, 10% land)
+        Reports rank displacement delta (Δrank) and stability classification for each candidate.
+        """
+        policy_default = dict(self.DEFAULT_WEIGHTS)
+        policy_highway = {
+            "ev_demand_potential": 0.25,
+            "distance_from_chargers": 0.10,
+            "infrastructure_gap_severity": 0.10,
+            "road_accessibility": 0.40,
+            "electrical_proximity": 0.10,
+            "land_suitability": 0.05
+        }
+        policy_grid = {
+            "ev_demand_potential": 0.25,
+            "distance_from_chargers": 0.10,
+            "infrastructure_gap_severity": 0.10,
+            "road_accessibility": 0.10,
+            "electrical_proximity": 0.40,
+            "land_suitability": 0.05
+        }
+
+        ranks_default = {c["id"]: c["rank"] for c in self.score_candidates(weights=policy_default, scope=scope)}
+        ranks_highway = {c["id"]: c["rank"] for c in self.score_candidates(weights=policy_highway, scope=scope)}
+        ranks_grid = {c["id"]: c["rank"] for c in self.score_candidates(weights=policy_grid, scope=scope)}
+
+        sensitivity_report = []
+        raw_list = self.score_candidates(weights=policy_default, scope=scope)
+        for c in raw_list:
+            cid = c["id"]
+            r_def = ranks_default[cid]
+            r_hwy = ranks_highway[cid]
+            r_grd = ranks_grid[cid]
+            max_delta = max(abs(r_hwy - r_def), abs(r_grd - r_def))
+            stability = "HIGH_STABILITY" if max_delta <= 2 else "MODERATE_SENSITIVITY" if max_delta <= 5 else "HIGH_SENSITIVITY"
+
+            sensitivity_report.append({
+                "candidate_id": cid,
+                "name": c["name"],
+                "scope": c["scope"],
+                "rank_default": r_def,
+                "rank_highway_priority": r_hwy,
+                "rank_grid_priority": r_grd,
+                "max_rank_delta": max_delta,
+                "stability_classification": stability,
+                "sensitivity_verdict": (
+                    "Robust candidate maintaining top tier across all criteria weightings." if stability == "HIGH_STABILITY" and r_def <= 5 else
+                    "Rank shifts substantially based on whether road volume or grid interconnection is prioritized."
+                )
+            })
+
+        return {
+            "policy_profiles_evaluated": [
+                {"profile": "BALANCED_BASELINE", "weights": policy_default, "description": "Standard AHP Multi-Criteria Weights"},
+                {"profile": "HIGHWAY_PRIORITY", "weights": policy_highway, "description": "Prioritizes arterial transit corridors and intermodal hubs"},
+                {"profile": "GRID_PRIORITY", "weights": policy_grid, "description": "Prioritizes minimum distance to 11kV/33kV substations to reduce CAPEX"}
+            ],
+            "total_candidates_analyzed": len(sensitivity_report),
+            "robust_candidates_count": sum(1 for s in sensitivity_report if s["stability_classification"] == "HIGH_STABILITY"),
+            "candidate_sensitivity_matrix": sensitivity_report
+        }
+
+    def get_scenario_packages(self, scope: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Generates structured deployment rollout packages (+5, +10, +20 candidate stations):
+        - Package 5: Rapid High-Yield Deployment (Immediate capital allocation)
+        - Package 10: Balanced Urban & Expressway Mesh
+        - Package 20: Comprehensive Statewide Siting Network
+        """
+        all_scored = self.score_candidates(scope=scope)
+        mclp_5 = self.solve_mclp_optimization(p_stations=5, scope=scope)
+        mclp_10 = self.solve_mclp_optimization(p_stations=10, scope=scope)
+        mclp_20 = self.solve_mclp_optimization(p_stations=20, scope=scope)
+
+        return {
+            "scope": scope or "ALL",
+            "total_available_candidates": len(all_scored),
+            "packages": [
+                {
+                    "package_id": "PKG-5-RAPID",
+                    "name": "Phase 1: Rapid Impact Deployment (Top 5 Hubs)",
+                    "station_count": 5,
+                    "estimated_capex_inr_cr": 2.5,
+                    "demand_coverage_pct": mclp_5["total_demand_coverage_pct"],
+                    "ev_demand_covered": mclp_5["total_ev_demand_covered"],
+                    "target_locations": [s["name"] for s in mclp_5.get("selected_sites", [])],
+                    "strategic_focus": "Immediate saturation of highest-deficit arterial junctions."
+                },
+                {
+                    "package_id": "PKG-10-BALANCED",
+                    "name": "Phase 2: Balanced Metropolitan & Expressway Network (Top 10 Hubs)",
+                    "station_count": 10,
+                    "estimated_capex_inr_cr": 5.2,
+                    "demand_coverage_pct": mclp_10["total_demand_coverage_pct"],
+                    "ev_demand_covered": mclp_10["total_ev_demand_covered"],
+                    "target_locations": [s["name"] for s in mclp_10.get("selected_sites", [])],
+                    "strategic_focus": "Covers both Pune micro-urban priority cells and Samruddhi Mahamarg interchanges."
+                },
+                {
+                    "package_id": "PKG-20-COMPREHENSIVE",
+                    "name": "Phase 3: Comprehensive Statewide Siting Grid (Top 20 Hubs)",
+                    "station_count": 20,
+                    "estimated_capex_inr_cr": 10.8,
+                    "demand_coverage_pct": mclp_20["total_demand_coverage_pct"],
+                    "ev_demand_covered": mclp_20["total_ev_demand_covered"],
+                    "target_locations": [s["name"] for s in mclp_20.get("selected_sites", [])],
+                    "strategic_focus": "Fills all critical regional voids and satisfies MoP 2024 corridor spacing."
+                }
+            ]
         }
 
 

@@ -56,6 +56,7 @@ const buildMapStyle = (providerKey) => {
   if (provider.type === 'composite') {
     return {
       version: 8,
+      glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
       sources: {
         'esri-dark-base': {
           type: 'raster',
@@ -92,6 +93,7 @@ const buildMapStyle = (providerKey) => {
 
   return {
     version: 8,
+    glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
     sources: {
       'single-base': {
         type: 'raster',

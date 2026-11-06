@@ -103,3 +103,4 @@ Evaluation against official **MoP Charging Infrastructure Guidelines (September 
 | **Section 3.1(b) Highways** | At least 1 station every $20\text{ km}$ on both sides of highway | Samruddhi: 14 stations along 701 km, but 0 on mainline; spacing exceeds 65 km in Washim & Buldhana | **22.5%** | **CRITICAL DEFICIT** |
 | **Section 3.1(c) Heavy Duty** | At least 1 fast charger ($\ge 100\text{ kW}$) every $100\text{ km}$ | 3 operational stations qualify ($\ge 100\text{ kW}$ CCS-2) along corridor | **28.6%** | **DEFICIT** |
 | **Section 4.2 DisCom Feeder** | Dedicated HT transformer for stations $> 100\text{ kW}$ | DisCom feeder data classified as preliminary suitability only | **UNCONFIRMED** | **DATA GAP** |
+

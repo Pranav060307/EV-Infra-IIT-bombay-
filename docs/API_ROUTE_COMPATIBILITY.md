@@ -108,3 +108,4 @@ The Axios client in `frontend/src/services/api.js` is hardened against productio
    If both network and static fallback fail, the client propagates an explicit error state (`Error: GIS Data Unavailable`) rather than generating synthetic fake numbers.
 4. **Cache Invalidation:**  
    HTML responses carry `Cache-Control: public, max-age=0, must-revalidate` to ensure clients immediately pick up new deployments without stale script hash locks.
+

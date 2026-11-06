@@ -66,3 +66,4 @@ To prevent browser stale-cache issues while maximizing edge performance:
    Configured with `Cache-Control: public, max-age=31536000, immutable`. Bundles carry unique Vite content hashes, allowing infinite safe browser caching.
 3. **Analytical Data (`/data/*`):**  
    Configured with `Cache-Control: public, max-age=86400, stale-while-revalidate=604800` and `Access-Control-Allow-Origin: *`. Pre-computed datasets are served from Vercel's global edge nodes with sub-30ms TTFB.
+

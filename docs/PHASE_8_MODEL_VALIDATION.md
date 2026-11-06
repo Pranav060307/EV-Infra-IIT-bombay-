@@ -105,3 +105,4 @@ Where:
 - **Software Integration, Billing, CCTV & Signage:** ₹2,80,000
 - **Contingency & Site Commissioning (7%):** ₹3,50,000
 - **Total Estimated CAPEX per Hub:** **₹48,50,000 (~₹48.5 Lakhs)**
+

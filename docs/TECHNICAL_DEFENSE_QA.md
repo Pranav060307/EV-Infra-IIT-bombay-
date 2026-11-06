@@ -118,3 +118,4 @@
 - **Clause 3.1(a) Urban Grid Density:** Mandates at least 1 charging station per $1\text{ km} \times 1\text{ km}$ grid in urban agglomerations. Our Pune analysis benchmarks 607 micro-cells against this norm, identifying $30.3\%$ compliance and highlighting $219$ deficit cells.
 - **Clause 3.1(b) Highway Spacing:** Mandates at least 1 charging station every $20\text{ km}$ on both sides of highways/expressways. Our Samruddhi analysis benchmarks the $701\text{ km}$ corridor against this norm ($22.5\%$ compliance).
 - **Clause 3.1(c) Heavy Duty Fast Charging:** Mandates at least 1 fast-charging station ($\ge 100\text{ kW}$) every $100\text{ km}$ for commercial and freight EVs. Only 3 qualified stations operate along the corridor ($28.6\%$ compliance).
+

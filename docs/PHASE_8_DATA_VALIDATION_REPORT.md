@@ -138,3 +138,4 @@ The ChargeAtlas India platform operates on **22 pre-computed Edge analytical dat
 | `DS-MSETCL-SUBSTATIONS` | Lat [15.6, 22.0], Lon [72.6, 80.9] | 100% Valid | 0 | None | 36 / 36 | Maharashtra | **PARTIALLY VERIFIED** |
 | `DS-PMRDA-PUNE-GRID` | Lat [18.4, 18.8], Lon [73.7, 74.0] | 100% Valid | 0 | 0 (Closed Cells) | Pune / Haveli | Maharashtra | **MODELLED** |
 | `DS-MCDA-CANDIDATES` | Lat [18.4, 21.2], Lon [73.7, 79.1] | 100% Valid | 0 | None | High-Deficit Zones | Maharashtra | **MODELLED** |
+

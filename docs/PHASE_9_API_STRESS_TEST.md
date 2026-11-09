@@ -78,3 +78,4 @@ X-Vercel-Cache: HIT
 ```
 - **Time-to-First-Byte (TTFB):** Under $35\text{ ms}$ globally across Vercel Anycast edge nodes.
 - **Stale-While-Revalidate:** Guarantees instantaneous delivery from edge cache while updating payloads asynchronously in the background.
+

@@ -121,3 +121,4 @@ $$\text{Per-Vehicle Daily Energy} = 32.0\text{ km/day} \times 0.160\text{ kWh/km
 $$E_{\text{daily}} = 886,752 \times 1.280\text{ kWh/day} = 1,135,042.56\text{ kWh/day} = \mathbf{1,135.04\text{ MWh/day}}$$
 
 *(Note: For the historical baseline of $484,305$ vehicles: $484,305 \times 1.280\text{ kWh} = \mathbf{619.91\text{ MWh/day}} \approx 620\text{ MWh/day}$, exactly verifying the Phase 8 baseline calculation).*
+

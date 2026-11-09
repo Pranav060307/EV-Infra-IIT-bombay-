@@ -70,3 +70,4 @@ The platform was tested across common viewport resolutions:
 - **Laptop (1280 × 800):** Adaptive layout with collapsible analytical sidebar.
 - **Tablet (768 × 1024):** Touch-friendly controls with gesture zooming and bottom drawer details.
 - **Mobile (375 × 667 & 412 × 915):** Stacked single-column view with full-width responsive map and swipeable KPI summary cards.
+

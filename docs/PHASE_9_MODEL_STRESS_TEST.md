@@ -94,3 +94,4 @@ The ILP was solved using the Branch-and-Cut algorithm via SciPy / PuLP:
   - **$P = 10$ Hubs (Phase 1):** Covers **$48.5\%$** of high-deficit demand at ₹4.85 Crore CAPEX.
   - **$P = 25$ Hubs (Phase 2):** Covers **$74.2\%$** of regional demand at ₹11.25 Crore CAPEX.
   - **$P = 60$ Hubs (Phase 3):** Covers **$92.8\%$** of statewide urban demand at ₹26.40 Crore CAPEX.
+

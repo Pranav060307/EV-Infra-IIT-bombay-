@@ -70,3 +70,4 @@ All dashboard pages feature instant client-side CSV data exports:
 - **Pune 607 Grid Cells CSV Export:** $14.8\text{ ms}$ generation time (File size: $86.4\text{ kB}$).
 - **MCDA 23 Candidate Parcels CSV Export:** $1.8\text{ ms}$ generation time (File size: $3.1\text{ kB}$).
 - **Data Integrity:** Generated CSV files strictly match the on-screen filtered records with identical column names and numerical precision.
+

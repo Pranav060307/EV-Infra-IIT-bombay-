@@ -58,3 +58,4 @@ npm run preview
 | **Data Trust Register** | Authoritative checksums return HTTP 200 | `curl -sI https://ev-infra-iit-bombay.vercel.app/api/v1/datasets/trust-register` | **PASS** |
 | **Console Errors** | Browser console shows 0 red errors | Inspected via Chrome DevTools Console | **PASS** |
 | **CSV Export** | Export buttons download valid CSV | Clicked 'Export CSV' on Maharashtra & Pune tabs | **PASS** |
+

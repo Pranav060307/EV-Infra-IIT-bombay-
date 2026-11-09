@@ -101,3 +101,4 @@ For $886,752$ EVs, $D_{\text{avg}} = 32\text{ km/day}$, $C_{\text{spec}} = 0.16\
 2. Road network travel times use a calibrated $1.32$ urban circuity factor rather than live real-time graph routing.
 3. Utility transformer MVA headroom is modeled via proxy proximity due to DisCom non-disclosure.
 4. Long-term forecasting beyond 2028 does not yet model dynamic battery price parity shocks.
+

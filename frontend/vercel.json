@@ -1,8 +1,6 @@
 {
   "buildCommand": "npm install && npm run build",
   "outputDirectory": "dist",
-  "cleanUrls": true,
-  "framework": "vite",
   "headers": [
     {
       "source": "/(.*)",
@@ -59,6 +57,6 @@
     { "source": "/api/v1/datasets/quality-audit", "destination": "/data/quality_audit.json" },
     { "source": "/api/v1/datasets/(.*)", "destination": "/data/datasets_list.json" },
     { "source": "/data/(.*)", "destination": "/data/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!api/|data/|assets/).*)", "destination": "/index.html" }
   ]
 }

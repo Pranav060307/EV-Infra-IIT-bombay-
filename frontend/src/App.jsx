@@ -11,8 +11,10 @@ import MaharashtraPage from './pages/MaharashtraPage';
 import DistrictDetailPage from './pages/DistrictDetailPage';
 import PuneAnalysisPage from './pages/PuneAnalysisPage';
 import SamruddhiPage from './pages/SamruddhiPage';
+import HighwayRouteSimulatorPage from './pages/HighwayRouteSimulatorPage';
 import ForecastingPage from './pages/ForecastingPage';
 import SiteRecommendationsPage from './pages/SiteRecommendationsPage';
+import GridAndCleanEnergyPage from './pages/GridAndCleanEnergyPage';
 import DataManagementPage from './pages/DataManagementPage';
 import MethodologyPage from './pages/MethodologyPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -66,9 +68,13 @@ export function App() {
               <Route path="/pune" element={<PuneAnalysisPage />} />
               <Route path="/samruddhi-corridor" element={<SamruddhiPage />} />
               <Route path="/samruddhi" element={<SamruddhiPage />} />
+              <Route path="/route-planner" element={<HighwayRouteSimulatorPage />} />
+              <Route path="/simulator" element={<HighwayRouteSimulatorPage />} />
               <Route path="/forecasting" element={<ForecastingPage />} />
               <Route path="/site-recommendations" element={<SiteRecommendationsPage />} />
               <Route path="/recommendations" element={<SiteRecommendationsPage />} />
+              <Route path="/grid-and-clean-energy" element={<GridAndCleanEnergyPage />} />
+              <Route path="/clean-energy" element={<GridAndCleanEnergyPage />} />
               <Route path="/data-management" element={<DataManagementPage />} />
               <Route path="/methodology" element={<MethodologyPage />} />
               <Route path="*" element={<NotFoundPage />} />

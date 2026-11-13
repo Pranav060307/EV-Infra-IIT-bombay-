@@ -11,10 +11,14 @@ import {
   ChevronRight, 
   ShieldCheck, 
   Activity,
-  Award
+  Award,
+  Sparkles,
+  FileText
 } from 'lucide-react';
 import DataStatusBadge from '../common/DataStatusBadge';
 import { useTheme } from '../../context/ThemeContext';
+import JuryPitchModal from '../modals/JuryPitchModal';
+import ExecutiveDossierModal from '../modals/ExecutiveDossierModal';
 
 export const Navbar = ({ backendStatus, isSynthetic = false, onToggleMobileMenu, mobileMenuOpen }) => {
   const { theme, toggleTheme, isDark } = useTheme();
@@ -22,6 +26,8 @@ export const Navbar = ({ backendStatus, isSynthetic = false, onToggleMobileMenu,
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchOpen, setSearchOpen] = useState(false);
+  const [juryPitchOpen, setJuryPitchOpen] = useState(false);
+  const [dossierOpen, setDossierOpen] = useState(false);
 
   const isSqlite = backendStatus?.database?.engine 
     ? backendStatus.database.engine.toLowerCase().includes('sqlite') 
@@ -40,6 +46,8 @@ export const Navbar = ({ backendStatus, isSynthetic = false, onToggleMobileMenu,
     { label: 'Kolhapur District Analysis', path: '/districts/Kolhapur', type: 'District' },
     { label: 'Pune Urban 1km² Micro-Grid', path: '/pune-grid', type: 'Urban Grid' },
     { label: 'Samruddhi Mahamarg 701km Corridor', path: '/samruddhi-corridor', type: 'Expressway' },
+    { label: 'Highway EV Trip & Elevation Simulator', path: '/route-planner', type: 'Physics Simulator' },
+    { label: 'Grid Stress, Clean Energy & Queuing', path: '/grid-and-clean-energy', type: 'Clean Energy' },
     { label: '2027/2030 EV Demand Forecasting', path: '/forecasting', type: 'Forecasting' },
     { label: 'MCLP Candidate Site Recommender', path: '/site-recommendations', type: 'Smart Siting' },
     { label: 'Data Management & Source Register', path: '/data-management', type: 'Data Governance' },
@@ -67,6 +75,8 @@ export const Navbar = ({ backendStatus, isSynthetic = false, onToggleMobileMenu,
     if (p.startsWith('/maharashtra') || p.startsWith('/districts')) return 'Maharashtra Analysis (36 Districts)';
     if (p.startsWith('/pune')) return 'Pune Urban Agglomeration (1km² Grid)';
     if (p.startsWith('/samruddhi')) return 'Samruddhi Mahamarg (701km Corridor)';
+    if (p.startsWith('/route-planner') || p.startsWith('/simulator')) return 'Highway EV Trip & Elevation Simulator';
+    if (p.startsWith('/grid-and-clean-energy') || p.startsWith('/clean-energy')) return 'Grid Stress & Clean Energy Modeler';
     if (p.startsWith('/forecasting')) return 'EV Demand Forecasting (2027 / 2030)';
     if (p.startsWith('/site-recommendations') || p.startsWith('/recommendations')) return 'Candidate Site Recommender (MCLP)';
     if (p.startsWith('/data-management')) return 'Data Management & Provenance';
@@ -152,7 +162,28 @@ export const Navbar = ({ backendStatus, isSynthetic = false, onToggleMobileMenu,
       </div>
 
       {/* Right Action & Status Bar */}
-      <div className="flex items-center gap-2.5">
+      <div className="flex items-center gap-2">
+        {/* Jury Pitch Companion Trigger Button */}
+        <button
+          onClick={() => setJuryPitchOpen(true)}
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500/30 hover:to-amber-600/30 text-amber-300 border border-amber-500/40 text-xs font-bold transition-all shadow-sm"
+          title="Open interactive competition presentation companion"
+        >
+          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+          <span className="hidden sm:inline">Jury Pitch</span>
+          <span className="sm:hidden">Pitch</span>
+        </button>
+
+        {/* 1-Click Feasibility Whitepaper Dossier Trigger */}
+        <button
+          onClick={() => setDossierOpen(true)}
+          className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-navy-800 hover:bg-navy-700 text-slate-200 border border-navy-700 text-xs font-medium transition-colors"
+          title="Export official technical feasibility whitepaper"
+        >
+          <FileText className="w-3.5 h-3.5 text-accent-teal" />
+          <span>Dossier</span>
+        </button>
+
         {/* Data Governance Status Badge */}
         <DataStatusBadge isSynthetic={isDemo} qualityScore={98} />
 
@@ -180,6 +211,16 @@ export const Navbar = ({ backendStatus, isSynthetic = false, onToggleMobileMenu,
           <span>Team SuperNova</span>
         </div>
       </div>
+
+      {/* Presentation & Dossier Modals */}
+      <JuryPitchModal 
+        isOpen={juryPitchOpen} 
+        onClose={() => setJuryPitchOpen(false)} 
+      />
+      <ExecutiveDossierModal 
+        isOpen={dossierOpen} 
+        onClose={() => setDossierOpen(false)} 
+      />
     </header>
   );
 };

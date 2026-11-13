@@ -11,7 +11,9 @@ import {
   Database, 
   BookOpen, 
   FileText,
-  X
+  X,
+  Navigation,
+  Sun
 } from 'lucide-react';
 
 export const Sidebar = ({ mobileMenuOpen = false, onCloseMobileMenu }) => {
@@ -31,14 +33,16 @@ export const Sidebar = ({ mobileMenuOpen = false, onCloseMobileMenu }) => {
       group: "Corridor & Micro-Grid",
       items: [
         { path: '/pune-grid', label: 'Pune Urban 1km² Grid', icon: Crosshair, badge: 'UTM 43N' },
-        { path: '/samruddhi-corridor', label: 'Samruddhi Mahamarg', icon: Milestone, badge: '701 km' }
+        { path: '/samruddhi-corridor', label: 'Samruddhi Mahamarg', icon: Milestone, badge: '701 km' },
+        { path: '/route-planner', label: 'Highway Trip Simulator', icon: Navigation, badge: 'Physics' }
       ]
     },
     {
       group: "Analytical Decision Engines",
       items: [
         { path: '/forecasting', label: 'Demand Forecasting', icon: TrendingUp, badge: '2027/30' },
-        { path: '/site-recommendations', label: 'Smart Site Recommender', icon: Sparkles, badge: 'MCLP' }
+        { path: '/site-recommendations', label: 'Smart Site Recommender', icon: Sparkles, badge: 'MCLP' },
+        { path: '/grid-and-clean-energy', label: 'Clean Energy & Queuing', icon: Sun, badge: 'Erlang-C' }
       ]
     },
     {

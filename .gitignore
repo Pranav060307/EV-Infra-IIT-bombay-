@@ -19,6 +19,8 @@ dist/
 frontend/dist/
 .vite/
 frontend/.vite/
+.vercel/
+frontend/.vercel/
 
 # Staging & Uploads (exclude user uploaded files, keep placeholder)
 data/staging/*
